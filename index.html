@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#f7f7f7">
+<meta name="apple-mobile-web-app-title" content="Towers">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  @font-face { font-family: "Press Start 2P"; font-style: normal; font-weight: 400; font-display: block;
+    src: url(data:font/woff2;base64,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) format("woff2"); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+<title>Towers</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f7f7f7;
+    --fg: #535353;
+    --fg-soft: #9a9a9a;
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Press Start 2P", ui-monospace, monospace;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #stage { position: relative; width: 100%; height: 100%; }
+  canvas { display: block; width: 100%; height: 100%; }
+  .score {
+    position: absolute; top: 24px; right: 20px;
+    font-size: 14px; line-height: 1; pointer-events: none; letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums; color: var(--fg); white-space: pre;
+  }
+  .score .hi { color: var(--fg-soft); }
+  .score .combo { color: #ff6a1f; }
+  .score .hi.beat { color: #e0a100; }
+  .panel .new-best { color: #e0a100; font-size: 12px; animation: blink 0.6s steps(1) infinite; }
+  @media (prefers-reduced-motion: reduce) { .panel .new-best { animation: none; } }
+  .panel {
+    position: absolute; left: 50%; top: 60%; transform: translate(-50%, -50%);
+    width: min(360px, calc(100% - 32px));
+    text-align: center; display: grid; gap: 16px; pointer-events: none;
+  }
+  .panel h1 { margin: 0; font-size: 22px; font-weight: 400; letter-spacing: 0.12em; color: var(--fg); }
+  .panel p { margin: 0; color: var(--fg-soft); font-size: 10px; line-height: 1.9; }
+  .panel .cta { color: var(--fg); animation: blink 1s steps(1) infinite; }
+  .sound-toggle {
+    display: block; margin: 0 auto; pointer-events: auto;
+    font: inherit; font-size: 10px; letter-spacing: 0.08em; cursor: pointer;
+    padding: 10px 12px; min-width: 160px; border-radius: 0;
+    background: var(--bg); color: var(--fg); border: 2px solid var(--fg);
+    touch-action: manipulation;
+  }
+  .sound-toggle[aria-pressed="false"] { color: var(--fg-soft); border-color: var(--fg-soft); }
+  .sound-toggle:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .panel .cta { animation: none; } }
+</style>
+
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" aria-label="Towers game. Tap or press space to fly the plane up."></canvas>
+  <div class="score" id="score" hidden>0</div>
+
+  <div class="panel" id="startPanel">
+    <h1>TOWERS</h1>
+    <p>Tap to fly. Smash the blocks for points. Dodge the rockets, and don't touch the clouds or the ground.</p>
+    <button type="button" class="sound-toggle" aria-pressed="true">SOUND: ON</button>
+    <p class="cta">TAP TO START</p>
+  </div>
+
+  <div class="panel" id="overPanel" hidden>
+    <h1>GAME OVER</h1>
+    <p class="new-best" id="newBest" hidden>NEW HIGH SCORE!</p>
+    <p><span id="finalScore">0</span> &nbsp;/&nbsp; HI <span id="bestScore">0</span></p>
+    <button type="button" class="sound-toggle" aria-pressed="true">SOUND: ON</button>
+    <p class="cta">TAP TO RESTART</p>
+  </div>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const startPanel = document.getElementById('startPanel');
+  const overPanel = document.getElementById('overPanel');
+  const finalScoreEl = document.getElementById('finalScore');
+  const bestScoreEl = document.getElementById('bestScore');
+  const css = getComputedStyle(document.documentElement);
+  const C = name => css.getPropertyValue(name).trim();
+  const pad = n => String(n).padStart(5, '0');
+
+  // ---- Tuning (all sizes are in "world units": the screen is 640 units tall) ----
+  const TUNE = {
+    gravity: 1500,          // units / s^2
+    flap: -470,             // upward velocity on tap
+    maxFall: 720,
+    ballRadius: 15,
+    ballX: 0.28,            // fraction of screen width
+    groundH: 56,
+    ceilingH: 46,           // bottom edge of the cloud layer
+    blockW: 64,
+    minBlock: 0.18,         // block height as fraction of play area
+    maxBlock: 0.62,
+    gapNormal: [140, 240],  // open space between obstacles (world units)
+    gapTight: [95, 130],
+    gapWide: [270, 350],
+    speedStart: 190,
+    speedMax: 330,
+    speedRamp: 3,           // world speed gained per block smashed
+    smashBounce: -260,      // little knock-up after smashing a block
+    rocketSpeed: 300,       // rocket speed on top of the world speed
+    takeoffRoll: 1.0,       // seconds rolling down the runway
+    takeoffClimb: 1.1,      // seconds climbing to flying height before you take over
+    overDelay: 0.55,        // game time before GAME OVER appears (the crash plays in slow motion first)
+    nearMiss: 34,           // how close a rocket has to pass to count as a near miss
+    nearMissPoints: 2,
+    landmarkChance: 0.14,   // share of obstacles that are landmarks
+    landmarkBonus: 2,       // extra points for smashing one
+    rocketHitsTowerChance: 0.25, // share of rockets that blow up towers; the rest fly straight through
+    rocketLen: 44,
+    rocketH: 14
+  };
+
+  // Difficulty: one mode that gets harder the longer you survive (seconds of flying).
+  //  0-35 s   gentle, and the warning shows the height the rocket will come in at
+  //  35 s     "RADAR OFF": from here the warning only says a rocket is coming, not where
+  //  50 s+    rockets start coming in pairs
+  //  ~100 s   full strength: rockets every half second or so, faster, pairs a third of the time
+  const RAMP = {
+    everyStart: 3.2, everyEnd: 0.55, full: 100,   // seconds between rockets, and when it reaches full strength
+    warnStart: 1.1, warnEnd: 0.8,                 // warning time before a rocket enters
+    radarOff: 35,                                 // when the warning stops showing the rocket's height
+    pairsFrom: 50, pairsMax: 0.35,                // pairs of rockets: from when, and how often at most
+    extraSpeed: 50                                // added rocket speed at full strength
+  };
+  const rampK = () => { const u = Math.min(1, elapsed / RAMP.full); return u * (2 - u); }; // eases in fast, then settles
+  const lerp = (a, b, u) => a + (b - a) * u;
+  function difficulty() {
+    const k = rampK();
+    return {
+      every: lerp(RAMP.everyStart, RAMP.everyEnd, k),
+      warn: lerp(RAMP.warnStart, RAMP.warnEnd, k),
+      extra: RAMP.extraSpeed * k,
+      doubles: elapsed < RAMP.pairsFrom ? 0 : RAMP.pairsMax * Math.min(1, (elapsed - RAMP.pairsFrom) / (RAMP.full - RAMP.pairsFrom)),
+      exactWarn: elapsed < RAMP.radarOff
+    };
+  }
+  // one high score (fresh start: earlier saved scores are ignored)
+  const BEST_KEY = 'updraft-highscore';
+  let best = 0;
+  try { best = parseInt(localStorage.getItem(BEST_KEY) || '0', 10) || 0; } catch (e) {}
+
+  // ---------- sound: everything is synthesized, nothing to download ----------
+  const Sound = (() => {
+    let ac = null, master = null, rubbleBus = null, blastBus = null, cityVerb = null, lastCrumble = -9, noiseBuf = null, brownBuf = null, muted = false, drive = null, lastWarn = -1;
+    try { muted = localStorage.getItem('updraft-muted') === '1'; } catch (e) {}
+    function init() {
+      if (ac) { if (ac.state === 'suspended') ac.resume(); return; }
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      ac = new AC();
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {} // iPhone: don't go quiet on the silent switch
+      const comp = ac.createDynamicsCompressor();
+      comp.threshold.value = -14; comp.knee.value = 6; comp.ratio.value = 6; comp.attack.value = 0.002; comp.release.value = 0.2;
+      comp.connect(ac.destination);
+      master = ac.createGain(); master.gain.value = muted ? 0 : 0.8; master.connect(comp);
+      // everything to do with rubble goes through here: a gentle top-end roll-off keeps it from getting harsh
+      const rubbleLP = ac.createBiquadFilter(); rubbleLP.type = 'lowpass'; rubbleLP.frequency.value = 3200; rubbleLP.Q.value = 0.5;
+      rubbleBus = ac.createGain(); rubbleBus.gain.value = 0.75; rubbleBus.connect(rubbleLP); rubbleLP.connect(master);
+      // explosions go dry to the mix and also into a "city" reverb: slapback echoes off buildings, then a
+      // long rolling tail, which is what makes an explosion sound like it happened in a street
+      blastBus = ac.createGain(); blastBus.connect(master);
+      cityVerb = ac.createConvolver(); cityVerb.buffer = cityImpulse();
+      const wet = ac.createGain(); wet.gain.value = 0.55;
+      const wetLP = ac.createBiquadFilter(); wetLP.type = 'lowpass'; wetLP.frequency.value = 2400;
+      blastBus.connect(cityVerb); cityVerb.connect(wetLP); wetLP.connect(wet); wet.connect(master);
+      // soft-clip curve used to give the crash some grit
+      drive = new Float32Array(1024);
+      for (let i = 0; i < 1024; i++) { const x = i / 511.5 - 1; drive[i] = Math.tanh(x * 3.2); }
+      noiseBuf = ac.createBuffer(1, ac.sampleRate, ac.sampleRate);
+      const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      // brown noise: deep, rumbly
+      brownBuf = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate);
+      { const b = brownBuf.getChannelData(0); let last = 0;
+        for (let i = 0; i < b.length; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; b[i] = last * 3.5; } }
+    }
+    // Impulse response for the city reverb, built by hand: a few distinct echoes off nearby buildings
+    // (different on each side for width), then a dense tail that fades over about two and a half seconds.
+    function cityImpulse() {
+      const sr = ac.sampleRate, len = Math.floor(sr * 2.6), ir = ac.createBuffer(2, len, sr);
+      for (let ch = 0; ch < 2; ch++) {
+        const d = ir.getChannelData(ch);
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          d[i] = (Math.random() * 2 - 1) * Math.exp(-t / 0.55) * Math.min(1, t / 0.06) * 0.35;
+        }
+        const echoes = ch === 0 ? [0.045, 0.11, 0.19, 0.31] : [0.07, 0.14, 0.23, 0.36];
+        echoes.forEach((e, n) => {
+          const at = Math.floor(e * sr), a = 0.9 / (n + 1.3);
+          for (let k = 0; k < sr * 0.012; k++) d[at + k] += (Math.random() * 2 - 1) * a * Math.exp(-k / (sr * 0.003));
+        });
+      }
+      return ir;
+    }
+
+    // One blast pressure pulse, shaped like a real blast wave (the Friedlander curve): an instant jump,
+    // a quick decay, then a longer, weaker suction phase. T sets the size: longer T = bigger, deeper boom.
+    function blastPulse(T) {
+      const sr = ac.sampleRate, len = Math.floor(sr * T * 7), b = ac.createBuffer(1, len, sr), d = b.getChannelData(0);
+      for (let i = 0; i < len; i++) {
+        const x = i / (sr * T);
+        const p = (1 - x) * Math.exp(-1.6 * x);
+        d[i] = p * (1 + 0.25 * (Math.random() * 2 - 1)) + 0.04 * (Math.random() * 2 - 1) * Math.exp(-x);
+      }
+      return b;
+    }
+
+    // a sound with its own envelope and optional distortion, for heavier hits
+    function hit({ src = 'noise', type = 'lowpass', f0, f1, dur, vol, attack = 0.002, q = 0.8, when = 0, dist = false, osc = 'sine', bus = null }) {
+      if (!ac) return;
+      const t = ac.currentTime + when;
+      let node;
+      if (src === 'noise' || src === 'brown') { node = ac.createBufferSource(); node.buffer = src === 'brown' ? brownBuf : noiseBuf; node.loop = true; }
+      else { node = ac.createOscillator(); node.type = osc; node.frequency.setValueAtTime(f0, t); node.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur * 0.6); }
+      let out = node;
+      if (src === 'noise' || src === 'brown') {
+        const f = ac.createBiquadFilter(); f.type = type; f.Q.value = q;
+        f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur);
+        out.connect(f); out = f;
+      }
+      if (dist) { const ws = ac.createWaveShaper(); ws.curve = drive; ws.oversample = '2x'; out.connect(ws); out = ws; }
+      const g = ac.createGain();
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + attack);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      out.connect(g); g.connect(bus || master);
+      if (node.buffer) node.start(t, Math.random() * (node.buffer.duration - 0.2)); else node.start(t);
+      node.stop(t + dur + 0.05);
+    }
+
+    // Crumble: impact, then the rubble (debris() as pieces really land), then a few settling ticks.
+    // It plays on every smash, so it's kept short and soft, and every one is a little different: the whole
+    // thing shifts in "size" at random, layers come and go, and a crumble right after another one is quieter.
+    function crumbleSound(len = 1, when = 0) {
+      if (!ac) return;
+      const now = ac.currentTime;
+      const recent = now - lastCrumble < 1.2 ? 0.6 : 1;
+      lastCrumble = now;
+      const sz = rand(0.8, 1.25), lvl = recent * rand(0.85, 1.05), B = rubbleBus;
+      hit({ src: 'brown', type: 'lowpass', f0: 150 * sz, f1: 150 * sz, dur: 0.25, vol: 0.45 * lvl, attack: 0.004, when, bus: B });      // thud
+      hit({ type: 'bandpass', f0: 1100 * sz, f1: 1100 * sz, dur: 0.05, vol: 0.2 * lvl, q: 0.7, attack: 0.001, when, bus: B });        // crack
+      if (Math.random() < 0.7) hit({ type: 'lowpass', f0: 800 * sz, f1: 800 * sz, dur: 0.16, vol: 0.14 * lvl, q: 0.5, when: when + 0.015, bus: B }); // breaking
+      hit({ src: 'brown', type: 'lowpass', f0: 200 * sz, f1: 200 * sz, dur: 0.7 * len, vol: 0.2 * lvl, attack: 0.08, when, bus: B });  // rumble
+      if (Math.random() < 0.5) {                                                                                                         // settling
+        let t = 0.6 * len;
+        for (let i = 0, n = 2 + (Math.random() * 4 | 0); i < n; i++) {
+          t += rand(0.05, 0.18);
+          const f = rand(1500, 3000);
+          hit({ type: 'bandpass', f0: f, f1: f, dur: rand(0.008, 0.016), vol: rand(0.015, 0.03) * lvl, q: 0.8, when: when + t, bus: B });
+        }
+      }
+    }
+
+    // One piece of rubble landing: a short noisy burst across low/mid/high bands (k = 0 small .. 1 big).
+    // Used for tower rubble and for the plane's wreckage, so all debris sounds alike.
+    function grain(k, when = 0) {
+      const v = (0.025 + 0.085 * k) * rand(0.6, 1.1), B = rubbleBus;
+      const lo = rand(220, 450), mid = rand(800, 1800);
+      hit({ type: 'lowpass', f0: lo, f1: lo, dur: 0.025 + 0.045 * k, vol: v * 1.1, q: 0.5, when, bus: B });
+      hit({ type: 'bandpass', f0: mid, f1: mid, dur: rand(0.012, 0.03), vol: v * 0.8, q: 0.8, when, bus: B });
+    }
+
+    // Called as each piece of a tower really lands. Pieces land in batches once per frame, so each one
+    // gets a random delay to break up that rhythm (a steady 60-per-second rhythm turns into a buzz).
+    let grainTimes = [];
+    function debris(speed, size) {
+      if (!ac) return;
+      const now = ac.currentTime;
+      grainTimes = grainTimes.filter(x => x > now - 0.1);
+      if (speed < 220 || grainTimes.length >= 4) return;  // only real impacts, at most ~40 per second
+      const when = rand(0, 0.035);
+      grainTimes.push(now + when);
+      grain(Math.min(1, speed / 700) * (size / 8), when);
+    }
+
+    // Explosion, shared by the crash (size 1) and a rocket hitting a tower (smaller), built in the layers
+    // sound designers use: a sharp 2-5 kHz attack, the blast pressure pulse and a low 40-120 Hz body you
+    // feel, the fireball roar, the air rushing back in, and all of it echoing off the city.
+    function blast(size = 1, when = 0) {
+      if (!ac) return;
+      const t = ac.currentTime + when, B = blastBus;
+      // pressure pulse (replaces the old pitch-dropping tone)
+      const pulse = ac.createBufferSource(); pulse.buffer = blastPulse(0.02 + 0.03 * size);
+      const plp = ac.createBiquadFilter(); plp.type = 'lowpass'; plp.frequency.value = 600 + 400 * size;
+      const pg = ac.createGain(); pg.gain.value = 1.1 * size;
+      pulse.connect(plp); plp.connect(pg); pg.connect(B); pulse.start(t);
+      // attack crack, 2-5 kHz
+      hit({ type: 'bandpass', f0: 3200, f1: 3200, dur: 0.03, vol: 0.55 * size, q: 0.5, attack: 0.0005, when, bus: B });
+      // low body you feel more than hear
+      hit({ src: 'brown', type: 'lowpass', f0: 110, f1: 110, dur: 0.5 + 0.9 * size, vol: 0.7 * size, attack: 0.003, when, bus: B });
+      // fireball roar: broadband, darkening as it burns out
+      hit({ type: 'lowpass', f0: 2600, f1: 350, dur: 0.35 + 0.45 * size, vol: 0.5 * size, attack: 0.004, q: 0.5, dist: true, when, bus: B });
+      // air rushing back in (the suction phase)
+      hit({ type: 'bandpass', f0: 350, f1: 900, dur: 0.35, vol: 0.12 * size, q: 0.6, attack: 0.12, when: when + 0.06 + 0.05 * size, bus: B });
+    }
+
+    function tone(type, f0, f1, dur, vol, when = 0) {
+      if (!ac) return;
+      const t = ac.currentTime + when;
+      const o = ac.createOscillator(); o.type = type;
+      o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur);
+      const g = ac.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + 0.05);
+    }
+    return {
+      init, debris,
+      get muted() { return muted; },
+      // a quick rising fanfare: four arpeggio notes and a held top note with a little shimmer
+      highScore() {
+        const n = [523.25, 659.25, 783.99, 1046.5];
+        n.forEach((f, i) => tone('square', f, f, 0.09, 0.05, i * 0.07));
+        tone('square', 1046.5, 1046.5, 0.4, 0.045, 0.3);
+        tone('triangle', 1318.5, 1318.5, 0.45, 0.04, 0.34);
+        tone('triangle', 1567.98, 1567.98, 0.35, 0.03, 0.42);
+      },
+      test() { tone('square', 660, 660, 0.06, 0.05); tone('square', 880, 880, 0.08, 0.05, 0.07); },
+      setMuted(m) {
+        muted = m;
+        try { localStorage.setItem('updraft-muted', m ? '1' : '0'); } catch (e) {}
+        if (master) master.gain.setTargetAtTime(m ? 0 : 0.8, ac.currentTime, 0.02);
+      },
+      // chime walks up and down a two-octave pentatonic scale with the streak, so a long streak keeps
+      // changing instead of topping out; the second note's interval and the sparkle at max combo add variety
+      smash(streak, combo) {
+        crumbleSound(1);
+        const SCALE = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24];
+        const L = SCALE.length - 1, n = Math.max(0, streak - 1) % (L * 2);
+        const idx = n <= L ? n : L * 2 - n;
+        const base = 440 * Math.pow(2, SCALE[idx] / 12);
+        const up = [1.25, 1.335, 1.5][streak % 3];
+        tone('square', base, base, 0.07, 0.05);
+        tone('square', base * up, base * up, 0.12, 0.05, 0.06);
+        if (combo >= 9) tone('triangle', base * 2, base * 2, 0.16, 0.04, 0.12);
+      },
+      towerHit() {                 // rocket into a tower: a smaller explosion, then the same crumble as a smash
+        blast(0.5);
+        crumbleSound(1.1, 0.04);
+      },
+      // crash: the full explosion, then the plane's wreckage clattering down (same grains as tower rubble)
+      boom() {
+        blast(1);
+        for (let i = 0; i < 12; i++) grain(rand(0.2, 0.7), 0.25 + Math.pow(Math.random(), 1.5) * 1.0);
+      },
+      warn() {                     // one double beep per wave of rockets, even when two arrive together
+        if (!ac || ac.currentTime - lastWarn < 0.4) return;
+        lastWarn = ac.currentTime;
+        tone('square', 880, 880, 0.07, 0.035); tone('square', 880, 880, 0.07, 0.035, 0.12);
+      },
+      // pause all sound when the game is hidden (app in background), resume when it's back
+      pause() { if (ac && ac.state === 'running') ac.suspend(); },
+      resume() { if (ac && ac.state === 'suspended') ac.resume(); },
+      // a rocket's flyby: just a hiss. Bright and slightly higher while it's coming at the plane,
+      // softer and lower once it's past, with a short swoosh as it goes by.
+      rocketOn() {
+        if (!ac) return null;
+        const t0 = ac.currentTime;
+        const n = ac.createBufferSource(); n.buffer = noiseBuf; n.loop = true;
+        const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 4000; bp.Q.value = 0.7;
+        const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1200;
+        const g = ac.createGain(); g.gain.value = 0.0001;
+        const pan = ac.createStereoPanner ? ac.createStereoPanner() : null;
+        n.connect(hp); hp.connect(bp); bp.connect(g);
+        if (pan) { g.connect(pan); pan.connect(master); } else g.connect(master);
+        n.start(t0);
+        let wasAhead = true;
+        return {
+          update(dx, dy, W) {
+            const t = ac.currentTime, d = Math.hypot(dx, dy * 1.6);
+            const prox = Math.max(0, 1 - d / 380), ahead = dx > 0;
+            n.playbackRate.setTargetAtTime(ahead ? 1.1 : 0.88, t, 0.05);
+            bp.frequency.setTargetAtTime(ahead ? 4400 : 2600, t, 0.06);
+            g.gain.setTargetAtTime(0.006 + 0.17 * Math.pow(prox, 1.5) * (ahead ? 1 : 0.6), t, 0.04);
+            if (pan) pan.pan.setTargetAtTime(Math.max(-0.9, Math.min(0.9, dx / (W * 0.6))), t, 0.04);
+            if (wasAhead && !ahead && Math.abs(dy) < 160) hit({ type: 'bandpass', f0: 3000, f1: 1200, dur: 0.3, vol: 0.08 + 0.16 * prox, q: 0.9, attack: 0.03 });
+            wasAhead = ahead;
+          },
+          stop() {
+            const t = ac.currentTime;
+            g.gain.cancelScheduledValues(t); g.gain.setTargetAtTime(0.0001, t, 0.05);
+            n.stop(t + 0.3);
+          }
+        };
+      },
+      close() { tone('square', 660, 660, 0.06, 0.05); tone('square', 990, 990, 0.1, 0.05, 0.07); }
+    };
+  })();
+
+  const FIRE = ['#ffe45c', '#ffb02e', '#ff6a1f', '#e8321a', '#b81d3b'];
+  const CLOUD_PERIOD = 360;
+  const puffs = [];
+  { let x = 0, seed = 7; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    while (x < CLOUD_PERIOD) { const rad = 12 + r() * 14; puffs.push({ x, r: rad, dy: r() * 8 }); x += rad * 1.1; } }
+
+  let W = 0, H = 640, unit = 1, dpr = 1;
+  let state = 'ready';      // ready | playing | over
+  let ball, blocks, rockets, particles, chunks, popups;
+  let speed, score, combo, streak = 0, elapsed, rocketTimer, dead;
+  let slowT = 0, trailT = 0, groundOffsetTotal = 0, cloudOffset = 0, shakeT = 0, flashT = 0, overT = 0;
+
+
+  const playTop = () => TUNE.ceilingH;
+  const playBottom = () => H - TUNE.groundH;
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  // high score: the moment you pass your old best mid-run, a banner and a fanfare; after that the HI
+  // counter climbs with your score in gold. (A first-ever run has no old best to beat, so it only
+  // gets the NEW HIGH SCORE line at game over.)
+  let runStartBest = 0, beatBest = false, hsBanner = -1, radarShown = false, radarBanner = -1;
+  function checkHighScore() {
+    if (beatBest || state !== 'playing' || runStartBest <= 0 || score <= runStartBest) return;
+    beatBest = true; hsBanner = 0;
+    Sound.highScore();
+  }
+
+  function showScore() {
+    checkHighScore();
+    const hi = beatBest ? score : best;
+    scoreEl.innerHTML = (hi ? '<span class="hi' + (beatBest ? ' beat' : '') + '">HI ' + pad(hi) + '</span>  ' : '') + pad(score) +
+      (combo > 1 ? '\n<span class="combo">x' + combo + '</span>' : '');
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
+    const r = canvas.getBoundingClientRect();
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    unit = r.height / 640;
+    W = r.width / unit;
+    ctx.setTransform(dpr * unit, 0, 0, dpr * unit, 0, 0);
+    if (ball) ball.x = W * TUNE.ballX;
+  }
+
+  // Towers vary in width, rooftop and window pattern. Every part sits on the same 8-unit grid the tower
+  // crumbles along, so each window stays on its own piece of rubble.
+  const PATTERNS = ['pairs', 'grid', 'bands', 'center', 'full'];
+  // ---------- landmarks: now and then a famous building takes a tower's place ----------
+  // Each is drawn once into its own small canvas. That picture is then cut on the same 8-unit grid as the
+  // towers: cells that are mostly solid can be hit, thin bits (spires, lattice) can't, and every cell
+  // becomes a piece of rubble showing its own part of the picture.
+  const LM_R = 3, LM_FG = '#535353', LM_BG = '#f7f7f7', LM_LIT = '#ffd35a';
+  const LANDMARKS = [
+    { name: 'EIFFEL TOWER', aspect: 0.44, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.beginPath();
+        g.moveTo(0, H); g.quadraticCurveTo(W * 0.34, H * 0.58, W * 0.46, H * 0.1);
+        g.lineTo(W * 0.48, H * 0.04); g.lineTo(W * 0.52, H * 0.04); g.lineTo(W * 0.54, H * 0.1);
+        g.quadraticCurveTo(W * 0.66, H * 0.58, W, H); g.closePath(); g.fill();
+        g.fillRect(W * 0.495, 0, W * 0.01, H * 0.05);                          // antenna
+        g.fillRect(W * 0.12, H * 0.7, W * 0.76, H * 0.035);                    // first platform
+        g.fillRect(W * 0.3, H * 0.44, W * 0.4, H * 0.025);                     // second platform
+        g.fillRect(W * 0.43, H * 0.14, W * 0.14, H * 0.018);                   // top platform
+        g.globalCompositeOperation = 'destination-out';                          // open arches: see-through
+        g.beginPath(); g.moveTo(W * 0.2, H); g.quadraticCurveTo(W * 0.5, H * 0.68, W * 0.8, H); g.closePath(); g.fill();
+        g.beginPath(); g.moveTo(W * 0.37, H * 0.7); g.quadraticCurveTo(W * 0.5, H * 0.55, W * 0.63, H * 0.7); g.closePath(); g.fill();
+        g.save(); g.beginPath();                                               // lattice
+        g.moveTo(0, H); g.quadraticCurveTo(W * 0.34, H * 0.58, W * 0.46, H * 0.1); g.lineTo(W * 0.54, H * 0.1);
+        g.quadraticCurveTo(W * 0.66, H * 0.58, W, H); g.closePath(); g.clip();
+        g.strokeStyle = '#000'; g.lineWidth = LM_R * 0.6;
+        for (let i = -H; i < W + H; i += 7 * LM_R) {
+          g.beginPath(); g.moveTo(i, H); g.lineTo(i + H * 0.5, 0); g.stroke();
+          g.beginPath(); g.moveTo(i, H); g.lineTo(i - H * 0.5, 0); g.stroke();
+        }
+        g.restore();
+        g.globalCompositeOperation = 'source-over';
+      } },
+    { name: 'EMPIRE STATE', aspect: 0.3, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.fillRect(0, H * 0.84, W, H * 0.16);
+        g.fillRect(W * 0.07, H * 0.3, W * 0.86, H * 0.55);
+        g.fillRect(W * 0.18, H * 0.2, W * 0.64, H * 0.11);
+        g.fillRect(W * 0.3, H * 0.14, W * 0.4, H * 0.07);
+        g.fillRect(W * 0.4, H * 0.08, W * 0.2, H * 0.07);
+        g.fillRect(W * 0.46, H * 0.03, W * 0.08, H * 0.06);
+        g.fillRect(W * 0.49, 0, W * 0.02, H * 0.04);
+        for (let x = W * 0.13; x < W * 0.88; x += W * 0.1)                      // vertical window strips
+          for (let y = H * 0.32; y < H * 0.83; y += 3 * LM_R) {
+            g.fillStyle = Math.random() < 0.12 ? LM_LIT : '#8a8a8a';
+            g.fillRect(x, y, W * 0.035, 1.6 * LM_R);
+          }
+      } },
+    { name: 'BIG BEN', aspect: 0.26, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.fillRect(W * 0.1, H * 0.32, W * 0.8, H * 0.68);                       // shaft
+        g.fillRect(0, H * 0.2, W, H * 0.13);                                   // clock stage
+        g.fillRect(W * 0.1, H * 0.13, W * 0.8, H * 0.08);                       // belfry
+        g.beginPath(); g.moveTo(W * 0.08, H * 0.135); g.lineTo(W * 0.5, H * 0.02); g.lineTo(W * 0.92, H * 0.135); g.closePath(); g.fill(); // spire
+        g.fillRect(W * 0.49, 0, W * 0.02, H * 0.03);
+        g.fillStyle = LM_BG;                                                   // clock face
+        g.beginPath(); g.arc(W / 2, H * 0.265, W * 0.34, 0, Math.PI * 2); g.fill();
+        g.strokeStyle = LM_FG; g.lineWidth = LM_R * 0.8;
+        g.beginPath(); g.moveTo(W / 2, H * 0.265); g.lineTo(W / 2, H * 0.265 - W * 0.24);
+        g.moveTo(W / 2, H * 0.265); g.lineTo(W / 2 + W * 0.17, H * 0.265); g.stroke();
+        for (let i = 0; i < 3; i++) g.fillRect(W * (0.2 + i * 0.22), H * 0.145, W * 0.12, H * 0.05); // belfry openings
+        for (let y = H * 0.36; y < H * 0.96; y += H * 0.06)                      // slit windows
+          for (const x of [0.25, 0.47, 0.69]) g.fillRect(W * x, y, W * 0.07, H * 0.035);
+      } },
+    { name: 'TOWER OF PISA', aspect: 0.46, draw(g, W, H) {
+        const tw = W * 0.56, th = H * 0.96;
+        g.save(); g.translate(W * 0.08 + tw / 2, H); g.rotate(0.095); g.translate(-tw / 2, -th);
+        g.fillStyle = LM_FG;
+        g.fillRect(tw * 0.06, th * 0.08, tw * 0.88, th * 0.92);
+        g.fillRect(tw * 0.18, 0, tw * 0.64, th * 0.09);                          // bell chamber
+        g.fillStyle = LM_BG;
+        for (let lvl = 0; lvl < 7; lvl++) {                                     // rings and arcades
+          const y = th * 0.14 + lvl * th * 0.12;
+          g.fillRect(tw * 0.02, y, tw * 0.96, th * 0.012);
+          for (let a = 0; a < 5; a++) {
+            const ax = tw * (0.14 + a * 0.16);
+            g.beginPath(); g.moveTo(ax, y + th * 0.1); g.lineTo(ax, y + th * 0.045);
+            g.arc(ax + tw * 0.045, y + th * 0.045, tw * 0.045, Math.PI, 0); g.lineTo(ax + tw * 0.09, y + th * 0.1); g.fill();
+          }
+        }
+        g.restore();
+      } },
+    { name: 'SPACE NEEDLE', aspect: 0.42, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.beginPath();                                                         // legs pinching to a waist
+        g.moveTo(W * 0.22, H); g.quadraticCurveTo(W * 0.46, H * 0.62, W * 0.4, H * 0.22);
+        g.lineTo(W * 0.6, H * 0.22); g.quadraticCurveTo(W * 0.54, H * 0.62, W * 0.78, H); g.closePath(); g.fill();
+        g.globalCompositeOperation = 'destination-out';                          // gap between the legs
+        g.beginPath(); g.moveTo(W * 0.33, H); g.quadraticCurveTo(W * 0.5, H * 0.66, W * 0.67, H); g.closePath(); g.fill();
+        g.globalCompositeOperation = 'source-over';
+        g.fillStyle = LM_FG;
+        g.fillRect(W * 0.3, H * 0.66, W * 0.4, H * 0.015);                      // ring halfway up
+        g.beginPath(); g.moveTo(W * 0.3, H * 0.23); g.lineTo(0, H * 0.17); g.lineTo(W * 0.1, H * 0.13);
+        g.lineTo(W * 0.9, H * 0.13); g.lineTo(W, H * 0.17); g.lineTo(W * 0.7, H * 0.23); g.closePath(); g.fill(); // saucer
+        g.fillRect(W * 0.2, H * 0.09, W * 0.6, H * 0.045);                      // top deck
+        g.fillRect(W * 0.485, 0, W * 0.03, H * 0.1);                            // spire
+        g.fillStyle = LM_LIT;
+        for (let x = W * 0.12; x < W * 0.88; x += W * 0.07) g.fillRect(x, H * 0.145, W * 0.035, H * 0.012);
+      } },
+    { name: 'BURJ KHALIFA', aspect: 0.2, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        const tiers = [[0, 1, 0.78], [0.08, 0.9, 0.58], [0.2, 0.84, 0.42], [0.28, 0.74, 0.28], [0.36, 0.66, 0.18], [0.42, 0.58, 0.1]];
+        for (const [l, r, top] of tiers) g.fillRect(W * l, H * top, W * (r - l), H * (1 - top));
+        g.beginPath(); g.moveTo(W * 0.44, H * 0.11); g.lineTo(W * 0.5, 0); g.lineTo(W * 0.54, H * 0.11); g.closePath(); g.fill();
+        for (let y = H * 0.14; y < H; y += 3 * LM_R) {                          // floor bands, a few lit
+          g.fillStyle = Math.random() < 0.18 ? LM_LIT : '#8a8a8a';
+          const k = tiers.filter(t => y / H >= t[2]).pop() || tiers[0];
+          g.fillRect(W * (k[0] + 0.06), y, W * (k[1] - k[0] - 0.12), LM_R * 0.8);
+        }
+      } },
+    { name: 'CHRYSLER BUILDING', aspect: 0.28, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.fillRect(0, H * 0.84, W, H * 0.16);
+        g.fillRect(W * 0.12, H * 0.32, W * 0.76, H * 0.53);
+        g.fillRect(W * 0.22, H * 0.24, W * 0.56, H * 0.09);
+        for (let i = 0; i < 6; i++) {                                           // terraced arches of the crown
+          const r = W * (0.27 - i * 0.035), cy = H * (0.245 - i * 0.026);
+          g.beginPath(); g.moveTo(W / 2 - r, cy); g.arc(W / 2, cy, r, Math.PI, 0); g.closePath(); g.fill();
+        }
+        g.beginPath(); g.moveTo(W * 0.47, H * 0.1); g.lineTo(W * 0.5, 0); g.lineTo(W * 0.53, H * 0.1); g.closePath(); g.fill(); // needle
+        g.fillStyle = LM_LIT;                                                    // triangular crown windows
+        for (let i = 0; i < 5; i++) {
+          const r = W * (0.23 - i * 0.035), cy = H * (0.24 - i * 0.026);
+          for (let k = 0; k < 5; k++) {
+            const a = Math.PI + (k + 0.5) * Math.PI / 5, x = W / 2 + Math.cos(a) * r, y = cy + Math.sin(a) * r;
+            g.beginPath(); g.moveTo(x - LM_R * 0.8, y + LM_R); g.lineTo(x, y - LM_R); g.lineTo(x + LM_R * 0.8, y + LM_R); g.closePath(); g.fill();
+          }
+        }
+        for (let x = W * 0.18; x < W * 0.82; x += W * 0.1)
+          for (let y = H * 0.34; y < H * 0.83; y += 3 * LM_R) {
+            g.fillStyle = Math.random() < 0.1 ? LM_LIT : '#8a8a8a';
+            g.fillRect(x, y, W * 0.04, 1.6 * LM_R);
+          }
+      } },
+    { name: 'CN TOWER', aspect: 0.22, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.beginPath(); g.moveTo(W * 0.22, H); g.lineTo(W * 0.43, H * 0.3); g.lineTo(W * 0.57, H * 0.3); g.lineTo(W * 0.78, H); g.closePath(); g.fill(); // tapering shaft
+        g.beginPath(); g.ellipse(W / 2, H * 0.29, W * 0.5, H * 0.032, 0, 0, Math.PI * 2); g.fill();                                            // main pod
+        g.fillRect(W * 0.14, H * 0.265, W * 0.72, H * 0.05);
+        g.fillRect(W * 0.44, H * 0.17, W * 0.12, H * 0.12);
+        g.beginPath(); g.ellipse(W / 2, H * 0.175, W * 0.2, H * 0.014, 0, 0, Math.PI * 2); g.fill();                                          // SkyPod
+        g.beginPath(); g.moveTo(W * 0.46, H * 0.17); g.lineTo(W * 0.495, 0); g.lineTo(W * 0.505, 0); g.lineTo(W * 0.54, H * 0.17); g.closePath(); g.fill(); // antenna
+        g.fillStyle = LM_LIT;
+        for (let x = W * 0.2; x < W * 0.8; x += W * 0.08) g.fillRect(x, H * 0.285, W * 0.04, H * 0.008);
+        g.fillStyle = '#8a8a8a';
+        g.fillRect(W * 0.49, H * 0.34, W * 0.02, H * 0.6);                       // seam between the legs
+      } },
+    { name: 'TOKYO TOWER', aspect: 0.42, draw(g, W, H) {
+        const outline = () => { g.beginPath(); g.moveTo(0, H); g.lineTo(W * 0.45, H * 0.14); g.lineTo(W * 0.55, H * 0.14); g.lineTo(W, H); g.closePath(); };
+        g.fillStyle = LM_FG; outline(); g.fill();
+        g.fillRect(W * 0.49, 0, W * 0.02, H * 0.15);                             // antenna
+        g.fillRect(W * 0.28, H * 0.54, W * 0.44, H * 0.06);                      // main deck
+        g.fillRect(W * 0.4, H * 0.3, W * 0.2, H * 0.035);                        // top deck
+        g.globalCompositeOperation = 'destination-out';
+        g.beginPath(); g.moveTo(W * 0.18, H); g.quadraticCurveTo(W * 0.5, H * 0.72, W * 0.82, H); g.closePath(); g.fill(); // arch
+        g.save(); outline(); g.clip();
+        g.strokeStyle = '#000'; g.lineWidth = LM_R * 0.6;
+        for (let i = -H; i < W + H; i += 7 * LM_R) {
+          g.beginPath(); g.moveTo(i, H * 0.6); g.lineTo(i + H * 0.3, H * 0.14); g.stroke();
+          g.beginPath(); g.moveTo(i, H * 0.6); g.lineTo(i - H * 0.3, H * 0.14); g.stroke();
+          g.beginPath(); g.moveTo(i, H); g.lineTo(i + H * 0.4, H * 0.6); g.stroke();
+          g.beginPath(); g.moveTo(i, H); g.lineTo(i - H * 0.4, H * 0.6); g.stroke();
+        }
+        g.restore();
+        g.globalCompositeOperation = 'source-over';
+        g.fillStyle = LM_FG;
+        g.fillRect(W * 0.28, H * 0.54, W * 0.44, H * 0.06);
+        g.fillRect(W * 0.4, H * 0.3, W * 0.2, H * 0.035);
+        g.fillStyle = LM_LIT;
+        for (let x = W * 0.31; x < W * 0.69; x += W * 0.05) g.fillRect(x, H * 0.56, W * 0.025, H * 0.015);
+      } },
+    { name: 'TAIPEI 101', aspect: 0.25, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.beginPath(); g.moveTo(W * 0.04, H); g.lineTo(W * 0.14, H * 0.8); g.lineTo(W * 0.86, H * 0.8); g.lineTo(W * 0.96, H); g.closePath(); g.fill(); // podium
+        const segs = 8, top = H * 0.22, bottom = H * 0.8, sh = (bottom - top) / segs;
+        for (let i = 0; i < segs; i++) {                                         // eight flared "bamboo" sections
+          const y = bottom - (i + 1) * sh;
+          g.beginPath(); g.moveTo(W * 0.24, y + sh); g.lineTo(W * 0.14, y + sh * 0.05); g.lineTo(W * 0.86, y + sh * 0.05); g.lineTo(W * 0.76, y + sh); g.closePath(); g.fill();
+        }
+        g.beginPath(); g.moveTo(W * 0.32, H * 0.22); g.lineTo(W * 0.38, H * 0.13); g.lineTo(W * 0.62, H * 0.13); g.lineTo(W * 0.68, H * 0.22); g.closePath(); g.fill();
+        g.fillRect(W * 0.47, 0, W * 0.06, H * 0.135);                            // spire
+        for (let i = 0; i < segs; i++) {
+          const y = bottom - (i + 1) * sh;
+          for (let r = 0; r < 3; r++) {
+            g.fillStyle = Math.random() < 0.2 ? LM_LIT : '#8a8a8a';
+            g.fillRect(W * 0.28, y + sh * (0.22 + r * 0.25), W * 0.44, LM_R * 0.8);
+          }
+        }
+      } },
+    { name: 'ORIENTAL PEARL', aspect: 0.34, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        for (const x of [0.3, 0.46, 0.62]) g.fillRect(W * x, H * 0.2, W * 0.08, H * 0.76); // three columns
+        g.lineWidth = W * 0.07; g.strokeStyle = LM_FG;
+        g.beginPath(); g.moveTo(W * 0.04, H); g.lineTo(W * 0.32, H * 0.7); g.stroke();       // slanted legs
+        g.beginPath(); g.moveTo(W * 0.96, H); g.lineTo(W * 0.68, H * 0.7); g.stroke();
+        g.beginPath(); g.arc(W / 2, H * 0.68, W * 0.42, 0, Math.PI * 2); g.fill();          // lower pearl
+        g.beginPath(); g.arc(W / 2, H * 0.32, W * 0.27, 0, Math.PI * 2); g.fill();          // upper pearl
+        g.beginPath(); g.arc(W / 2, H * 0.17, W * 0.1, 0, Math.PI * 2); g.fill();           // top pearl
+        g.fillRect(W * 0.47, 0, W * 0.06, H * 0.16);                                          // spire
+        g.fillStyle = LM_LIT;
+        for (let k = 0; k < 7; k++) g.fillRect(W * (0.18 + k * 0.1), H * 0.675, W * 0.04, H * 0.01);
+        for (let k = 0; k < 4; k++) g.fillRect(W * (0.32 + k * 0.1), H * 0.32, W * 0.04, H * 0.01);
+      } },
+    { name: 'BERLIN TV TOWER', aspect: 0.2, draw(g, W, H) {
+        g.fillStyle = LM_FG;
+        g.beginPath(); g.moveTo(W * 0.34, H); g.lineTo(W * 0.43, H * 0.3); g.lineTo(W * 0.57, H * 0.3); g.lineTo(W * 0.66, H); g.closePath(); g.fill(); // shaft
+        g.beginPath(); g.arc(W / 2, H * 0.28, W * 0.48, 0, Math.PI * 2); g.fill();          // the sphere
+        g.fillRect(W * 0.44, H * 0.1, W * 0.12, H * 0.1);
+        g.fillRect(W * 0.475, 0, W * 0.05, H * 0.11);                                         // antenna
+        g.fillStyle = '#8a8a8a';
+        g.fillRect(W * 0.04, H * 0.27, W * 0.92, H * 0.012);                                  // window band
+        g.fillStyle = LM_LIT;
+        for (let k = 0; k < 7; k++) g.fillRect(W * (0.12 + k * 0.11), H * 0.265, W * 0.05, H * 0.02);
+        g.fillStyle = '#e6e6e6';
+        for (let k = 0; k < 3; k++) g.fillRect(W * 0.475, H * (0.015 + k * 0.03), W * 0.05, H * 0.012); // antenna bands
+      } },
+    // --- buildings that no longer stand ---
+    { name: 'SINGER BUILDING', aspect: 0.26, draw(g, W, H) {           // New York, 1908, demolished 1968
+        g.fillStyle = LM_FG;
+        g.fillRect(0, H * 0.84, W, H * 0.16);                                    // base block
+        g.fillRect(W * 0.17, H * 0.24, W * 0.66, H * 0.61);                      // tower shaft
+        g.beginPath(); g.moveTo(W * 0.14, H * 0.245);                            // mansard dome
+        g.bezierCurveTo(W * 0.12, H * 0.14, W * 0.35, H * 0.1, W * 0.44, H * 0.09);
+        g.lineTo(W * 0.56, H * 0.09); g.bezierCurveTo(W * 0.65, H * 0.1, W * 0.88, H * 0.14, W * 0.86, H * 0.245);
+        g.closePath(); g.fill();
+        g.fillRect(W * 0.4, H * 0.045, W * 0.2, H * 0.05);                       // lantern
+        g.fillRect(W * 0.49, 0, W * 0.02, H * 0.05);                             // flagpole
+        for (let x = W * 0.24; x < W * 0.8; x += W * 0.13)                       // tall window bays
+          for (let y = H * 0.27; y < H * 0.82; y += 3 * LM_R) {
+            g.fillStyle = Math.random() < 0.12 ? LM_LIT : '#8a8a8a';
+            g.fillRect(x, y, W * 0.06, 1.8 * LM_R);
+          }
+        g.fillStyle = '#8a8a8a';
+        for (let i = 0; i < 4; i++) g.fillRect(W * (0.26 + i * 0.13), H * 0.15, W * 0.05, H * 0.035); // dome windows
+      } },
+    { name: 'PHAROS LIGHTHOUSE', aspect: 0.42, draw(g, W, H) {         // Alexandria, about 280 BC, lost by 1480
+        g.fillStyle = LM_FG;
+        g.beginPath(); g.moveTo(0, H); g.lineTo(W * 0.05, H * 0.5); g.lineTo(W * 0.95, H * 0.5); g.lineTo(W, H); g.closePath(); g.fill(); // square base tier
+        g.fillRect(W * 0.03, H * 0.48, W * 0.94, H * 0.025);                     // cornice
+        g.beginPath(); g.moveTo(W * 0.2, H * 0.49); g.lineTo(W * 0.26, H * 0.22); g.lineTo(W * 0.74, H * 0.22); g.lineTo(W * 0.8, H * 0.49); g.closePath(); g.fill(); // octagonal tier
+        g.fillRect(W * 0.22, H * 0.205, W * 0.56, H * 0.02);
+        g.fillRect(W * 0.34, H * 0.09, W * 0.32, H * 0.12);                      // round lantern tier
+        g.beginPath(); g.moveTo(W * 0.32, H * 0.095); g.lineTo(W * 0.5, H * 0.04); g.lineTo(W * 0.68, H * 0.095); g.closePath(); g.fill(); // roof
+        g.fillRect(W * 0.48, 0, W * 0.04, H * 0.045);                            // statue on top
+        g.fillStyle = LM_LIT;                                                    // the fire
+        g.fillRect(W * 0.4, H * 0.12, W * 0.2, H * 0.06);
+        g.fillStyle = '#8a8a8a';
+        for (let r = 0; r < 5; r++) for (let c = 0; c < 4; c++)                  // small windows in the base
+          g.fillRect(W * (0.18 + c * 0.19), H * (0.56 + r * 0.085), W * 0.06, H * 0.035);
+        for (let r = 0; r < 3; r++) g.fillRect(W * 0.47, H * (0.26 + r * 0.075), W * 0.06, H * 0.035);
+      } },
+    { name: 'PORCELAIN TOWER', aspect: 0.32, draw(g, W, H) {           // Nanjing, 1431, destroyed 1856
+        g.fillStyle = LM_FG;
+        const stories = 9, top = H * 0.1, storyH = (H - top) / stories;
+        for (let i = 0; i < stories; i++) {
+          const y = H - (i + 1) * storyH, shrink = i * 0.035;
+          const l = 0.14 + shrink, r = 0.86 - shrink;
+          g.fillRect(W * l, y + storyH * 0.25, W * (r - l), storyH * 0.75);       // story
+          g.beginPath();                                                          // upturned eave
+          g.moveTo(W * (l - 0.12), y + storyH * 0.12); g.lineTo(W * (l - 0.02), y + storyH * 0.3);
+          g.lineTo(W * (r + 0.02), y + storyH * 0.3); g.lineTo(W * (r + 0.12), y + storyH * 0.12);
+          g.lineTo(W * (r - 0.02), y + storyH * 0.22); g.lineTo(W * (l + 0.02), y + storyH * 0.22); g.closePath(); g.fill();
+          g.fillStyle = i % 3 === 1 ? LM_LIT : '#8a8a8a';                         // arched doorway on each story
+          g.fillRect(W * 0.45, y + storyH * 0.45, W * 0.1, storyH * 0.4);
+          g.fillStyle = LM_FG;
+        }
+        g.fillRect(W * 0.46, H * 0.02, W * 0.08, H * 0.09);                       // finial
+        g.beginPath(); g.arc(W * 0.5, H * 0.05, W * 0.07, 0, Math.PI * 2); g.fill();
+        g.fillRect(W * 0.49, 0, W * 0.02, H * 0.03);
+      } }
+  ];
+  let lmBag = [], lastWasLandmark = false;
+
+  function makeLandmark(x) {
+    if (!lmBag.length) lmBag = LANDMARKS.slice().sort(() => Math.random() - 0.5);  // no repeats until all shown
+    const L = lmBag.pop(), area = playBottom() - playTop();
+    const h = Math.ceil(area * rand(0.4, 0.62) / 8) * 8;
+    const w = Math.max(32, Math.ceil(h * L.aspect / 8) * 8);
+    const c = document.createElement('canvas'); c.width = w * LM_R; c.height = h * LM_R;
+    const g = c.getContext('2d');
+    L.draw(g, c.width, c.height);
+    // coverage of each 8x8 cell decides whether it's solid (hittable) and whether it becomes rubble
+    const data = g.getImageData(0, 0, c.width, c.height).data, cs = 8 * LM_R, cells = [];
+    for (let row = 0; row < h / 8; row++) for (let col = 0; col < w / 8; col++) {
+      let on = 0, n = 0;
+      for (let y = row * cs; y < (row + 1) * cs; y += 2) for (let xx = col * cs; xx < (col + 1) * cs; xx += 2) {
+        const i = (y * c.width + xx) * 4 + 3; n++;
+        if (data[i] > 20) {
+          const r = data[i - 3], gg = data[i - 2], b = data[i - 1];
+          if (!(r > 230 && gg > 230 && b > 230)) on++;                             // background-colored pixels don't count
+        }
+      }
+      const cov = on / n;
+      if (cov > 0.04) cells.push({ col, row, solid: cov > 0.4 });
+    }
+    return { x, w, h, parts: [], passed: false, smashed: false, lm: { name: L.name, img: c, cells } };
+  }
+
+  // does a rectangle touch a landmark's solid cells?
+  function lmHit(b, test) {
+    const top = playBottom() - b.h;
+    for (const k of b.lm.cells) if (k.solid && test(b.x + k.col * 8, top + k.row * 8, 8, 8)) return true;
+    return false;
+  }
+
+  // open space between one obstacle and the next: usually a normal gap, sometimes a tight pair, sometimes a breather
+  function nextGap() {
+    const r = Math.random();
+    return r < 0.15 ? rand(TUNE.gapTight[0], TUNE.gapTight[1])
+         : r < 0.85 ? rand(TUNE.gapNormal[0], TUNE.gapNormal[1])
+         : rand(TUNE.gapWide[0], TUNE.gapWide[1]);
+  }
+
+  function makeBlock(x) {
+    if (!lastWasLandmark && x > W && Math.random() < TUNE.landmarkChance) { lastWasLandmark = true; return makeLandmark(x); }
+    lastWasLandmark = false;
+    const area = playBottom() - playTop();
+    const w = [48, 56, 64, 64, 72, 80][(Math.random() * 6) | 0];
+    const total = area * rand(TUNE.minBlock, TUNE.maxBlock);
+    const roof = Math.random();
+    const parts = [];
+    let bodyH = total, tierH = 0, inset = 0;
+    if (roof < 0.35 && total > 120) {            // stepped top
+      tierH = [16, 24, 32][(Math.random() * 3) | 0];
+      inset = w >= 64 ? 16 : 8;
+      bodyH = total - tierH;
+    }
+    parts.push({ dx: 0, w, bottom: 0, h: bodyH, win: true });
+    if (tierH) parts.push({ dx: inset, w: w - inset * 2, bottom: bodyH, h: tierH, win: true });
+    const topW = tierH ? w - inset * 2 : w, topDx = tierH ? inset : 0;
+    if (roof >= 0.35 && roof < 0.55) parts.push({ dx: topDx + topW / 2 - 1, w: 2, bottom: total, h: 22, win: false, thin: true }); // antenna
+    else if (roof >= 0.55 && roof < 0.7) parts.push({ dx: topDx + topW / 2 - 4, w: 8, bottom: total, h: 8, win: false });     // roof box
+    return { x, w, h: total, parts, passed: false, smashed: false,
+      seed: 1 + Math.floor(Math.random() * 99999),
+      pattern: PATTERNS[(Math.random() * PATTERNS.length) | 0],
+      litChance: rand(0.12, 0.4) };
+  }
+
+  // 0 = wall, 1 = dark window, 2 = light on
+  function windowAt(b, p, col, row) {
+    if (!p.win) return 0;
+    const cols = Math.round(p.w / 8), rows = Math.ceil(p.h / 8 - 0.06);
+    if (row >= rows - 1 || col === 0 || col === cols - 1) return 0;
+    const pt = b.pattern;
+    let on = false;
+    if (pt === 'pairs') on = row % 2 === 1 && (col % 4 === 1 || col % 4 === 2);
+    else if (pt === 'grid') on = row % 2 === 1 && col % 2 === 1;
+    else if (pt === 'bands') on = row % 3 === 1;
+    else if (pt === 'center') on = row % 2 === 1 && Math.abs(col - (cols - 1) / 2) <= 1;
+    else on = row % 2 === 1;
+    if (!on) return 0;
+    let n = (b.seed * 73856093) ^ (col * 19349663) ^ (row * 83492791) ^ (p.dx * 2654435761);
+    n = Math.imul(n ^ (n >>> 15), 2246822507); n = Math.imul(n ^ (n >>> 13), 3266489909); n = (n ^ (n >>> 16)) >>> 0;
+    return (n % 1000) / 1000 < b.litChance ? 2 : 1;
+  }
+  const WIN_LIT = '#ffd35a', WIN_DARK = '#8a8a8a';
+  function drawWindow(kind, x, y, band) {
+    ctx.fillStyle = kind === 2 ? WIN_LIT : P.winDark;
+    if (band) ctx.fillRect(x - 2, y + 1, 8, 3);
+    else ctx.fillRect(x, y, 4, 5);
+  }
+  const partTop = p => playBottom() - p.bottom - p.h;
+
+  function reset() {
+    ball = { x: W * TUNE.ballX, y: groundY(), vy: 0, r: TUNE.ballRadius, tilt: 0, gear: 1 };
+    takeoffT = 0; runwayAt = groundOffsetTotal;
+    speed = TUNE.speedStart; score = 0; combo = 1; streak = 0; cycleT = 0; runStartBest = best; radarShown = false; beatBest = false; hsBanner = -1; elapsed = 0; dead = false;
+    rocketTimer = 1.8;
+    if (rockets) for (const r of rockets) if (r.snd) r.snd.stop();
+    blocks = []; rockets = []; particles = []; chunks = []; popups = [];
+    let x = W + 360;                              // leave room for the takeoff
+    while (x < W * 2 + 400) { const b = makeBlock(x); blocks.push(b); x += b.w + nextGap(); }
+    showScore();
+  }
+
+  // rockets get faster over the run, and each one rolls a speed: most are near the average,
+  // some are slow, and a few are much faster
+  function rocketVelocity(M) {
+    const base = speed + TUNE.rocketSpeed + M.extra + Math.min(elapsed * 2.5, 220);
+    const r = Math.random();
+    const f = r < 0.2 ? rand(0.6, 0.8) : r < 0.85 ? rand(0.85, 1.15) : rand(1.3, 1.55);
+    return base * f;
+  }
+
+  // the plane's hit area: four circles along the fuselage and tail, in the plane's own tilted frame
+  const HIT = [[-19, -3, 6], [-6, 0, 7.5], [8, 0, 7.5], [19, 0, 4.5]];
+  function planeTilt() {
+    if (state === 'ready' || state === 'takeoff') return ball.tilt || 0;
+    return Math.max(-0.45, Math.min(0.7, ball.vy / 750));
+  }
+  const groundY = () => playBottom() - 12;          // plane's height when its wheels are on the runway
+  let takeoffT = 0, runwayAt = 0;
+  function planeCircles() {
+    const a = planeTilt(), c = Math.cos(a), s = Math.sin(a);
+    return HIT.map(([x, y, r]) => ({ x: ball.x + x * c - y * s, y: ball.y + x * s + y * c, r }));
+  }
+  const planeHits = (rx, ry, rw, rh) => planeCircles().some(k => circleRect(k, rx, ry, rw, rh));
+
+  function flap() {
+    Sound.init();
+    if (state === 'ready') {
+      state = 'takeoff'; takeoffT = 0; startPanel.hidden = true; scoreEl.hidden = false;
+      return;
+    } else if (state === 'over') {
+      if (overT < TUNE.overDelay + 0.3) return; // let the crash play out before a tap can restart
+      reset(); state = 'takeoff'; overPanel.hidden = true;
+      return;
+    } else if (state === 'takeoff') return;       // the plane flies itself until it's airborne
+    ball.vy = TUNE.flap;
+  }
+
+  function gameOver() {
+    state = 'over'; overT = 0;
+    for (const r of rockets) if (r.snd) { r.snd.stop(); r.snd = null; }
+    document.getElementById('newBest').hidden = !(score > runStartBest && score > 0);
+    if (score > best) { best = score; try { localStorage.setItem(BEST_KEY, String(score)); } catch (e) {} }
+    finalScoreEl.textContent = pad(score);
+    bestScoreEl.textContent = pad(best);
+    showScore();
+  }
+
+  // ---------- effects ----------
+  // reward burst for smashing a block: bright gold starburst, no smoke
+  const GOLD = ['#ffd000', '#ffb800', '#f5a300', '#ffc933'];
+  function smashBurst(x, y) {
+    shakeT = Math.max(shakeT, 0.08);
+    for (let i = 0; i < 10; i++) {
+      const a = (i / 10) * Math.PI * 2 + rand(-0.15, 0.15);
+      particles.push({ kind: 'streak', x, y, a, vx: 0, vy: 0, life: rand(0.22, 0.32), t: 0, size: rand(26, 44), color: GOLD[i % 4] });
+    }
+    for (let i = 0; i < 26; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(90, 300);
+      particles.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 80, g: 350,
+        life: rand(0.35, 0.7), t: 0, size: rand(2, 4), color: GOLD[(Math.random() * 4) | 0] });
+    }
+    particles.push({ kind: 'ring', x, y, vx: 0, vy: 0, life: 0.3, t: 0, size: 6, color: '#f5a300', reach: 45 });
+  }
+
+  // run-ending blast: big red fireball, the ball shatters, dark smoke, brief slow motion
+  const BLAST = ['#ffb02e', '#ff6a1f', '#e8321a', '#b81d3b', '#6e0f24'];
+  function deathBlast(x, y) {
+    Sound.boom();
+    shakeT = 0.5; flashT = 0.35; slowT = 0.55;
+    for (let i = 0; i < 90; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(100, 620);
+      particles.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 140,
+        life: rand(0.6, 1.3), t: 0, size: rand(2, 6), color: BLAST[(Math.random() * BLAST.length) | 0] });
+    }
+    for (let i = 0; i < 18; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(20, 140);
+      particles.push({ kind: 'fire', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 50,
+        life: rand(0.5, 0.95), t: 0, size: rand(16, 34), color: BLAST[i % 5] });
+    }
+    for (let i = 0; i < 14; i++) { // pieces of the ball
+      const a = Math.random() * Math.PI * 2, v = rand(150, 420);
+      particles.push({ kind: 'shard', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 220, rot: 0, vr: rand(-12, 12),
+        life: rand(1.2, 1.8), t: 0, size: rand(4, 8), color: P.plane });
+    }
+    for (let i = 0; i < 14; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(15, 70);
+      particles.push({ kind: 'smoke', x, y, vx: Math.cos(a) * v, vy: -rand(40, 100),
+        life: rand(1.3, 2.1), t: 0, size: rand(14, 26), color: '#3d3535' });
+    }
+    particles.push({ kind: 'ring', x, y, vx: 0, vy: 0, life: 0.55, t: 0, size: 12, color: '#e8321a', reach: 130 });
+    particles.push({ kind: 'ring', x, y, vx: 0, vy: 0, life: 0.4, t: 0, size: 6, color: '#ffb02e', reach: 80 });
+  }
+
+  function explode(x, y, big) {
+    const n = big ? 1 : 0.5;
+    shakeT = Math.max(shakeT, big ? 0.35 : 0.14);
+    if (big) flashT = 0.3;
+    for (let i = 0; i < 70 * n; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(80, 520) * (big ? 1 : 0.7);
+      particles.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120,
+        life: rand(0.5, 1.1), t: 0, size: rand(2, 5), color: FIRE[(Math.random() * FIRE.length) | 0] });
+    }
+    for (let i = 0; i < 12 * n; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(20, 110);
+      particles.push({ kind: 'fire', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 40,
+        life: rand(0.45, 0.8), t: 0, size: rand(12, 26) * (big ? 1 : 0.7), color: FIRE[i % 4] });
+    }
+    for (let i = 0; i < 8 * n; i++) {
+      const a = Math.random() * Math.PI * 2, v = rand(15, 60);
+      particles.push({ kind: 'smoke', x, y, vx: Math.cos(a) * v, vy: -rand(30, 80),
+        life: rand(0.9, 1.5), t: 0, size: rand(10, 20), color: '#7a6f6a' });
+    }
+    particles.push({ kind: 'ring', x, y, vx: 0, vy: 0, life: 0.45, t: 0, size: 10, color: '#ffb02e', reach: big ? 90 : 55 });
+  }
+
+  // break a block into pieces that give way outward from the impact point
+  function crumble(b, ix, iy) {
+    if (b.lm) {                                    // landmark: each cell falls as a piece of the picture
+      const top = playBottom() - b.h;
+      for (const k of b.lm.cells) {
+        const cx = b.x + k.col * 8 + 4, cy = top + k.row * 8 + 4;
+        const dx = cx - ix, dy = cy - iy, d = Math.hypot(dx, dy) || 1;
+        const push = Math.max(0, 1 - d / 120) * 260;
+        chunks.push({ x: cx, y: cy, w: 8, h: 8,
+          vx: (dx / d) * push + rand(-70, 70) + 60, vy: (dy / d) * push * 0.6 + rand(-20, 10),
+          rot: 0, vr: rand(-6, 6), delay: d / 650 + rand(0, 0.06), landed: false,
+          rest: Math.random() * Math.random() * 18, img: b.lm.img, sx: k.col * 8 * LM_R, sy: k.row * 8 * LM_R });
+      }
+      return;
+    }
+    const S = 8, band = b.pattern === 'bands';
+    for (const p of b.parts) {
+      const top = partTop(p), bottom = playBottom() - p.bottom, left = b.x + p.dx;
+      let row = 0;
+      for (let y = top; y < bottom - 0.5; y += S, row++) {
+        let col = 0;
+        for (let x = left; x < left + p.w - 0.5; x += S, col++) {
+          const w = Math.min(S, left + p.w - x), h = Math.min(S, bottom - y);
+          const cx = x + w / 2, cy = y + h / 2;
+          const dx = cx - ix, dy = cy - iy, d = Math.hypot(dx, dy) || 1;
+          const push = Math.max(0, 1 - d / 120) * 260;
+          chunks.push({ x: cx, y: cy, w, h,
+            vx: (dx / d) * push + rand(-70, 70) + 60, vy: (dy / d) * push * 0.6 + rand(-20, 10),
+            rot: 0, vr: rand(-6, 6), delay: d / 650 + rand(0, 0.06), landed: false,
+            rest: Math.random() * Math.random() * 18, win: windowAt(b, p, col, row), band });
+        }
+      }
+    }
+  }
+
+  function updateEffects(dt, scroll) {
+    for (const p of particles) {
+      p.t += dt; p.x += (p.vx - scroll) * dt; p.y += p.vy * dt;
+      if (p.kind === 'spark') {
+        p.vy += (p.g || 900) * dt; p.vx *= 0.985;
+        if (p.y > playBottom()) { p.y = playBottom(); p.vy *= -0.35; p.vx *= 0.6; }
+      } else if (p.kind === 'fire') { p.vx *= 0.94; p.vy *= 0.94; }
+      else if (p.kind === 'shard') {
+        p.vy += 1100 * dt; p.rot += p.vr * dt;
+        if (p.y > playBottom() - p.size / 2) { p.y = playBottom() - p.size / 2; p.vy *= -0.3; p.vx *= 0.5; p.vr *= 0.5; }
+      }
+    }
+    particles = particles.filter(p => p.t < p.life);
+
+    for (const c of chunks) {
+      c.x -= scroll * dt;
+      if (c.landed) continue;
+      if (c.delay > 0) { c.delay -= dt; continue; }
+      c.vy += 1300 * dt;
+      c.x += c.vx * dt; c.y += c.vy * dt; c.rot += c.vr * dt;
+      const floor = playBottom() - c.rest - c.h / 2;
+      if (c.vy > 0 && c.y >= floor) {
+        c.y = floor;
+        Sound.debris(c.vy, Math.max(c.w, c.h));
+        if (c.vy > 180) {
+          c.vy *= -0.25; c.vx = c.vx * 0.5 + rand(-50, 50); c.vr *= 0.5;
+          if (Math.random() < 0.12) particles.push({ kind: 'smoke', x: c.x, y: floor, vx: rand(-30, 30), vy: -rand(10, 40),
+            life: rand(0.5, 0.9), t: 0, size: rand(4, 9), color: '#bdbdbd' });
+        } else {
+          c.landed = true;
+          c.rot = Math.round(c.rot / (Math.PI / 2)) * (Math.PI / 2) + rand(-0.25, 0.25);
+        }
+      }
+    }
+    chunks = chunks.filter(c => c.x > -20);
+
+    for (const p of popups) {
+      p.t += dt;
+      if (p.follow && !dead) { p.x = ball.x + 34; p.y = ball.y + 4 - p.t * 30; }
+      else { p.y -= 40 * dt; p.x -= scroll * dt; }
+    }
+    popups = popups.filter(p => p.t < 0.8);
+  }
+
+  // ---------- collisions ----------
+  function circleRect(c, rx, ry, rw, rh) {
+    const nx = Math.max(rx, Math.min(c.x, rx + rw));
+    const ny = Math.max(ry, Math.min(c.y, ry + rh));
+    const dx = c.x - nx, dy = c.y - ny;
+    return dx * dx + dy * dy < c.r * c.r;
+  }
+
+  // ---------- main update ----------
+  function update(dt) {
+    if (flashT > 0) flashT = Math.max(0, flashT - dt);
+    if (hsBanner >= 0) { hsBanner += dt; if (hsBanner > 2.2) hsBanner = -1; }
+    if (radarBanner >= 0) { radarBanner += dt; if (radarBanner > 2.2) radarBanner = -1; }
+    if (state === 'playing' && !radarShown && elapsed >= RAMP.radarOff) { radarShown = true; radarBanner = 0; Sound.warn(); }
+    if (shakeT > 0) shakeT = Math.max(0, shakeT - dt);
+
+    if (state === 'ready') {                      // parked on the runway, propeller turning
+      ball.y = groundY(); ball.vy = 0; ball.tilt = 0; ball.gear = 1;
+      cloudOffset = (cloudOffset + 25 * dt) % CLOUD_PERIOD;
+      updateBanner(dt);
+      updateEffects(dt, 0);
+      return;
+    }
+    if (state === 'takeoff') {
+      takeoffT += dt;
+      const R = TUNE.takeoffRoll, Cl = TUNE.takeoffClimb, t = takeoffT;
+      let sp;
+      if (t < R) {                                // roll: speed builds, nose lifts at the very end
+        const u = t / R;
+        sp = TUNE.speedStart * u * u;
+        ball.y = groundY();
+        ball.tilt = -0.14 * Math.max(0, (u - 0.75) / 0.25);
+        if (Math.random() < 0.5 * u) particles.push({ kind: 'smoke', x: ball.x + 6, y: playBottom() - 2,
+          vx: -rand(10, 40), vy: -rand(5, 25), life: rand(0.3, 0.6), t: 0, size: rand(2, 5), color: '#cfcfcf' }); // runway dust
+      } else {                                    // climb out, then level off
+        const u = Math.min(1, (t - R) / Cl), e = u * u * (3 - 2 * u);
+        sp = TUNE.speedStart;
+        ball.y = groundY() + (H * 0.42 - groundY()) * e;
+        ball.tilt = -0.14 - 0.26 * Math.sin(Math.PI * Math.min(1, u * 1.1)) + 0.14 * u;
+        ball.gear = Math.max(0, 1 - Math.max(0, u - 0.25) / 0.4);   // wheels tuck away after liftoff
+        trailT -= dt;
+        if (trailT <= 0) {
+          trailT = 0.028;
+          const a = ball.tilt;
+          particles.push({ kind: 'trail', x: ball.x - 27 * Math.cos(a), y: ball.y - 27 * Math.sin(a) + rand(-1.5, 1.5),
+            vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: '#c9c9c9' });
+        }
+      }
+      groundOffsetTotal += sp * dt;
+      cloudOffset = (cloudOffset + 25 * dt) % CLOUD_PERIOD;
+      updateBanner(dt);
+      for (const b of blocks) b.x -= sp * dt;
+      updateEffects(dt, sp);
+      if (t >= R + Cl) { state = 'playing'; ball.vy = -60; ball.gear = 0; }
+      return;
+    }
+    if (state === 'over') {
+      overT += dt;
+      if (overPanel.hidden && overT >= TUNE.overDelay) overPanel.hidden = false;
+      updateEffects(dt, 0);
+      return;
+    }
+
+    elapsed += dt;
+    cycleT += dt;
+    cloudOffset = (cloudOffset + 25 * dt) % CLOUD_PERIOD;
+    updateBanner(dt);
+    groundOffsetTotal += speed * dt;
+
+    // ball: touching the clouds or the ground ends the run
+    ball.vy = Math.min(ball.vy + TUNE.gravity * dt, TUNE.maxFall);
+    ball.y += ball.vy * dt;
+    const circ = planeCircles();
+    const hitTop = circ.some(k => k.y - k.r <= playTop()), hitGround = circ.some(k => k.y + k.r >= playBottom());
+    if (hitTop || hitGround) {
+      dead = true;
+      deathBlast(ball.x, ball.y);
+      gameOver();
+      updateEffects(dt, 0);
+      return;
+    }
+
+    // blocks: smash them for points
+    for (const b of blocks) {
+      b.x -= speed * dt;
+      if (b.smashed) continue;
+      const hitIt = b.lm
+        ? (planeHits(b.x, playBottom() - b.h, b.w, b.h) && lmHit(b, planeHits))
+        : b.parts.some(p => !p.thin && planeHits(b.x + p.dx, partTop(p), p.w, p.h));
+      if (hitIt) {
+        b.smashed = true;
+        const pts = combo + (b.lm ? TUNE.landmarkBonus : 0);
+        score += pts;
+        popups.push({ x: b.x + b.w / 2, y: playBottom() - b.h - 14, t: 0, text: (b.lm ? b.lm.name + ' ' : '') + '+' + pts, big: !!b.lm });
+        combo = Math.min(combo + 1, 9);
+        speed = Math.min(TUNE.speedMax, speed + TUNE.speedRamp);
+        crumble(b, ball.x, ball.y);
+        smashBurst(ball.x + ball.r * 0.6, ball.y);
+        streak++;
+        Sound.smash(streak, combo);
+        comboPop();
+        ball.vy = Math.min(ball.vy, TUNE.smashBounce);
+        showScore();
+      } else if (!b.passed && b.x + b.w < ball.x - 28) {
+        b.passed = true;
+        streak = 0;
+        if (combo > 1) { combo = 1; showScore(); } // missing a block resets the combo
+      }
+    }
+    while (blocks.length && blocks[0].x + blocks[0].w < -10) blocks.shift();
+    const last = blocks[blocks.length - 1];
+    if (last.x < W + 200) blocks.push(makeBlock(last.x + last.w + nextGap()));
+
+    // rockets: warn, then fly in from the right
+    rocketTimer -= dt;
+    if (rocketTimer <= 0) {
+      const M = difficulty();
+      const every = M.every;
+      rocketTimer = every * rand(0.75, 1.25);
+      const lo = playTop() + 20, hi = playBottom() - 20;
+      const y = rand(lo, hi);
+      const v = rocketVelocity(M);
+      rockets.push({ x: W + 30, y, warn: M.warn, v, breaker: Math.random() < TUNE.rocketHitsTowerChance });
+      if (Math.random() < M.doubles) {
+        // second rocket in a different lane, always leaving a gap to fly through
+        let y2 = rand(lo, hi), tries = 0;
+        while (Math.abs(y2 - y) < 130 && tries++ < 10) y2 = rand(lo, hi);
+        if (Math.abs(y2 - y) >= 130) rockets.push({ x: W + 30 + rand(40, 140), y: y2, warn: M.warn, v: rocketVelocity(M), breaker: Math.random() < TUNE.rocketHitsTowerChance });
+      }
+    }
+    for (const r of rockets) {
+      if (r.warn > 0) {
+        if (!r.beeped) { r.beeped = true; Sound.warn(); }
+        r.warn -= dt;
+        if (r.warn <= 0) r.snd = Sound.rocketOn();
+        continue;
+      }
+      r.x -= r.v * dt;
+      if (r.snd) r.snd.update(r.x - ball.x, r.y - ball.y, W);
+      if (Math.random() < 0.6) particles.push({ kind: 'smoke', x: r.x + TUNE.rocketLen / 2 + 6, y: r.y + rand(-3, 3),
+        vx: rand(40, 90) + speed, vy: rand(-10, 10), life: rand(0.3, 0.6), t: 0, size: rand(3, 6), color: '#c4c4c4' });
+      const body = { x: r.x - TUNE.rocketLen / 2, y: r.y - TUNE.rocketH / 2, w: TUNE.rocketLen, h: TUNE.rocketH };
+      // rocket into a tower: both blow up, the tower comes down, no points for you
+      let hitTower = null;
+      if (r.breaker) for (const b of blocks) {
+        if (b.smashed || b.x > r.x + 30 || b.x + b.w < r.x - 30) continue;
+        const overlap = (x, y, w, h) => body.x < x + w && body.x + body.w > x && body.y < y + h && body.y + body.h > y;
+        if (b.lm ? lmHit(b, overlap) : b.parts.some(p => !p.thin && overlap(b.x + p.dx, partTop(p), p.w, p.h))) { hitTower = b; break; }
+      }
+      if (hitTower) {
+        hitTower.smashed = true; hitTower.passed = true;
+        crumble(hitTower, r.x - TUNE.rocketLen / 2, r.y);
+        explode(r.x - TUNE.rocketLen / 2, r.y, false);
+        shakeT = Math.max(shakeT, 0.18);
+        Sound.towerHit();
+        r.gone = true;
+        continue;
+      }
+      // near miss: track how close it got while alongside the plane
+      const gap = Math.abs(r.y - ball.y) - TUNE.rocketH / 2 - 8;
+      if (body.x < ball.x + 26 && body.x + body.w > ball.x - 26) r.closest = Math.min(r.closest ?? 1e9, gap);
+      if (!r.scored && body.x + body.w < ball.x - 26 && r.closest !== undefined) {
+        r.scored = true;
+        if (r.closest < TUNE.nearMiss) {
+          score += TUNE.nearMissPoints;
+          popups.push({ x: ball.x, y: ball.y - 26, t: 0, text: 'CLOSE +' + TUNE.nearMissPoints, big: true });
+          Sound.close();
+          showScore();
+        }
+      }
+      if (planeHits(body.x + 4, body.y + 2, body.w - 8, body.h - 4)) {
+        dead = true;
+        deathBlast(ball.x, ball.y);
+        explode(r.x, r.y, false);
+        r.gone = true;
+        gameOver();
+        break;
+      }
+    }
+    rockets = rockets.filter(r => {
+      const keep = !r.gone && r.x > -TUNE.rocketLen;
+      if (!keep && r.snd) { r.snd.stop(); r.snd = null; }
+      return keep;
+    });
+
+    // smoke trail from the tail
+    trailT -= dt;
+    if (trailT <= 0) {
+      trailT = 0.028;
+      const a = planeTilt();
+      particles.push({ kind: 'trail', x: ball.x - 27 * Math.cos(a), y: ball.y - 27 * Math.sin(a) + rand(-1.5, 1.5),
+        vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: '#c9c9c9' });
+    }
+
+    updateEffects(dt, speed);
+  }
+
+  // combo multiplier flashes next to the plane when it climbs
+  function comboPop() {
+    if (combo > 2) popups.push({ x: ball.x + 34, y: ball.y + 4, t: 0, text: 'x' + combo, combo: true, follow: true });
+  }
+
+  // ---------- day / night cycle ----------
+  // The run starts in daylight, turns to a warm dusk, then night (stars, a moon, more windows lit),
+  // then dawn and back to day. Towers keep their gray so landmarks and towers always match.
+  const CYCLE = { day: 35, fade: 12, night: 35 };          // seconds; one full loop is day + fade + night + fade
+  const PAL = {
+    day:   { bg: '#f7f7f7', ui: '#535353', uiSoft: '#9a9a9a', far: '#ebebeb', near: '#dedede', nearWin: '#f1f1f1', nearLit: '#efd48a',
+             cloud: '#ffffff', cloudLine: '#535353', cloudShade: '#d6d6d6', ground: '#535353', plane: '#535353', rocket: '#333333', winDark: '#8a8a8a' },
+    dusk:  { bg: '#f1dccf', ui: '#4a3f3d', uiSoft: '#8d7a74', far: '#e3c9bd', near: '#d6b8ac', nearWin: '#e9d2c6', nearLit: '#f3c96b',
+             cloud: '#fbe9de', cloudLine: '#6b5550', cloudShade: '#e8cbbd', ground: '#5a4b48', plane: '#4a3f3d', rocket: '#2e2626', winDark: '#7d6f6c' },
+    night: { bg: '#151a26', ui: '#d7dbe4', uiSoft: '#7a8397', far: '#1e2433', near: '#262d3d', nearWin: '#2f3749', nearLit: '#e3bd5c',
+             cloud: '#2a3142', cloudLine: '#7a8397', cloudShade: '#353d50', ground: '#8a91a3', plane: '#e6e8ee', rocket: '#dfe3ea', winDark: '#3b4252' }
+  };
+  let cycleT = 0, P = PAL.day, nightK = 0, lastVars = '';
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const mixHex = (a, b, u) => '#' + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * u).toString(16).padStart(2, '0')).join('');
+  function mixPal(a, b, u) { const o = {}; for (const k in a) o[k] = mixHex(a[k], b[k], u); return o; }
+  function nightAmount(t) {
+    const { day, fade, night } = CYCLE, loop = day + fade * 2 + night, x = t % loop;
+    if (x < day) return 0;
+    if (x < day + fade) return (x - day) / fade;
+    if (x < day + fade + night) return 1;
+    return 1 - (x - day - fade - night) / fade;
+  }
+  function updatePalette() {
+    const k = nightAmount(cycleT), e = k * k * (3 - 2 * k);
+    nightK = e;
+    P = e <= 0 ? PAL.day : e >= 1 ? PAL.night : e < 0.5 ? mixPal(PAL.day, PAL.dusk, e * 2) : mixPal(PAL.dusk, PAL.night, (e - 0.5) * 2);
+    // keep the score, buttons and menus readable on whatever the sky is doing
+    const vars = P.bg + P.ui + P.uiSoft;
+    if (vars !== lastVars) {
+      lastVars = vars;
+      const r = document.documentElement.style;
+      r.setProperty('--bg', P.bg); r.setProperty('--fg', P.ui); r.setProperty('--fg-soft', P.uiSoft);
+    }
+  }
+  const STARS = Array.from({ length: 46 }, () => ({ x: Math.random(), y: Math.random(), s: Math.random() < 0.2 ? 2 : 1, tw: Math.random() * 6 }));
+  function drawNightSky() {
+    const a = Math.max(0, (nightK - 0.55) / 0.45);
+    if (a <= 0) return;
+    const top = playTop() + 6, span = (playBottom() - playTop()) * 0.55;
+    for (const st of STARS) {
+      ctx.globalAlpha = a * (0.55 + 0.45 * Math.sin(performance.now() / 700 + st.tw));
+      ctx.fillStyle = '#e8ebf2';
+      ctx.fillRect(Math.round(st.x * W), Math.round(top + st.y * span), st.s, st.s);
+    }
+    // moon, drifting very slowly
+    const mx = W * 0.78 - (cycleT % 120) * 0.15, my = playTop() + 62;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = '#ecebe2';
+    ctx.beginPath(); ctx.arc(mx, my, 15, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#d5d3c6';
+    ctx.beginPath(); ctx.arc(mx - 5, my - 3, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(mx + 4, my + 5, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  // soft glow in the sky color around the plane and rockets, so they never melt into a building
+  function halo(on) {
+    if (on) { ctx.shadowColor = P.bg; ctx.shadowBlur = 5 * dpr * unit; }
+    else { ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; }
+  }
+
+  // ---------- drawing ----------
+  // background skyline: two parallax layers of pale building silhouettes (kept light so they never read as obstacles)
+  function makeSkyline(seed, period, minW, maxW, minH, maxH, detail) {
+    const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const out = []; let x = 0;
+    while (x < period) {
+      const w = minW + r() * (maxW - minW), h = minH + r() * (maxH - minH);
+      const b = { x, w, h, top: r() };
+      if (detail) { b.win = r() > 0.25; b.cols = Math.max(2, Math.floor(w / 12)); b.rows = Math.floor(h / 16); b.seed = Math.floor(r() * 9999); }
+      out.push(b);
+      x += w + (r() < 0.3 ? 4 + r() * 16 : 0);
+    }
+    return { period: x, list: out };
+  }
+  const SKY_FAR = makeSkyline(11, 900, 34, 80, 90, 250, false);
+  const SKY_NEAR = makeSkyline(29, 760, 30, 64, 60, 180, true);
+
+  function drawSkylineLayer(layer, factor, color, winColor) {
+    const off = (groundOffsetTotal * factor) % layer.period, base = playBottom();
+    for (let k = 0; k * layer.period - off < W + 100; k++) {
+      for (const b of layer.list) {
+        const x = Math.round(k * layer.period + b.x - off);
+        if (x > W || x + b.w < 0) continue;
+        const y = Math.round(base - b.h);
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, Math.ceil(b.w), Math.ceil(b.h));
+        // rooftop details
+        if (b.top > 0.8) ctx.fillRect(x + b.w / 2 - 1, y - 18, 2, 18);                           // antenna
+        else if (b.top > 0.6) ctx.fillRect(x + b.w * 0.2, y - 10, b.w * 0.6, 10);                // stepped top
+        else if (b.top > 0.5) { ctx.fillRect(x + b.w - 16, y - 12, 10, 8); ctx.fillRect(x + b.w - 14, y - 4, 2, 4); ctx.fillRect(x + b.w - 8, y - 4, 2, 4); } // water tower
+        if (winColor && b.win) {
+          ctx.fillStyle = winColor;
+          let sd = b.seed;
+          const cw = b.w / b.cols;
+          for (let row = 0; row < b.rows - 1; row++) for (let c = 0; c < b.cols; c++) {
+            sd = (sd * 16807) % 2147483647;
+            if (sd % 3 === 0) continue; // some windows dark
+            ctx.fillStyle = (sd % 7 === 0 || (sd % 7) / 7 < nightK * 0.45) ? P.nearLit : winColor; // more lights on at night
+            ctx.fillRect(Math.round(x + c * cw + cw / 2 - 2), y + 10 + row * 16, 4, 6);
+          }
+        }
+      }
+    }
+  }
+
+  function drawClouds(fg) {
+    const base = TUNE.ceilingH - 12, shapes = [];
+    for (let k = -1; k <= Math.ceil(W / CLOUD_PERIOD) + 1; k++)
+      for (const p of puffs) shapes.push([k * CLOUD_PERIOD + p.x - cloudOffset, base + p.dy, p.r]);
+    ctx.fillStyle = fg;
+    for (const [x, y, r] of shapes) { ctx.beginPath(); ctx.arc(x, y, r + 2, 0, Math.PI * 2); ctx.fill(); }
+    ctx.fillStyle = P.cloud;
+    ctx.fillRect(-30, -30, W + 60, base + 30);
+    for (const [x, y, r] of shapes) { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
+    ctx.fillStyle = P.cloudShade;
+    for (let i = 0; i < shapes.length; i += 3) {
+      const [x, y, r] = shapes[i];
+      ctx.fillRect(Math.round(x - r * 0.4), Math.round(y + r * 0.35), Math.round(r * 0.7), 2);
+    }
+  }
+
+  // simple side-view prop plane facing right, tilting with vertical speed
+  // ---------- background banner plane: every so often a small plane crosses the sky towing a flag ----------
+  let banner = null, bannerTimer = 6 + Math.random() * 8;
+  const FLAG_W = 54, FLAG_H = 39, FLAG_RES = 4;
+  const flagArt = (() => {                         // flag of Israel, drawn once, then sliced to make it wave
+    const c = document.createElement('canvas');
+    c.width = FLAG_W * FLAG_RES; c.height = FLAG_H * FLAG_RES;
+    const g = c.getContext('2d'), w = c.width, h = c.height, blue = '#0038b8';
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h);
+    g.fillStyle = blue;
+    g.fillRect(0, h * 0.1, w, h * 0.15);          // top stripe
+    g.fillRect(0, h * 0.75, w, h * 0.15);         // bottom stripe
+    // Star of David: two overlapping outlined triangles in the center
+    const cx = w / 2, cy = h / 2, r = h * 0.2;
+    g.strokeStyle = blue; g.lineWidth = h * 0.035; g.lineJoin = 'miter';
+    for (const rot of [-Math.PI / 2, Math.PI / 2]) {
+      g.beginPath();
+      for (let i = 0; i < 3; i++) {
+        const a = rot + i * (Math.PI * 2 / 3);
+        g[i ? 'lineTo' : 'moveTo'](cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+      }
+      g.closePath(); g.stroke();
+    }
+    return c;
+  })();
+
+  function updateBanner(dt) {
+    if (banner) {
+      banner.x += banner.v * dt; banner.t += dt;
+      if (banner.x - 110 > W) banner = null;
+    } else if ((bannerTimer -= dt) <= 0) {
+      bannerTimer = rand(22, 40);
+      banner = { x: -20, y: rand(playTop() + 45, playTop() + 130), v: rand(38, 52), t: 0 };
+    }
+  }
+
+  function drawBanner() {
+    if (!banner) return;
+    const b = banner, bob = Math.sin(b.t * 1.3) * 2, y = b.y + bob;
+    const flagRight = b.x - 26, flagLeft = flagRight - FLAG_W;
+    // tow line
+    ctx.strokeStyle = '#c4c4c4'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(b.x - 10, y + 1); ctx.lineTo(flagRight, y + 2); ctx.stroke();
+    // waving flag: thin vertical slices, each nudged up or down; the wave grows toward the free end
+    const step = 2;
+    for (let sx = 0; sx < FLAG_W; sx += step) {
+      const free = 1 - sx / FLAG_W;
+      const off = Math.sin(b.t * 5 - sx * 0.16) * 2.2 * free;
+      ctx.drawImage(flagArt, sx * FLAG_RES, 0, step * FLAG_RES, FLAG_H * FLAG_RES,
+        flagLeft + sx, y + 2 - FLAG_H / 2 + off, step + 0.4, FLAG_H);
+    }
+    // small plane, pale so it stays in the background
+    ctx.save(); ctx.translate(b.x, y); ctx.scale(0.55, 0.55);
+    planeShape('#b8b8b8', '#e6e6e6');
+    ctx.restore();
+  }
+
+  // simple side-view prop plane facing right, tilting with vertical speed
+  function planeShape(color, cut) {
+    ctx.fillStyle = color;
+    // tail fin and tailplane
+    ctx.beginPath(); ctx.moveTo(-14, -4); ctx.lineTo(-22, -15); ctx.lineTo(-26, -15); ctx.lineTo(-22, -3); ctx.closePath(); ctx.fill();
+    ctx.fillRect(-26, -2, 9, 3);
+    // fuselage, tapering toward the tail
+    ctx.beginPath();
+    ctx.moveTo(-23, -3); ctx.lineTo(-12, -6); ctx.lineTo(12, -6);
+    ctx.arc(12, 0, 6, -Math.PI / 2, Math.PI / 2);
+    ctx.lineTo(-12, 6); ctx.lineTo(-23, 2); ctx.closePath(); ctx.fill();
+    // cockpit window and wing outline
+    ctx.fillStyle = cut;
+    ctx.fillRect(3, -4, 7, 3);
+    ctx.fillRect(-9, 0, 18, 1.5);
+    ctx.fillStyle = color;
+    ctx.fillRect(-8, 1.5, 16, 3.5);
+    // spinning propeller
+    const ph = 3 + Math.abs(Math.sin(performance.now() / 22)) * 11;
+    ctx.fillRect(18, -1.5, 3, 3);
+    ctx.fillRect(20.5, -ph, 2, ph * 2);
+  }
+
+  function drawPlane(b, fg) {
+    ctx.save();
+    ctx.translate(b.x, b.y);
+    ctx.rotate(planeTilt());
+    halo(true);
+    planeShape(fg, P.bg);
+    if (b.gear > 0) {                             // landing gear, folding up after takeoff
+      const g = b.gear, drop = 6 * g;
+      ctx.fillRect(5, 5, 1.6, drop);
+      ctx.beginPath(); ctx.arc(5.8, 5 + drop, 3 * g, 0, Math.PI * 2); ctx.fill();
+      ctx.fillRect(-19.5, 2, 1.2, drop * 0.45);
+      ctx.beginPath(); ctx.arc(-18.9, 2 + drop * 0.45, 1.6 * g, 0, Math.PI * 2); ctx.fill();
+    }
+    halo(false);
+    ctx.restore();
+  }
+
+  function drawRocket(r, fg) {
+    const L = TUNE.rocketLen, h = TUNE.rocketH, x = r.x - L / 2, y = r.y - h / 2;
+    // flame (the only color on a rocket)
+    const f = (8 + Math.random() * 8) * Math.max(0.6, Math.min(1.8, r.v / 520));
+    ctx.fillStyle = FIRE[1 + ((Math.random() * 2) | 0)];
+    ctx.beginPath(); ctx.moveTo(x + L, y + 3); ctx.lineTo(x + L + f, r.y); ctx.lineTo(x + L, y + h - 3); ctx.fill();
+    halo(true);
+    ctx.fillStyle = fg;
+    ctx.fillRect(x + 10, y, L - 10, h);                  // body
+    ctx.beginPath(); ctx.moveTo(x + 10, y); ctx.lineTo(x, r.y); ctx.lineTo(x + 10, y + h); ctx.fill(); // nose
+    ctx.fillRect(x + L - 10, y - 5, 8, 5);               // fins
+    ctx.fillRect(x + L - 10, y + h, 8, 5);
+    halo(false);
+    ctx.fillStyle = '#e8321a';
+    ctx.fillRect(x + 10, y, 3, h);                       // red band behind the nose
+    ctx.fillStyle = P.bg;
+    ctx.fillRect(x + 16, r.y - 2, 4, 4);                 // window
+  }
+
+  // Easy: warning sits at the rocket's height. Normal/Hard: one blinking sign in the top-right corner that says
+  // a rocket is coming but not where.
+  function drawEdgeWarning(warn) {
+    if (Math.floor(warn * 8) % 2) return; // blink
+    drawWarningIcon(W - 24, playTop() + 26);
+  }
+
+  function drawWarning(r, fg) {
+    if (Math.floor(r.warn * 8) % 2) return; // blink
+    drawWarningIcon(W - 22, r.y);
+  }
+
+  function drawWarningIcon(x, y) {
+    ctx.fillStyle = FIRE[3];
+    ctx.beginPath(); ctx.moveTo(x, y - 11); ctx.lineTo(x + 11, y + 9); ctx.lineTo(x - 11, y + 9); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x - 1.5, y - 4, 3, 7); ctx.fillRect(x - 1.5, y + 5, 3, 2.5);
+  }
+
+  function drawParticles(trailOnly) {
+    for (const p of particles) {
+      if ((p.kind === 'trail') !== !!trailOnly) continue;
+      const k = p.t / p.life, a = 1 - k;
+      ctx.globalAlpha = Math.max(0, a);
+      ctx.fillStyle = p.color;
+      if (p.kind === 'spark') ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+      else if (p.kind === 'fire') { ctx.beginPath(); ctx.arc(p.x, p.y, p.size * (0.6 + k * 0.9), 0, Math.PI * 2); ctx.fill(); }
+      else if (p.kind === 'trail') {
+        ctx.globalAlpha = Math.max(0, a * 0.7);
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size * (0.6 + k * 1.2), 0, Math.PI * 2); ctx.fill();
+      } else if (p.kind === 'smoke') {
+        ctx.globalAlpha = Math.max(0, a * 0.55);
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size * (0.7 + k * 1.6), 0, Math.PI * 2); ctx.fill();
+      } else if (p.kind === 'streak') {
+        const r0 = 8 + k * p.size * 0.8, r1 = 8 + p.size * (0.3 + k);
+        ctx.strokeStyle = p.color; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(p.x + Math.cos(p.a) * r0, p.y + Math.sin(p.a) * r0);
+        ctx.lineTo(p.x + Math.cos(p.a) * r1, p.y + Math.sin(p.a) * r1); ctx.stroke();
+      } else if (p.kind === 'shard') {
+        ctx.globalAlpha = Math.min(1, a * 2.5);
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size); ctx.restore();
+      } else if (p.kind === 'ring') {
+        ctx.strokeStyle = p.color; ctx.lineWidth = 4 * a + 1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size + k * p.reach, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function draw() {
+    if (!ball) return;
+    updatePalette();
+    const fg = '#535353';                       // towers and rubble keep their gray at every time of day
+    ctx.save();
+    if (shakeT > 0) { const m = shakeT * 22; ctx.translate(rand(-m, m), rand(-m, m)); }
+    ctx.fillStyle = P.bg;
+    ctx.fillRect(-30, -30, W + 60, H + 60);
+
+    drawNightSky();
+    drawSkylineLayer(SKY_FAR, 0.12, P.far, null);
+    drawSkylineLayer(SKY_NEAR, 0.3, P.near, P.nearWin);
+    drawBanner();
+
+    drawClouds(P.cloudLine);
+
+    ctx.fillStyle = fg;
+    for (const b of blocks) {
+      if (b.smashed) continue;
+      if (b.lm) { ctx.drawImage(b.lm.img, Math.round(b.x), Math.round(playBottom() - b.h), b.w, b.h); continue; }
+      const bx = Math.round(b.x), band = b.pattern === 'bands';
+      for (const p of b.parts) {
+        const top = partTop(p), rows = Math.ceil(p.h / 8 - 0.06), cols = Math.round(p.w / 8);
+        ctx.fillStyle = fg;
+        ctx.fillRect(bx + p.dx, Math.round(top), p.w, Math.ceil(p.h));
+        if (!p.win) continue;
+        for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
+          let k = windowAt(b, p, col, row);
+          if (k === 1 && nightK > 0 && ((col * 31 + row * 17 + b.seed) % 100) / 100 < nightK * 0.4) k = 2;
+          if (k) drawWindow(k, bx + p.dx + col * 8 + 2, Math.round(top + row * 8 + 1.5), band);
+        }
+      }
+    }
+    for (const c of chunks) {
+      ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.rot);
+      if (c.img) ctx.drawImage(c.img, c.sx, c.sy, 8 * LM_R, 8 * LM_R, -4, -4, 8, 8);
+      else {
+        ctx.fillStyle = fg;
+        ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
+        if (c.win) drawWindow(c.win, -2, -2.5, c.band);
+      }
+      ctx.restore();
+    }
+    ctx.fillStyle = P.ground;
+
+    // ground
+    ctx.fillRect(0, playBottom(), W, 2);
+    // runway: starts under the parked plane and scrolls away as you take off
+    const rx0 = ball.x - 70 - (groundOffsetTotal - runwayAt), rLen = 900;
+    if (rx0 + rLen > 0) {
+      ctx.fillRect(Math.max(0, rx0), playBottom(), Math.min(W, rx0 + rLen) - Math.max(0, rx0), 5);
+      ctx.fillStyle = P.bg;
+      for (let x = rx0 + 30; x < rx0 + rLen - 20; x += 36) if (x > -20 && x < W) ctx.fillRect(x, playBottom() + 2, 16, 1.5); // center dashes
+      for (let i = 0; i < 4; i++) if (rx0 + 4 + i * 5 < W) ctx.fillRect(rx0 + 4 + i * 5, playBottom() + 1, 2.5, 3);       // threshold stripes
+      ctx.fillStyle = P.ground;
+    }
+    const go = groundOffsetTotal % 40;
+    for (let i = 0, x = -go; x < W; x += 40, i++) {
+      const k = (i * 7 + Math.floor(groundOffsetTotal / 40) * 7) % 5;
+      ctx.fillRect(x + k * 5, playBottom() + 8 + (k % 3) * 6, 3 + k, 2);
+    }
+
+    // the plane; gone once it crashes
+    drawParticles(true);
+    if (!dead) drawPlane(ball, P.plane);
+
+    const exact = elapsed < RAMP.radarOff;
+    let pending = null;
+    for (const r of rockets) {
+      if (r.warn <= 0) drawRocket(r, P.rocket);
+      else if (exact) drawWarning(r, fg);
+      else if (!pending || r.warn > pending.warn) pending = r;
+    }
+    if (pending) drawEdgeWarning(pending.warn);
+
+    drawParticles();
+
+    // RADAR OFF milestone: rocket warnings stop showing where they'll come in
+    if (radarBanner >= 0 && state === 'playing' && hsBanner < 0) {
+      const t = radarBanner, fade = t > 1.8 ? 1 - (t - 1.8) / 0.4 : 1;
+      if (!(t < 1.2 && Math.floor(t * 6) % 2)) {
+        ctx.save(); ctx.globalAlpha = Math.max(0, fade); ctx.textAlign = 'center';
+        ctx.font = '14px "Press Start 2P", monospace';
+        ctx.lineWidth = 5; ctx.strokeStyle = P.bg; ctx.strokeText('RADAR OFF', W / 2, playTop() + 70);
+        ctx.fillStyle = '#e8321a'; ctx.fillText('RADAR OFF', W / 2, playTop() + 70);
+        ctx.font = '8px "Press Start 2P", monospace';
+        ctx.strokeText('warnings no longer show where', W / 2, playTop() + 88);
+        ctx.fillStyle = P.ui; ctx.fillText('warnings no longer show where', W / 2, playTop() + 88);
+        ctx.restore();
+      }
+    }
+
+    // NEW HIGH SCORE banner: pops in, blinks, fades
+    if (hsBanner >= 0 && state === 'playing') {
+      const t = hsBanner, pop = Math.min(1, t / 0.18), fade = t > 1.8 ? 1 - (t - 1.8) / 0.4 : 1;
+      if (!(t > 0.3 && t < 1.8 && Math.floor(t * 6) % 4 === 3)) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, fade);
+        ctx.translate(W / 2, playTop() + 70);
+        ctx.scale(0.6 + 0.4 * pop + Math.max(0, 0.15 - Math.abs(t - 0.18)) , 0.6 + 0.4 * pop + Math.max(0, 0.15 - Math.abs(t - 0.18)));
+        ctx.textAlign = 'center';
+        ctx.font = '15px "Press Start 2P", monospace';
+        ctx.lineWidth = 5; ctx.strokeStyle = P.bg; ctx.strokeText('NEW HIGH SCORE!', 0, 0);
+        ctx.fillStyle = '#e0a100'; ctx.fillText('NEW HIGH SCORE!', 0, 0);
+        ctx.restore();
+      }
+    }
+
+    // "+points" popups
+    ctx.font = '12px "Press Start 2P", monospace';
+    ctx.textAlign = 'center';
+    for (const p of popups) {
+      ctx.globalAlpha = 1 - p.t / 0.8;
+      if (p.combo) {
+        const sc = 1 + Math.max(0, 0.25 - p.t) * 2;
+        ctx.font = `${Math.round(16 * sc)}px "Press Start 2P", monospace`;
+        ctx.fillStyle = '#ff6a1f';
+      } else if (p.big) {
+        ctx.font = '10px "Press Start 2P", monospace';
+        ctx.fillStyle = '#e8321a';
+      } else {
+        ctx.font = '12px "Press Start 2P", monospace';
+        ctx.fillStyle = FIRE[2];
+      }
+      ctx.fillText(p.text, p.x, p.y);
+    }
+    ctx.globalAlpha = 1;
+    ctx.restore();
+
+    if (flashT > 0) {
+      ctx.fillStyle = `rgba(232,50,26,${flashT * 1.1})`;
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+
+  let lastT = performance.now();
+  function loop(t) {
+    let dt = Math.min(0.033, (t - lastT) / 1000);
+    if (slowT > 0) { slowT = Math.max(0, slowT - dt); dt *= 0.35; }
+    lastT = t;
+    update(dt);
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) Sound.pause(); else { Sound.resume(); lastT = performance.now(); }
+  });
+  canvas.addEventListener('pointerdown', e => { e.preventDefault(); flap(); });
+  window.addEventListener('keydown', e => {
+    if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); flap(); }
+  });
+  window.addEventListener('resize', resize);
+
+  resize();
+  reset();
+  bestScoreEl.textContent = pad(best);
+  showScore();
+  // sound on/off lives in the menus (start and game over), out of the way while you play
+  const soundBtns = document.querySelectorAll('.sound-toggle');
+  const syncSound = () => soundBtns.forEach(b => {
+    b.setAttribute('aria-pressed', String(!Sound.muted));
+    b.textContent = Sound.muted ? 'SOUND: OFF' : 'SOUND: ON';
+  });
+  soundBtns.forEach(b => {
+    b.addEventListener('pointerdown', e => e.stopPropagation());
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      Sound.init();
+      Sound.setMuted(!Sound.muted);
+      syncSound();
+      if (!Sound.muted) Sound.test();              // a quick blip so you can hear it's on
+    });
+  });
+  syncSound();
+  requestAnimationFrame(loop);
+})();
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+</script>
+</body>
+</html>
