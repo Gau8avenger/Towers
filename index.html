@@ -69,6 +69,139 @@
   .sound-toggle:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
   @keyframes blink { 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .panel .cta { animation: none; } }
+  /* buttons */
+  .menu-btn, .skin-arrow {
+    pointer-events: auto; font: inherit; cursor: pointer; border-radius: 0;
+    background: var(--bg); color: var(--fg); border: 2px solid var(--fg); touch-action: manipulation;
+  }
+  .menu-btn { font-size: 10px; letter-spacing: 0.08em; padding: 10px 12px; min-height: 44px; }
+  .menu-btn.primary { background: var(--fg); color: var(--bg); }
+  .menu-btn.danger { color: #e8321a; border-color: #e8321a; }
+  .menu-btn:disabled { opacity: 0.4; cursor: default; }
+  .menu-btn:focus-visible, .skin-arrow:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: min(300px, 100%); margin: 0 auto; }
+  .menu-grid > * { width: 100%; min-width: 0; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .menu-grid > .wide { grid-column: 1 / -1; }
+  .menu-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .menu-row .sound-toggle { margin: 0; min-width: 0; }
+  /* title and game over */
+  #startPanel { top: 57%; gap: 14px; }
+  .final { display: grid; gap: 6px; }
+  .panel .final-score { font-size: 28px; letter-spacing: 0.1em; color: var(--fg); line-height: 1.2; }
+  .panel .new-plane { color: #e0a100; }
+  /* the hangar */
+  .hangar-ui { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }
+  .hangar-top, .hangar-bottom { pointer-events: auto; background: rgba(247, 247, 247, 0.95); text-align: center; display: grid; gap: 8px; }
+  .hangar-top { padding: calc(16px + env(safe-area-inset-top, 0px)) 16px 12px; border-bottom: 2px solid var(--fg); }
+  .hangar-top h1 { margin: 0; font-size: 20px; font-weight: 400; letter-spacing: 0.12em; color: var(--fg); }
+  .hangar-top p, .hangar-bottom p { margin: 0 auto; font-size: 10px; line-height: 1.8; color: var(--fg-soft); }
+  .hangar-bottom { padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px)); border-top: 2px solid var(--fg); }
+  .hangar-bottom > * { width: min(360px, 100%); margin: 0 auto; }
+  .skin-pick { display: grid; grid-template-columns: 44px 1fr 44px; gap: 8px; align-items: center; }
+  .skin-arrow { font-size: 14px; width: 44px; height: 44px; padding: 0; }
+  .skin-arrow:disabled { opacity: 0.3; cursor: default; }
+  .hangar-bottom .skin-name { font-size: 16px; letter-spacing: 0.08em; color: var(--fg); }
+  .hangar-bottom .skin-state { font-size: 9px; letter-spacing: 0.1em; }
+  .hangar-bottom .skin-state.use { color: #e0a100; }
+  .hangar-bottom .skin-state.locked { color: #e8321a; }
+  .skin-progress { height: 12px; border: 2px solid var(--fg); }
+  .skin-progress i { display: block; height: 100%; width: 0; background: var(--fg); }
+  .skin-progress[hidden] { display: block !important; visibility: hidden; }   /* keeps the panel the same height for every plane */
+  .hangar-bottom .skin-req { min-height: 3.6em; color: var(--fg); }
+  .hangar-top .hangar-who { letter-spacing: 0.08em; text-transform: uppercase; }
+  .hangar-top .hangar-who.in { color: #e0a100; }
+  .hangar-view { display: grid; gap: 10px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: min(360px, 100%); margin: 0 auto; }
+  .tab { min-height: 40px; }
+  .tab[aria-selected="true"] { background: var(--fg); color: var(--bg); }
+  .hangar-bottom .lb-list { width: 100%; font-size: 10px; line-height: 2.1; color: var(--fg); max-height: 40vh; overflow-y: auto; }
+  .hangar-bottom .lb-list li { pointer-events: auto; }
+  .hangar-bottom .lb-list li.you { color: #e0a100; }
+  .hangar-bottom .lb-list li.lb-gap { display: block; text-align: center; color: var(--fg-soft); line-height: 1.1; pointer-events: none; }
+  /* leaderboard on the GAME OVER screen */
+  #overPanel { top: 55%; gap: 12px; }
+  .lb { display: grid; gap: 10px; }
+  .field { display: grid; gap: 8px; }
+  .field input, .field textarea {
+    font: inherit; font-size: 16px; width: 100%; padding: 10px; border-radius: 0; min-width: 0;
+    background: var(--bg); color: var(--fg); border: 2px solid var(--fg);
+    user-select: text; -webkit-user-select: text; touch-action: manipulation;
+  }
+  .field input { text-align: center; }
+  .field textarea { resize: none; line-height: 1.6; text-align: left; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--fg-soft); }
+  .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
+  .panel .lb-who, .panel .lb-status { text-transform: uppercase; }
+  .panel .lb-status { color: var(--fg); background: var(--bg); padding: 4px 8px; }   /* a backing, so it stays readable in front of a tower */
+  .lb-list {
+    list-style: none; margin: 0 auto; padding: 0; width: min(280px, 100%);
+    font-size: 9px; line-height: 1.8; text-align: left; color: var(--fg-soft);
+  }
+  .lb-list li { display: grid; grid-template-columns: 4ch 1fr auto; gap: 1ch; }
+  .lb-list li[data-name] { pointer-events: auto; cursor: pointer; }
+  .lb-list li[data-name]:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 1px; }
+  .lb-list li.you { color: #e0a100; }
+  .lb-list .lb-name { overflow: hidden; white-space: nowrap; text-transform: uppercase; }
+  .lb-list .lb-empty { display: block; text-align: center; text-transform: uppercase; }
+  /* account sheet: sign in, profile, bio */
+  .sheet {
+    position: absolute; inset: 0; z-index: 5; display: flex; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: var(--bg); color: var(--fg); touch-action: pan-y; user-select: text; -webkit-user-select: text;
+    padding: 24px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  .sheet-body { margin: auto; width: min(360px, 100%); display: grid; gap: 14px; text-align: center; }
+  .sheet h2 { margin: 0; font-size: 18px; font-weight: 400; letter-spacing: 0.12em; }
+  .sheet p { margin: 0; font-size: 10px; line-height: 1.9; color: var(--fg-soft); }
+  .sheet .sheet-msg { min-height: 1.9em; color: var(--fg); text-transform: uppercase; }
+  .sheet .sheet-msg.bad { color: #e8321a; }
+  .sheet-view { display: grid; gap: 14px; }
+  .sheet .key-big {
+    font-size: 12px; line-height: 1.6; letter-spacing: 0.06em; color: var(--fg); padding: 14px 6px;
+    border: 2px dashed var(--fg); user-select: all; -webkit-user-select: all; overflow-wrap: anywhere;
+  }
+  .sheet .p-name { font-size: 16px; letter-spacing: 0.08em; color: var(--fg); text-transform: uppercase; overflow-wrap: anywhere; }
+  .p-stats { margin: 0; display: grid; gap: 8px; font-size: 10px; }
+  .p-stats div { display: flex; justify-content: space-between; gap: 12px; }
+  .p-stats dt { color: var(--fg-soft); }
+  .p-stats dd { margin: 0; color: var(--fg); text-align: right; text-transform: uppercase; }
+  .sheet .p-bio { color: var(--fg); text-align: left; min-height: 3.8em; overflow-wrap: anywhere; border-top: 2px solid var(--fg-soft); padding-top: 12px; }
+  .sheet .p-bio.empty { color: var(--fg-soft); }
+  .lb-list li.lb-empty { display: block; text-align: center; }
+  /* plane ratings in the hangar */
+  .hangar-bottom .skin-stats { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 6px 10px; align-items: center; justify-items: start; font-size: 8px; letter-spacing: 0.08em; color: var(--fg-soft); }
+  .pips { display: inline-flex; gap: 3px; }
+  .pips b { width: 9px; height: 9px; background: var(--fg-soft); opacity: 0.3; }
+  .pips b.on { background: var(--fg); opacity: 1; }
+  /* color swatches: pick any color you've earned for the vehicle you're looking at */
+  .swatches { display: flex; justify-content: center; gap: 8px; }
+  .swatch { position: relative; width: 40px; height: 40px; padding: 0; border-radius: 0; background: var(--c, #5a5a5a); border: 3px solid var(--fg-soft); cursor: pointer; touch-action: manipulation; }
+  .swatch.auto { --c: #5a5a5a; }
+  .swatch[aria-pressed="true"] { border-color: var(--fg); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--fg); }
+  .swatch.locked { opacity: 0.4; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.7) 0 4px, transparent 4px 8px); }
+  .swatch.inuse::after { content: ''; position: absolute; right: 2px; top: 2px; width: 7px; height: 7px; background: #fff; border: 2px solid var(--fg); }
+  .swatch:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 4px; }
+  @media (max-width: 340px) {   /* the smallest phones: tighter so the ratings stay on screen */
+    .hangar-bottom .skin-stats { gap: 6px 6px; letter-spacing: 0.02em; }
+    .pips { gap: 2px; } .pips b { width: 7px; height: 7px; }
+    .swatches { gap: 6px; } .swatch { width: 36px; height: 36px; }
+    .hangar-bottom .skin-name { font-size: 12px; letter-spacing: 0.02em; }   /* GLOBETROTTER is wide */
+  }
+  /* pick which stat's top 10 to look at */
+  .board-cat {
+    font: inherit; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; text-align-last: center;
+    min-height: 44px; padding: 8px; border-radius: 0; background: var(--bg); color: var(--fg); border: 2px solid var(--fg);
+  }
+  .board-cat:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
+  /* profile: stats, and the gold badge for the ones in the top 10 */
+  .p-stats div { align-items: center; min-height: 24px; }   /* rows with a badge are taller; keep every row the same */
+  .sheet .p-sub { text-align: left; font-size: 9px; letter-spacing: 0.12em; border-top: 2px solid var(--fg-soft); padding-top: 12px; }
+  .sheet .p-legend { font-size: 8px; line-height: 1.7; }
+  .badge {
+    font: inherit; font-size: 8px; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase;
+    margin-left: 8px; padding: 2px 5px; border-radius: 0; background: transparent; color: #e0a100;
+    border: 2px solid #e0a100; cursor: pointer; vertical-align: middle; touch-action: manipulation;
+  }
+  .badge:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
 </style>
 
 </head>
@@ -80,19 +213,163 @@
   <div class="panel" id="startPanel">
     <h1>TOWERS</h1>
     <p>Tap to fly. Smash the blocks for points. Dodge the rockets, and don't touch the clouds or the ground.</p>
-    <button type="button" class="sound-toggle" aria-pressed="true">SOUND: ON</button>
-    <p class="cta">TAP TO START</p>
+    <div class="menu-grid">
+      <button type="button" class="menu-btn wide" id="toHangarTitle">HANGAR</button>
+      <button type="button" class="menu-btn" id="acctBtn">SIGN IN</button>
+      <button type="button" class="menu-btn sound-toggle" aria-pressed="true">SOUND: ON</button>
+    </div>
+    <p class="cta">TAP ANYWHERE TO START</p>
+  </div>
+
+  <div class="hangar-ui" id="hangarPanel" hidden>
+    <div class="hangar-top">
+      <h1>HANGAR</h1>
+      <p class="hangar-who" id="hangarWho">FLYING AS GUEST</p>
+      <div class="tabs" role="tablist">
+        <button type="button" class="menu-btn tab" id="tabPlanes" role="tab" aria-selected="true">PLANES <span id="skinCount">1/4</span></button>
+        <button type="button" class="menu-btn tab" id="tabBoard" role="tab" aria-selected="false">TOP 10</button>
+      </div>
+    </div>
+    <div class="hangar-bottom">
+      <div class="hangar-view" id="planesView">
+        <div class="skin-pick">
+          <button type="button" class="skin-arrow" id="skinPrev" aria-label="Previous plane">&lt;</button>
+          <div>
+            <p class="skin-name" id="skinName">CLASSIC</p>
+            <p class="skin-state" id="skinState"></p>
+          </div>
+          <button type="button" class="skin-arrow" id="skinNext" aria-label="Next plane">&gt;</button>
+        </div>
+        <div class="skin-stats" id="skinStats">
+          <span>SPEED</span><span class="pips" data-k="speed"></span>
+          <span>HANDLING</span><span class="pips" data-k="handling"></span>
+          <span>GLIDE</span><span class="pips" data-k="glide"></span>
+          <span>SIZE</span><span class="pips" data-k="size"></span>
+        </div>
+        <div class="swatches" id="swatches" role="group" aria-label="Color"></div>
+        <div class="skin-progress" id="skinProgress" hidden><i id="skinBar"></i></div>
+        <p class="skin-req" id="skinReq"></p>
+        <div class="menu-row">
+          <button type="button" class="menu-btn" id="hangarBack">BACK</button>
+          <button type="button" class="menu-btn primary" id="hangarSelect">USE THIS PLANE</button>
+        </div>
+      </div>
+      <div class="hangar-view" id="boardView" hidden>
+        <select class="board-cat" id="boardCat" aria-label="Choose which top 10 to see">
+          <option value="score">BEST SCORE</option>
+          <option value="blocks">MOST BLOCKS</option>
+          <option value="landmarks">MOST LANDMARKS</option>
+          <option value="near">MOST NEAR MISSES</option>
+          <option value="runs">MOST RUNS</option>
+        </select>
+        <ol class="lb-list" id="lbList" aria-label="Top 10: best score"></ol>
+        <p id="boardHint">TAP A NAME TO SEE THEIR PROFILE.</p>
+        <button type="button" class="menu-btn" id="boardCreate" hidden>CREATE ACCOUNT TO JOIN</button>
+        <div class="menu-row"><button type="button" class="menu-btn" id="hangarBack2">BACK</button></div>
+      </div>
+    </div>
   </div>
 
   <div class="panel" id="overPanel" hidden>
     <h1>GAME OVER</h1>
     <p class="new-best" id="newBest" hidden>NEW HIGH SCORE!</p>
-    <p><span id="finalScore">0</span> &nbsp;/&nbsp; HI <span id="bestScore">0</span></p>
-    <button type="button" class="sound-toggle" aria-pressed="true">SOUND: ON</button>
+    <div class="final">
+      <p class="final-score" id="finalScore">00000</p>
+      <p>BEST <span id="bestScore">00000</span></p>
+    </div>
+    <p class="new-plane" id="newPlane" hidden></p>
+    <div class="lb">
+      <button type="button" class="menu-btn" id="lbCreate" hidden>CREATE ACCOUNT TO JOIN</button>
+      <p class="lb-who" id="lbWho" hidden></p>
+      <p class="lb-status" id="lbStatus" hidden></p>
+    </div>
+    <div class="menu-row">
+      <button type="button" class="menu-btn" id="toHangar">HANGAR</button>
+      <button type="button" class="menu-btn sound-toggle" aria-pressed="true">SOUND: ON</button>
+    </div>
     <p class="cta">TAP TO RESTART</p>
+  </div>
+
+  <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-body">
+      <h2 id="sheetTitle">ACCOUNT</h2>
+      <p class="sheet-msg" id="sheetMsg" role="status" aria-live="polite"></p>
+
+      <section class="sheet-view" id="vAuth" hidden>
+        <p>PUT YOUR SCORE ON THE TOP 10 AND KEEP YOUR PLANES ON ANY PHONE.</p>
+        <button type="button" class="menu-btn primary" id="goCreate">CREATE ACCOUNT</button>
+        <button type="button" class="menu-btn" id="goSignIn">I HAVE A KEY</button>
+      </section>
+
+      <section class="sheet-view" id="vCreate" hidden>
+        <p>PICK A NAME. 3 TO 12 LETTERS OR NUMBERS.</p>
+        <div class="field">
+          <input id="newName" type="text" maxlength="12" placeholder="YOUR NAME" aria-label="Choose a name"
+            autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
+          <button type="button" class="menu-btn primary" id="doCreate">CREATE</button>
+        </div>
+        <p>NEXT YOU GET A SECRET KEY. IT'S YOUR PASSWORD, SO SAVE IT.</p>
+      </section>
+
+      <section class="sheet-view" id="vSignIn" hidden>
+        <p>ENTER THE KEY YOU SAVED WHEN YOU MADE YOUR ACCOUNT.</p>
+        <div class="field">
+          <input id="keyIn" type="text" maxlength="24" placeholder="YOUR KEY" aria-label="Account key"
+            autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go">
+          <button type="button" class="menu-btn primary" id="doSignIn">SIGN IN</button>
+        </div>
+      </section>
+
+      <section class="sheet-view" id="vKey" hidden>
+        <p id="keyNote"></p>
+        <p class="key-big" id="keyBig"></p>
+        <div class="menu-row">
+          <button type="button" class="menu-btn" id="copyKey">COPY KEY</button>
+          <button type="button" class="menu-btn" id="newKey">NEW KEY</button>
+        </div>
+      </section>
+
+      <section class="sheet-view" id="vProfile" hidden>
+        <p class="p-name" id="pName"></p>
+        <dl class="p-stats">
+          <div><dt>PLANE</dt><dd id="pSkin"></dd></div>
+          <div><dt>COLOR</dt><dd id="pPaint"></dd></div>
+          <div><dt>BEST</dt><dd id="pBest"></dd></div>
+          <div><dt>RANK</dt><dd id="pRank"></dd></div>
+          <div><dt>SINCE</dt><dd id="pSince"></dd></div>
+        </dl>
+        <p class="p-sub">STATS</p>
+        <dl class="p-stats" id="pStatList"></dl>
+        <p class="p-legend" id="pLegend" hidden>TAP A TOP 10 BADGE TO SEE THAT BOARD.</p>
+        <p class="p-bio" id="pBio"></p>
+        <div class="sheet-view" id="selfRow" hidden>
+          <div class="menu-row">
+            <button type="button" class="menu-btn" id="editBio">EDIT BIO</button>
+            <button type="button" class="menu-btn" id="showKey">MY KEY</button>
+          </div>
+          <div class="menu-row">
+            <button type="button" class="menu-btn" id="signOut">SIGN OUT</button>
+            <button type="button" class="menu-btn danger" id="delAcct">DELETE ACCOUNT</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet-view" id="vEdit" hidden>
+        <div class="field">
+          <textarea id="bioIn" rows="4" maxlength="80" placeholder="A LINE ABOUT YOU" aria-label="Your bio"
+            spellcheck="false"></textarea>
+        </div>
+        <p id="bioCount">0/80</p>
+        <p>NO LINKS, HANDLES OR PHONE NUMBERS. KEEP IT FRIENDLY.</p>
+        <button type="button" class="menu-btn" id="saveBio">SAVE BIO</button>
+      </section>
+
+      <div class="menu-row"><button type="button" class="menu-btn" id="sheetBack">BACK</button></div>
+    </div>
   </div>
 </div>
 
+<script src="leaderboard.js"></script>
 <script>
 (() => {
   const canvas = document.getElementById('game');
@@ -166,6 +443,75 @@
   const BEST_KEY = 'updraft-highscore';
   let best = 0;
   try { best = parseInt(localStorage.getItem(BEST_KEY) || '0', 10) || 0; } catch (e) {}
+
+  // ---- plane skins: unlocked by lifetime stats kept on this phone ----
+  // Thresholds are a first guess; change n (and the text) to make a plane easier or harder to get.
+  // The four vehicles. rate = SPEED / HANDLING / GLIDE / SIZE out of 5 (what the hangar shows). They decide how it flies, see flightOf().
+  const SKINS = [
+    { name: 'PROP',       shape: 'prop', size: 1.0,  rate: { speed: 3, handling: 3, glide: 3, size: 3 } },
+    { name: 'HELICOPTER', shape: 'heli', size: 1.1,  rate: { speed: 2, handling: 2, glide: 5, size: 3 }, req: { stat: 'blocks',     n: 1000, text: 'SMASH 1,000 BLOCKS' } },
+    { name: 'JET',        shape: 'jet',  size: 0.88, rate: { speed: 5, handling: 5, glide: 1, size: 2 }, trail: 'fire', req: { stat: 'nearMisses', n: 100,  text: '100 NEAR MISSES' } },
+    // the blimp isn't one of the planes: it comes once you've earned the other planes and every color on one of them
+    { name: 'BLIMP',      shape: 'blimp', size: 1.5, special: true, rate: { speed: 1, handling: 1, glide: 6, size: 5 }, req: { stat: 'collection', n: 7, text: 'EARN THE OTHER PLANES AND ALL COLORS ON ONE', done: 'EARNED THE OTHER PLANES AND ALL COLORS ON ONE' } }
+  ];
+  // Colors work on any vehicle, but they are earned per vehicle: only runs flown in that vehicle count towards them.
+  // So SKY BLUE for the JET means 25 runs in the JET. Change n to make a color easier or harder.
+  const PAINTS = [
+    { name: 'CLASSIC',   color: 'auto',    trail: 'smoke' },
+    { name: 'SKY BLUE',  color: '#2f7bd8', trail: '#bcd6f5', req: { stat: 'runs',      n: 25,  text: v => 'PLAY 25 RUNS WITH THE ' + v.name } },
+    { name: 'RED BARON', color: '#d63a2a', trail: 'smoke',   req: { stat: 'best',      n: 150, text: v => 'SCORE 150 IN ONE RUN WITH THE ' + v.name } },
+    { name: 'EMERALD',   color: '#2f9e5f', trail: 'smoke',   req: { stat: 'landmarks', n: 50,  text: v => 'SMASH 50 LANDMARKS WITH THE ' + v.name } },
+    { name: 'GOLDEN',    color: '#e0a100', trail: 'gold',    req: { stat: 'best',      n: 750, text: v => 'SCORE 750 IN ONE RUN WITH THE ' + v.name } },
+    { name: 'RAINBOW',   color: '#b04cff', trail: 'rainbow', req: { stat: 'comboRuns', n: 5,   text: v => 'HIT A X9 COMBO IN 5 RUNS WITH THE ' + v.name } }
+  ];
+  const STATS_KEY = 'towers-stats', SKIN_KEY = 'towers-skin', PAINT_KEY = 'towers-paint', VSTATS_KEY = 'towers-vstats', PAINTFOR_KEY = 'towers-paintfor';
+  const stats = { runs: 0, blocks: 0, landmarks: 0, nearMisses: 0, bestCombo: 1, comboRuns: 0 };
+  try { Object.assign(stats, JSON.parse(localStorage.getItem(STATS_KEY) || '{}')); } catch (e) {}
+  let runStats = { blocks: 0, landmarks: 0, nearMisses: 0, maxCombo: 1 };
+  // Each vehicle's own record: its stats and its best score. Colors are earned from these; vehicles from the totals above.
+  const VFIELDS = ['runs', 'blocks', 'landmarks', 'nearMisses', 'bestCombo', 'comboRuns', 'best'];
+  const vstats = {};
+  for (const x of SKINS) vstats[x.name] = { runs: 0, blocks: 0, landmarks: 0, nearMisses: 0, bestCombo: 1, comboRuns: 0, best: 0 };
+  const saveVstats = () => { try { localStorage.setItem(VSTATS_KEY, JSON.stringify(vstats)); } catch (e) {} };
+  try {
+    const saved = JSON.parse(localStorage.getItem(VSTATS_KEY) || 'null');
+    if (saved && typeof saved === 'object') {
+      for (const x of SKINS) for (const k of VFIELDS) { const n = saved[x.name] && saved[x.name][k]; if (Number.isFinite(n)) vstats[x.name][k] = n; }
+    } else {                                        // first time with this version: what is already on the phone was flown in the first plane
+      Object.assign(vstats[SKINS[0].name], stats, { best });
+      saveVstats();
+    }
+  } catch (e) {}
+  const paintOpen = (p, v) => !p.req || (vstats[v.name][p.req.stat] || 0) >= p.req.n;
+  // what the blimp asks for: the other planes, plus every color on the plane that has the most
+  const collection = () => SKINS.filter(x => !x.special && x.req && isUnlocked(x)).length
+    + Math.max(...SKINS.map(v => PAINTS.filter(p => p.req && paintOpen(p, v)).length));
+  const statValue = k => k === 'best' ? best : k === 'collection' ? collection() : (stats[k] || 0);
+  const isUnlocked = s => !s.req || statValue(s.req.stat) >= s.req.n;
+  let skinIdx = 0;
+  try { skinIdx = Math.max(0, SKINS.findIndex(s => s.name === localStorage.getItem(SKIN_KEY))); } catch (e) {}
+  if (!isUnlocked(SKINS[skinIdx])) skinIdx = 0;
+  let paintIdx = 0;
+  try { paintIdx = Math.max(0, PAINTS.findIndex(p => p.name === localStorage.getItem(PAINT_KEY))); } catch (e) {}
+  if (!paintOpen(PAINTS[paintIdx], SKINS[skinIdx])) paintIdx = 0;
+  let paintFor = {};                                // the color last picked for each vehicle, so each one keeps its own
+  try { paintFor = JSON.parse(localStorage.getItem(PAINTFOR_KEY) || '{}') || {}; } catch (e) {}
+  const rememberedPaint = i => { const j = PAINTS.findIndex(p => p.name === paintFor[SKINS[i].name]); return j > 0 && paintOpen(PAINTS[j], SKINS[i]) ? j : 0; };
+  // How a plane flies comes from its ratings. Taps lift harder with HANDLING, GLIDE is how slowly it falls, SPEED is how fast
+  // the world rushes past. Bigger planes smash more towers but are bigger targets for rockets. No plane is simply better.
+  // Speed stays between 0.92 and 1.08 so no plane can out-score what the leaderboard's speed check allows.
+  const flightOf = s => ({
+    size: s.size,
+    speed: 0.92 + 0.04 * (s.rate.speed - 1),
+    flap: 0.8 + 0.1 * (s.rate.handling - 1),
+    grav: 1.44 - 0.22 * (s.rate.glide - 1),
+  });
+  let flyFor = -1, flyNow = null;
+  const fly = () => (flyFor === skinIdx ? flyNow : (flyFor = skinIdx, flyNow = flightOf(SKINS[skinIdx])));
+  const feetOf = s => (s.shape === 'blimp' ? 15 : s.shape === 'heli' ? 10 : 14);   // how far below its centre a parked vehicle reaches
+  let browseIdx = skinIdx, browsePaint = paintIdx;   // the vehicle and color being looked at in the hangar, locked or not
+  let infoFocus = 'vehicle';                        // which of the two the unlock text is about
+  let hangarX = 0, hangarTab = 'planes';                 // hangar camera: which plane slot is centred, and which tab is showing
 
   // ---------- sound: everything is synthesized, nothing to download ----------
   const Sound = (() => {
@@ -419,7 +765,7 @@
     while (x < CLOUD_PERIOD) { const rad = 12 + r() * 14; puffs.push({ x, r: rad, dy: r() * 8 }); x += rad * 1.1; } }
 
   let W = 0, H = 640, unit = 1, dpr = 1;
-  let state = 'ready';      // ready | playing | over
+  let state = 'ready';      // ready (title) | hangar | takeoff | playing | over
   let ball, blocks, rockets, particles, chunks, popups;
   let speed, score, combo, streak = 0, elapsed, rocketTimer, dead;
   let slowT = 0, trailT = 0, groundOffsetTotal = 0, cloudOffset = 0, shakeT = 0, flashT = 0, overT = 0;
@@ -821,10 +1167,11 @@
   const partTop = p => playBottom() - p.bottom - p.h;
 
   function reset() {
-    ball = { x: W * TUNE.ballX, y: groundY(), vy: 0, r: TUNE.ballRadius, tilt: 0, gear: 1 };
+    ball = { x: W * TUNE.ballX, y: groundY(), vy: 0, r: TUNE.ballRadius * fly().size, tilt: 0, gear: 1 };
     takeoffT = 0; runwayAt = groundOffsetTotal;
-    speed = TUNE.speedStart; score = 0; combo = 1; streak = 0; cycleT = 0; runStartBest = best; radarShown = false; beatBest = false; hsBanner = -1; elapsed = 0; dead = false;
+    speed = TUNE.speedStart * fly().speed; score = 0; combo = 1; streak = 0; cycleT = 0; runStartBest = best; radarShown = false; beatBest = false; hsBanner = -1; elapsed = 0; dead = false;
     rocketTimer = 1.8;
+    runStats = { blocks: 0, landmarks: 0, nearMisses: 0, maxCombo: 1 };
     if (rockets) for (const r of rockets) if (r.snd) r.snd.stop();
     blocks = []; rockets = []; particles = []; chunks = []; popups = [];
     let x = W + 360;                              // leave room for the takeoff
@@ -841,41 +1188,69 @@
     return base * f;
   }
 
-  // the plane's hit area: four circles along the fuselage and tail, in the plane's own tilted frame
+  // the plane's hit area: four circles along the fuselage and tail, in the plane's own tilted frame, scaled by its size
   const HIT = [[-19, -3, 6], [-6, 0, 7.5], [8, 0, 7.5], [19, 0, 4.5]];
   function planeTilt() {
     if (state === 'ready' || state === 'takeoff') return ball.tilt || 0;
     return Math.max(-0.45, Math.min(0.7, ball.vy / 750));
   }
-  const groundY = () => playBottom() - 12;          // plane's height when its wheels are on the runway
+  const groundY = () => playBottom() - (feetOf(SKINS[skinIdx]) - 2) * fly().size;   // height when its wheels are on the runway
   let takeoffT = 0, runwayAt = 0;
+  const BLIMP_HIT = [[-18, 0, 8], [-6, 0, 10.5], [7, 0, 10.5], [19, 0, 7.5]];
   function planeCircles() {
-    const a = planeTilt(), c = Math.cos(a), s = Math.sin(a);
-    return HIT.map(([x, y, r]) => ({ x: ball.x + x * c - y * s, y: ball.y + x * s + y * c, r }));
+    const a = planeTilt(), c = Math.cos(a), s = Math.sin(a), k = fly().size;
+    return (SKINS[skinIdx].shape === 'blimp' ? BLIMP_HIT : HIT).map(([x, y, r]) => ({ x: ball.x + (x * c - y * s) * k, y: ball.y + (x * s + y * c) * k, r: r * k }));
   }
   const planeHits = (rx, ry, rw, rh) => planeCircles().some(k => circleRect(k, rx, ry, rw, rh));
 
   function flap() {
+    if (window.TowersUI && window.TowersUI.open) return;   // an account screen is open
+    if (state === 'hangar') return;                         // taps in the hangar don't start a run
     Sound.init();
     if (state === 'ready') {
       state = 'takeoff'; takeoffT = 0; startPanel.hidden = true; scoreEl.hidden = false;
       return;
     } else if (state === 'over') {
       if (overT < TUNE.overDelay + 0.3) return; // let the crash play out before a tap can restart
-      reset(); state = 'takeoff'; overPanel.hidden = true;
+      reset(); state = 'takeoff'; overPanel.hidden = true; scoreEl.hidden = false;
       return;
     } else if (state === 'takeoff') return;       // the plane flies itself until it's airborne
-    ball.vy = TUNE.flap;
+    ball.vy = TUNE.flap * fly().flap;
   }
 
   function gameOver() {
     state = 'over'; overT = 0;
+    const prevBest = best;
+    const flown = SKINS[skinIdx];
+    const unlockables = [...SKINS.map(x => ({ x, kind: x.special ? 'BLIMP' : 'VEHICLE', open: () => isUnlocked(x) })), ...PAINTS.map(x => ({ x, kind: 'COLOR', open: () => paintOpen(x, flown) }))];
+    const lockedBefore = unlockables.filter(u => !u.open());
     for (const r of rockets) if (r.snd) { r.snd.stop(); r.snd = null; }
     document.getElementById('newBest').hidden = !(score > runStartBest && score > 0);
     if (score > best) { best = score; try { localStorage.setItem(BEST_KEY, String(score)); } catch (e) {} }
     finalScoreEl.textContent = pad(score);
     bestScoreEl.textContent = pad(best);
+    stats.runs++; stats.blocks += runStats.blocks; stats.landmarks += runStats.landmarks;
+    stats.nearMisses += runStats.nearMisses; stats.bestCombo = Math.max(stats.bestCombo, runStats.maxCombo);
+    if (runStats.maxCombo >= 9) stats.comboRuns++;
+    try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch (e) {}
+    const vs = vstats[flown.name];                  // the same run, counted for the vehicle that flew it
+    vs.runs++; vs.blocks += runStats.blocks; vs.landmarks += runStats.landmarks; vs.nearMisses += runStats.nearMisses;
+    vs.bestCombo = Math.max(vs.bestCombo, runStats.maxCombo); vs.best = Math.max(vs.best, score);
+    if (runStats.maxCombo >= 9) vs.comboRuns++;
+    saveVstats();
+    const fresh = lockedBefore.filter(u => u.open()), newPlaneEl = document.getElementById('newPlane');
+    newPlaneEl.hidden = !fresh.length;
+    const freshOthers = fresh.filter(u => u.kind !== 'BLIMP'), gotBlimp = fresh.some(u => u.kind === 'BLIMP');
+    const one = freshOthers[0];
+    newPlaneEl.textContent = (freshOthers.length === 1 ? (one.kind === 'COLOR' ? 'NEW COLOR FOR THE ' + flown.name + ': ' + one.x.name : 'NEW ' + one.kind + ' IN THE HANGAR: ' + one.x.name)
+      : freshOthers.length ? freshOthers.length + ' NEW UNLOCKS IN THE HANGAR' : 'YOU EARNED THE BLIMP, IT IS IN THE HANGAR')
+      + (gotBlimp && freshOthers.length ? ' AND THE BLIMP' : '');
     showScore();
+    // elapsed only counts flying time, so it's the run length the leaderboard checks scores against
+    if (window.Leaderboard) Leaderboard.onGameOver({
+      score, durationMs: Math.round(elapsed * 1000), best, isNewBest: score > prevBest, skin: flown.name,
+      run: { blocks: runStats.blocks, landmarks: runStats.landmarks, nearMisses: runStats.nearMisses, combo: Math.max(1, runStats.maxCombo) },
+    });
   }
 
   // ---------- effects ----------
@@ -1041,6 +1416,11 @@
     if (state === 'playing' && !radarShown && elapsed >= RAMP.radarOff) { radarShown = true; radarBanner = 0; Sound.warn(); }
     if (shakeT > 0) shakeT = Math.max(0, shakeT - dt);
 
+    if (state === 'hangar') {                     // the camera glides to the plane you're looking at
+      hangarX += (browseIdx - hangarX) * Math.min(1, dt * 9);
+      if (Math.abs(browseIdx - hangarX) < 0.002) hangarX = browseIdx;
+      return;
+    }
     if (state === 'ready') {                      // parked on the runway, propeller turning
       ball.y = groundY(); ball.vy = 0; ball.tilt = 0; ball.gear = 1;
       cloudOffset = (cloudOffset + 25 * dt) % CLOUD_PERIOD;
@@ -1054,14 +1434,14 @@
       let sp;
       if (t < R) {                                // roll: speed builds, nose lifts at the very end
         const u = t / R;
-        sp = TUNE.speedStart * u * u;
+        sp = TUNE.speedStart * fly().speed * u * u;
         ball.y = groundY();
         ball.tilt = -0.14 * Math.max(0, (u - 0.75) / 0.25);
         if (Math.random() < 0.5 * u) particles.push({ kind: 'smoke', x: ball.x + 6, y: playBottom() - 2,
           vx: -rand(10, 40), vy: -rand(5, 25), life: rand(0.3, 0.6), t: 0, size: rand(2, 5), color: '#cfcfcf' }); // runway dust
       } else {                                    // climb out, then level off
         const u = Math.min(1, (t - R) / Cl), e = u * u * (3 - 2 * u);
-        sp = TUNE.speedStart;
+        sp = TUNE.speedStart * fly().speed;
         ball.y = groundY() + (H * 0.42 - groundY()) * e;
         ball.tilt = -0.14 - 0.26 * Math.sin(Math.PI * Math.min(1, u * 1.1)) + 0.14 * u;
         ball.gear = Math.max(0, 1 - Math.max(0, u - 0.25) / 0.4);   // wheels tuck away after liftoff
@@ -1069,8 +1449,8 @@
         if (trailT <= 0) {
           trailT = 0.028;
           const a = ball.tilt;
-          particles.push({ kind: 'trail', x: ball.x - 27 * Math.cos(a), y: ball.y - 27 * Math.sin(a) + rand(-1.5, 1.5),
-            vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: '#c9c9c9' });
+          particles.push({ kind: 'trail', x: ball.x - 27 * fly().size * Math.cos(a), y: ball.y - 27 * fly().size * Math.sin(a) + rand(-1.5, 1.5),
+            vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: trailColor() });
         }
       }
       groundOffsetTotal += sp * dt;
@@ -1083,7 +1463,7 @@
     }
     if (state === 'over') {
       overT += dt;
-      if (overPanel.hidden && overT >= TUNE.overDelay) overPanel.hidden = false;
+      if (overPanel.hidden && overT >= TUNE.overDelay) { overPanel.hidden = false; scoreEl.hidden = true; }
       updateEffects(dt, 0);
       return;
     }
@@ -1095,7 +1475,8 @@
     groundOffsetTotal += speed * dt;
 
     // ball: touching the clouds or the ground ends the run
-    ball.vy = Math.min(ball.vy + TUNE.gravity * dt, TUNE.maxFall);
+    const F = fly();
+    ball.vy = Math.min(ball.vy + TUNE.gravity * F.grav * dt, TUNE.maxFall * Math.sqrt(F.grav));
     ball.y += ball.vy * dt;
     const circ = planeCircles();
     const hitTop = circ.some(k => k.y - k.r <= playTop()), hitGround = circ.some(k => k.y + k.r >= playBottom());
@@ -1118,15 +1499,17 @@
         b.smashed = true;
         const pts = combo + (b.lm ? TUNE.landmarkBonus : 0);
         score += pts;
+        runStats.blocks++; if (b.lm) runStats.landmarks++;
         popups.push({ x: b.x + b.w / 2, y: playBottom() - b.h - 14, t: 0, text: (b.lm ? b.lm.name + ' ' : '') + '+' + pts, big: !!b.lm });
         combo = Math.min(combo + 1, 9);
-        speed = Math.min(TUNE.speedMax, speed + TUNE.speedRamp);
+        runStats.maxCombo = Math.max(runStats.maxCombo, combo);
+        speed = Math.min(TUNE.speedMax * F.speed, speed + TUNE.speedRamp * F.speed);
         crumble(b, ball.x, ball.y);
         smashBurst(ball.x + ball.r * 0.6, ball.y);
         streak++;
         Sound.smash(streak, combo);
         comboPop();
-        ball.vy = Math.min(ball.vy, TUNE.smashBounce);
+        ball.vy = Math.min(ball.vy, TUNE.smashBounce * F.flap);
         showScore();
       } else if (!b.passed && b.x + b.w < ball.x - 28) {
         b.passed = true;
@@ -1184,12 +1567,13 @@
         continue;
       }
       // near miss: track how close it got while alongside the plane
-      const gap = Math.abs(r.y - ball.y) - TUNE.rocketH / 2 - 8;
+      const gap = Math.abs(r.y - ball.y) - TUNE.rocketH / 2 - 8 * fly().size;   // measured from the plane's edge, whatever its size
       if (body.x < ball.x + 26 && body.x + body.w > ball.x - 26) r.closest = Math.min(r.closest ?? 1e9, gap);
       if (!r.scored && body.x + body.w < ball.x - 26 && r.closest !== undefined) {
         r.scored = true;
         if (r.closest < TUNE.nearMiss) {
           score += TUNE.nearMissPoints;
+          runStats.nearMisses++;
           popups.push({ x: ball.x, y: ball.y - 26, t: 0, text: 'CLOSE +' + TUNE.nearMissPoints, big: true });
           Sound.close();
           showScore();
@@ -1215,8 +1599,8 @@
     if (trailT <= 0) {
       trailT = 0.028;
       const a = planeTilt();
-      particles.push({ kind: 'trail', x: ball.x - 27 * Math.cos(a), y: ball.y - 27 * Math.sin(a) + rand(-1.5, 1.5),
-        vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: '#c9c9c9' });
+      particles.push({ kind: 'trail', x: ball.x - 27 * fly().size * Math.cos(a), y: ball.y - 27 * fly().size * Math.sin(a) + rand(-1.5, 1.5),
+        vx: rand(-20, 0), vy: rand(-8, 8), life: rand(0.45, 0.7), t: 0, size: rand(2.5, 4), color: trailColor() });
     }
 
     updateEffects(dt, speed);
@@ -1429,20 +1813,209 @@
     ctx.fillRect(20.5, -ph, 2, ph * 2);
   }
 
-  function drawPlane(b, fg) {
+  // A vehicle's hit area is the same four circles, scaled by its size, so what you see is what can be hit.
+  function jetShape(color, cut, flame) {
+    if (flame) {                                    // afterburner flicker
+      ctx.fillStyle = FIRE[1 + ((Math.random() * 2) | 0)];
+      ctx.beginPath(); ctx.moveTo(-24, -3); ctx.lineTo(-30 - Math.random() * 5, 0); ctx.lineTo(-24, 2.5); ctx.fill();
+    }
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.moveTo(-12, -4); ctx.lineTo(-20, -15); ctx.lineTo(-25, -15); ctx.lineTo(-22, -3); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-24, -4); ctx.lineTo(8, -5); ctx.lineTo(24, 0); ctx.lineTo(8, 4); ctx.lineTo(-24, 3); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-10, 1); ctx.lineTo(4, 1); ctx.lineTo(-6, 6); ctx.lineTo(-14, 6); ctx.closePath(); ctx.fill(); // swept wing
+    ctx.fillStyle = cut;
+    ctx.beginPath(); ctx.moveTo(3, -4); ctx.lineTo(12, -2.5); ctx.lineTo(3, -1.5); ctx.closePath(); ctx.fill();  // canopy
+    ctx.fillStyle = color;
+  }
+  function heliShape(color, cut) {                  // SKYHAWK: helicopter, with a spinning main rotor and tail rotor
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.moveTo(-31, -3); ctx.lineTo(-8, -4); ctx.lineTo(-8, 2); ctx.lineTo(-31, -0.5); ctx.closePath(); ctx.fill();    // tail boom
+    ctx.beginPath(); ctx.moveTo(-29, -2); ctx.lineTo(-33, -11); ctx.lineTo(-27, -11); ctx.lineTo(-25, -3); ctx.closePath(); ctx.fill();  // tail fin
+    ctx.beginPath(); ctx.moveTo(-12, -6); ctx.lineTo(8, -7); ctx.quadraticCurveTo(23, -6, 22, 1); ctx.quadraticCurveTo(18, 7, 4, 7); ctx.lineTo(-12, 5); ctx.closePath(); ctx.fill();  // cabin
+    ctx.fillRect(-1.5, -11, 3, 5);                                                                                                     // rotor mast
+    ctx.fillRect(-14, 7.5, 32, 1.8);                                                                                                   // skids
+    ctx.fillRect(-7, 5, 1.5, 3); ctx.fillRect(9, 5, 1.5, 3);
+    ctx.fillStyle = cut;
+    ctx.beginPath(); ctx.moveTo(8, -5); ctx.lineTo(18, -3.5); ctx.quadraticCurveTo(20, 0, 14, 1); ctx.lineTo(8, 1); ctx.closePath(); ctx.fill();   // windscreen
+    ctx.fillStyle = color;
+    const t = performance.now(), blade = 7 + Math.abs(Math.sin(t / 26)) * 24;                    // the blades seen edge-on: they swing from short to long
+    ctx.fillRect(-blade, -12.6, blade * 2, 1.8); ctx.fillRect(-3, -13.2, 6, 3);                   // main rotor and hub
+    const tail = 2 + Math.abs(Math.sin(t / 18)) * 7;
+    ctx.fillRect(-31, -9.5 - tail, 1.6, tail * 2); ctx.fillRect(-32, -9.9, 3.6, 2.4);              // tail rotor
+  }
+  function blimpShape(color, cut) {                 // BLIMP: a big soft envelope with fins and a gondola
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.moveTo(-20, -3); ctx.lineTo(-27, -13); ctx.lineTo(-31, -13); ctx.lineTo(-30, -1); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-20, 3); ctx.lineTo(-27, 13); ctx.lineTo(-31, 13); ctx.lineTo(-30, 1); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(-1, 0, 29, 11.5, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(-9, 9, 19, 6.5);                                                                                                              // gondola
+    ctx.fillStyle = cut;
+    ctx.fillRect(-27, -1.2, 53, 2.4);                                                                                                          // stripe
+    ctx.fillRect(-6, 11, 4, 2.5); ctx.fillRect(1, 11, 4, 2.5);                                                                                 // gondola windows
+    ctx.fillStyle = color;
+    ctx.fillRect(-35, -1.2, 2.5, 2.4);
+    const ph = 2 + Math.abs(Math.sin(performance.now() / 30)) * 5;
+    ctx.fillRect(-35.5, -ph, 1.6, ph * 2);                                                                                                     // slow tail propeller
+  }
+  function trailColor() {
+    const v = SKINS[skinIdx], p = PAINTS[paintIdx];
+    const t = p.trail === 'smoke' && v.trail ? v.trail : p.trail;   // the jet keeps its fire unless the color has a trail of its own
+    if (t === 'smoke') return '#c9c9c9';
+    if (t === 'faint') return '#e2e2e2';
+    if (t === 'fire') return FIRE[(Math.random() * 4) | 0];
+    if (t === 'gold') return Math.random() < 0.3 ? '#fff4c2' : '#f2c94c';
+    if (t === 'rainbow') return 'hsl(' + Math.round((performance.now() / 4) % 360) + ',90%,62%)';
+    return t;
+  }
+
+  // Draws one vehicle, painted, in the current transform. gear is 0..1 (1 = wheels down).
+  function drawSkin(s, paint, locked, gear, flame) {
+    const body = locked ? P.uiSoft : paint.color === 'auto' ? P.plane : paint.color;
+    if (s.shape === 'jet') jetShape(body, P.bg, flame && !locked);
+    else if (s.shape === 'heli') heliShape(body, P.bg);
+    else if (s.shape === 'blimp') blimpShape(body, P.bg);
+    else planeShape(body, P.bg);
+    ctx.fillStyle = body;
+    if (gear > 0 && s.shape !== 'blimp' && s.shape !== 'heli') {        // landing gear, folding up after takeoff
+      const drop = 6 * gear;
+      ctx.fillRect(5, 5, 1.6, drop);
+      ctx.beginPath(); ctx.arc(5.8, 5 + drop, 3 * gear, 0, Math.PI * 2); ctx.fill();
+      ctx.fillRect(-19.5, 2, 1.2, drop * 0.45);
+      ctx.beginPath(); ctx.arc(-18.9, 2 + drop * 0.45, 1.6 * gear, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function drawPlane(b) {
     ctx.save();
     ctx.translate(b.x, b.y);
     ctx.rotate(planeTilt());
+    ctx.scale(fly().size, fly().size);
     halo(true);
-    planeShape(fg, P.bg);
-    if (b.gear > 0) {                             // landing gear, folding up after takeoff
-      const g = b.gear, drop = 6 * g;
-      ctx.fillRect(5, 5, 1.6, drop);
-      ctx.beginPath(); ctx.arc(5.8, 5 + drop, 3 * g, 0, Math.PI * 2); ctx.fill();
-      ctx.fillRect(-19.5, 2, 1.2, drop * 0.45);
-      ctx.beginPath(); ctx.arc(-18.9, 2 + drop * 0.45, 1.6 * g, 0, Math.PI * 2); ctx.fill();
-    }
+    drawSkin(SKINS[skinIdx], PAINTS[paintIdx], false, b.gear, state !== 'ready');
     halo(false);
+    ctx.restore();
+  }
+
+  // ---------- the hangar: an actual hangar, with the planes parked in a row ----------
+  const HANGAR = { floor: 420, spacing: 130 };
+  let hangarFlr = HANGAR.floor;
+  // The floor goes just above the bottom panel (whatever its height on this screen), so the planes, their wheels and the
+  // parking pad are never hidden behind it.
+  function fitHangarFloor() {
+    const panel = document.querySelector('.hangar-bottom'), hp = document.getElementById('hangarPanel');
+    if (!panel || !hp || hp.hidden) { hangarFlr = HANGAR.floor; return; }
+    const visibleBottom = (panel.getBoundingClientRect().top - canvas.getBoundingClientRect().top) / unit;   // in world units
+    hangarFlr = Math.min(HANGAR.floor, Math.max(250, visibleBottom - 42));
+  }
+  function hangarLamp(x) {
+    const flr = hangarFlr, g = ctx.createLinearGradient(0, 108, 0, flr + 40);
+    g.addColorStop(0, 'rgba(255, 238, 170, 0.34)'); g.addColorStop(1, 'rgba(255, 238, 170, 0)');
+    ctx.fillStyle = g;                                              // cone of light on the floor
+    ctx.beginPath(); ctx.moveTo(x - 10, 108); ctx.lineTo(x + 10, 108); ctx.lineTo(x + 84, flr + 40); ctx.lineTo(x - 84, flr + 40); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#8a8a8a'; ctx.fillRect(x - 1, 0, 2, 98);       // cord
+    ctx.fillStyle = '#5c5c5c';                                      // shade
+    ctx.beginPath(); ctx.moveTo(x - 14, 108); ctx.lineTo(x - 6, 96); ctx.lineTo(x + 6, 96); ctx.lineTo(x + 14, 108); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ffe9a0'; ctx.fillRect(x - 8, 108, 16, 3);
+  }
+  function hangarShelf(x, y, w) {
+    ctx.fillStyle = '#7a7a7a';
+    ctx.fillRect(x, y, 3, 96); ctx.fillRect(x + w - 3, y, 3, 96);
+    for (const sy of [y + 28, y + 62, y + 94]) ctx.fillRect(x, sy, w, 3);
+    const boxes = ['#cdb892', '#b9a27a', '#c8483a', '#cdb892', '#9a9a9a'];
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+      ctx.fillStyle = boxes[(r * 3 + c) % boxes.length];
+      ctx.fillRect(x + 6 + c * ((w - 12) / 3), y + r * 33 + 8 + (c % 2) * 4, (w - 12) / 3 - 4, 20 - (c % 2) * 4);
+    }
+  }
+  function drawPadlock(cx, cy, k) {
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(k, k);
+    ctx.fillStyle = '#4a4a4a'; ctx.fillRect(-8, -2, 16, 13);
+    ctx.strokeStyle = '#4a4a4a'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(0, -2, 5.5, Math.PI, 0); ctx.stroke();
+    ctx.fillStyle = '#f7f7f7'; ctx.fillRect(-1.2, 2, 2.4, 5);
+    ctx.restore();
+  }
+
+  function drawHangar() {
+    fitHangarFloor();
+    const flr = hangarFlr, base = flr + 14, mid = W / 2;
+    ctx.save();
+    // back wall: corrugated panels
+    ctx.fillStyle = '#e6e6e6'; ctx.fillRect(0, 0, W, flr);
+    ctx.fillStyle = '#d9d9d9';
+    for (let x = 0; x < W; x += 12) ctx.fillRect(x, 0, 2, flr);
+    // roof: trusses
+    ctx.fillStyle = '#c4c4c4'; ctx.fillRect(0, 0, W, 56);
+    ctx.strokeStyle = '#8f8f8f'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(W, 8); ctx.moveTo(0, 50); ctx.lineTo(W, 50);
+    for (let x = -20; x < W + 40; x += 48) { ctx.moveTo(x, 50); ctx.lineTo(x + 24, 8); ctx.lineTo(x + 48, 50); }
+    ctx.stroke();
+    ctx.fillStyle = '#9a9a9a'; ctx.fillRect(0, 56, W, 4);
+
+    // the big doors, open: sky and a bit of city
+    const half = Math.min(118, W / 2 - 22), dl = mid - half, dr = mid + half, dt = 134;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(dl, dt, dr - dl, flr - dt); ctx.clip();
+    ctx.fillStyle = '#f4f4f4'; ctx.fillRect(dl, dt, dr - dl, flr - dt);
+    ctx.translate(0, flr - playBottom());
+    const keep = groundOffsetTotal; groundOffsetTotal = 0;           // the city outside the doors stands still
+    drawSkylineLayer(SKY_FAR, 0.12, P.far, null);
+    drawSkylineLayer(SKY_NEAR, 0.3, P.near, P.nearWin);
+    groundOffsetTotal = keep;
+    ctx.restore();
+    ctx.fillStyle = '#6a6a6a';                                      // door frame
+    ctx.fillRect(dl - 10, dt - 16, dr - dl + 20, 16); ctx.fillRect(dl - 10, dt, 10, flr - dt); ctx.fillRect(dr, dt, 10, flr - dt);
+    ctx.fillStyle = '#9a9a9a';
+    for (let x = dl + 6; x < dr - 6; x += 22) ctx.fillRect(x, dt - 12, 4, 4);
+    ctx.fillStyle = '#f7f7f7'; ctx.font = '7px "Press Start 2P", monospace'; ctx.textAlign = 'center'; ctx.fillText('TOWERS AIR', mid, dt - 3);
+    for (let y = flr - 70, i = 0; y < flr; y += 14, i++) {          // hazard stripes on the door posts
+      ctx.fillStyle = i % 2 ? '#2f2f2f' : '#e0b400';
+      ctx.fillRect(dl - 10, y, 10, 14); ctx.fillRect(dr, y, 10, 14);
+    }
+    // things on the walls
+    if (dl >= 24) {                                                 // fire extinguisher
+      const ex = (dl - 10) / 2;
+      ctx.fillStyle = '#d63a2a'; ctx.fillRect(ex - 5, flr - 64, 10, 26);
+      ctx.fillStyle = '#4a4a4a'; ctx.fillRect(ex - 3, flr - 70, 6, 6);
+    }
+    if (W - dr >= 24) {                                             // electrical box
+      const ex = dr + 10 + (W - dr - 10) / 2;
+      ctx.fillStyle = '#9a9a9a'; ctx.fillRect(ex - 7, flr - 130, 14, 20);
+      ctx.fillStyle = '#e0b400'; ctx.fillRect(ex - 2, flr - 124, 4, 4);
+    }
+    if (dl > 150) { hangarShelf(dl - 150, flr - 110, 110); hangarShelf(dr + 40, flr - 110, 110); }
+
+    // floor: tiles in perspective, with a yellow safety line at the foot of the doors
+    ctx.fillStyle = '#d0d0d0'; ctx.fillRect(0, flr, W, H - flr);
+    ctx.strokeStyle = '#c0c0c0'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let k = -12; k <= 12; k++) { ctx.moveTo(mid + k * 34, flr); ctx.lineTo(mid + k * 110, H); }
+    for (const y of [flr + 34, flr + 80, flr + 150, flr + 250]) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+    ctx.stroke();
+    ctx.fillStyle = '#e0b400'; ctx.fillRect(0, flr, W, 4);
+    ctx.fillStyle = '#9b9b9b'; ctx.fillRect(0, flr + 4, W, 2);
+    ctx.fillStyle = '#c4c4c4'; ctx.beginPath(); ctx.ellipse(mid, base, 120, 19, 0, 0, Math.PI * 2); ctx.fill();   // parking pad
+    ctx.strokeStyle = '#8e8e8e'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.strokeStyle = '#e0b400'; ctx.lineWidth = 2; ctx.setLineDash([10, 8]);
+    ctx.beginPath(); ctx.ellipse(mid, base, 108, 15, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    hangarLamp(mid - 100); hangarLamp(mid + 100);
+
+    // the planes, side by side; the one you're looking at is bigger and in the light
+    for (let i = 0; i < SKINS.length; i++) {
+      const dx = i - hangarX;
+      if (Math.abs(dx) > 1.7) continue;
+      const s = SKINS[i], locked = !isUnlocked(s);
+      const paint = PAINTS[i === browseIdx ? browsePaint : rememberedPaint(i)], paintLocked = !locked && i === browseIdx && !paintOpen(paint, s);
+      const x = mid + dx * HANGAR.spacing, near = Math.max(0, 1 - Math.abs(dx));
+      const S = (1.5 + 1.6 * near) * (1 + (s.size - 1) * 0.6);   // big ones look big, small ones small, but all still fit the hangar
+      const cy = base - feetOf(s) * S;
+      ctx.save();
+      ctx.globalAlpha = (0.5 + 0.5 * near) * (paintLocked ? 0.6 : 1);   // a color you haven't earned yet shows faded, with a padlock
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.14)'; ctx.beginPath(); ctx.ellipse(x, base, 32 * S, 3.5 * S, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.translate(x, cy); ctx.scale(S, S);
+      drawSkin(s, paint, locked, 1, false);
+      ctx.restore();
+      if (locked || paintLocked) { ctx.save(); ctx.globalAlpha = 0.6 + 0.4 * near; drawPadlock(x, cy - 3 * S, 0.5 + 0.55 * near); ctx.restore(); }
+    }
     ctx.restore();
   }
 
@@ -1518,6 +2091,7 @@
   function draw() {
     if (!ball) return;
     updatePalette();
+    if (state === 'hangar') { drawHangar(); return; }
     const fg = '#535353';                       // towers and rubble keep their gray at every time of day
     ctx.save();
     if (shakeT > 0) { const m = shakeT * 22; ctx.translate(rand(-m, m), rand(-m, m)); }
@@ -1579,7 +2153,7 @@
 
     // the plane; gone once it crashes
     drawParticles(true);
-    if (!dead) drawPlane(ball, P.plane);
+    if (!dead) drawPlane(ball);
 
     const exact = elapsed < RAMP.radarOff;
     let pending = null;
@@ -1663,10 +2237,183 @@
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) Sound.pause(); else { Sound.resume(); lastT = performance.now(); }
   });
-  canvas.addEventListener('pointerdown', e => { e.preventDefault(); flap(); });
+  let swipeX = null;
+  canvas.addEventListener('pointerdown', e => { e.preventDefault(); if (state === 'hangar') swipeX = e.clientX; flap(); });
+  canvas.addEventListener('pointerup', e => {
+    if (state !== 'hangar' || swipeX === null) return;
+    const dx = e.clientX - swipeX; swipeX = null;
+    if (hangarTab !== 'planes') return;
+    if (Math.abs(dx) > 40) browse(dx < 0 ? 1 : -1);                          // swipe to the next plane
+    else if (Math.abs(dx) < 10) {                                            // or tap beside the plane to bring it over
+      const wx = (e.clientX - canvas.getBoundingClientRect().left) / unit;
+      if (wx > W / 2 + HANGAR.spacing * 0.5) browse(1); else if (wx < W / 2 - HANGAR.spacing * 0.5) browse(-1);
+    }
+  });
+  canvas.addEventListener('pointercancel', () => { swipeX = null; });
   window.addEventListener('keydown', e => {
+    if (state === 'hangar') {
+      const planes = hangarTab === 'planes';
+      if (e.code === 'ArrowLeft' && planes) { e.preventDefault(); browse(-1); }
+      else if (e.code === 'ArrowRight' && planes) { e.preventDefault(); browse(1); }
+      else if (e.code === 'Enter' && planes) { e.preventDefault(); leaveHangar(true); }
+      else if (e.code === 'Escape') { e.preventDefault(); leaveHangar(false); }
+      return;
+    }
     if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); flap(); }
   });
+
+  // ---- hangar ----
+  const $id = id => document.getElementById(id);
+  const hangarPanel = $id('hangarPanel'), skinNameEl = $id('skinName'), skinStateEl = $id('skinState'), skinReqEl = $id('skinReq');
+  const skinProgressEl = $id('skinProgress'), skinBarEl = $id('skinBar'), hangarSelectBtn = $id('hangarSelect');
+  const pipEls = [...document.querySelectorAll('#skinStats .pips')];
+  for (const el of pipEls) for (let i = 0; i < 5; i++) el.appendChild(document.createElement('b'));
+  const swatchEls = PAINTS.map((p, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'swatch' + (p.color === 'auto' ? ' auto' : '');
+    if (p.color !== 'auto') b.style.setProperty('--c', p.color);
+    b.addEventListener('click', () => { browsePaint = i; infoFocus = 'paint'; updateHangar(); });
+    $id('swatches').appendChild(b);
+    return b;
+  });
+  function updateHangar() {
+    const v = SKINS[browseIdx], p = PAINTS[browsePaint];
+    const vOpen = isUnlocked(v), pOpen = paintOpen(p, v), both = vOpen && pOpen;
+    const inUse = browseIdx === skinIdx && browsePaint === paintIdx;
+    for (const el of pipEls) {                       // the vehicle's ratings, out of five
+      const r = Math.min(5, Math.round(v.rate[el.dataset.k]));
+      [...el.children].forEach((b, i) => b.classList.toggle('on', i < r));
+      el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.k + ' ' + r + ' out of 5');
+    }
+    swatchEls.forEach((b, i) => {                   // colors are earned per vehicle, so these change as you browse
+      const open = paintOpen(PAINTS[i], v);
+      b.classList.toggle('locked', !open); b.classList.toggle('inuse', browseIdx === skinIdx && i === paintIdx);
+      b.setAttribute('aria-pressed', String(i === browsePaint));
+      b.setAttribute('aria-label', PAINTS[i].name + (open ? '' : ', locked: ' + PAINTS[i].req.text(v)));
+    });
+    $id('skinCount').textContent = SKINS.filter(isUnlocked).length + '/' + SKINS.length;
+    skinNameEl.textContent = v.name;
+    skinStateEl.textContent = (inUse ? 'IN USE' : vOpen ? 'UNLOCKED' : 'LOCKED') + ' - ' + p.name;
+    skinStateEl.className = 'skin-state ' + (inUse ? 'use' : vOpen ? 'open' : 'locked');
+    // the unlock text is about whichever of the two is locked; if both are, whichever you touched last
+    const item = !vOpen && pOpen ? v : vOpen && !pOpen ? p : infoFocus === 'paint' ? p : v;
+    const isColor = item === p, open = isColor ? pOpen : vOpen;
+    const text = it => typeof it.req.text === 'function' ? it.req.text(v) : it.req.text;
+    if (open) {                                     // earned things still say what it took
+      skinReqEl.textContent = item.req ? (isColor ? 'UNLOCKED COLOR: ' : 'UNLOCKED: ') + (item.req.done || text(item)) : isColor ? 'THE STARTER COLOR' : 'YOU START WITH THIS PLANE';
+      skinProgressEl.hidden = !item.req;
+      skinBarEl.style.width = '100%';
+    } else {
+      const have = Math.min(isColor ? (vstats[v.name][item.req.stat] || 0) : statValue(item.req.stat), item.req.n);
+      skinReqEl.textContent = (isColor ? 'TO UNLOCK COLOR: ' : 'TO UNLOCK: ') + text(item) + ' (' + have + '/' + item.req.n + ')';
+      skinProgressEl.hidden = false;
+      skinBarEl.style.width = Math.round(100 * have / item.req.n) + '%';
+    }
+    hangarSelectBtn.textContent = both ? (inUse ? 'DONE' : v.special ? 'FLY THE BLIMP' : 'USE THIS PLANE') : 'LOCKED';
+    hangarSelectBtn.disabled = !both;
+    $id('skinPrev').disabled = browseIdx === 0;
+    $id('skinNext').disabled = browseIdx === SKINS.length - 1;
+  }
+  function browse(step) {
+    browseIdx = Math.max(0, Math.min(SKINS.length - 1, browseIdx + step));
+    browsePaint = rememberedPaint(browseIdx);       // each vehicle shows the color you last picked for it
+    infoFocus = 'vehicle';
+    updateHangar();
+  }
+  function setHangarTab(tab) {                      // PLANES or TOP 10, both live in the hangar
+    hangarTab = tab;
+    const board = tab === 'board';
+    $id('planesView').hidden = board; $id('boardView').hidden = !board;
+    $id('tabPlanes').setAttribute('aria-selected', String(!board));
+    $id('tabBoard').setAttribute('aria-selected', String(board));
+    if (board && window.Leaderboard) Leaderboard.refresh();
+  }
+  function enterHangar() {
+    if (state !== 'ready' && state !== 'over') return;
+    reset();                                        // parks the plane and clears any crash
+    state = 'hangar'; setHangarTab('planes');
+    browseIdx = skinIdx; browsePaint = paintIdx; infoFocus = 'vehicle'; hangarX = browseIdx;
+    startPanel.hidden = true; overPanel.hidden = true; scoreEl.hidden = true; hangarPanel.hidden = false;
+    updateHangar();
+  }
+  function leaveHangar(pick) {
+    if (state !== 'hangar') return;
+    if (pick && isUnlocked(SKINS[browseIdx]) && paintOpen(PAINTS[browsePaint], SKINS[browseIdx])) {
+      skinIdx = browseIdx; paintIdx = browsePaint;
+      paintFor[SKINS[skinIdx].name] = PAINTS[paintIdx].name;
+      try {
+        localStorage.setItem(SKIN_KEY, SKINS[skinIdx].name); localStorage.setItem(PAINT_KEY, PAINTS[paintIdx].name);
+        localStorage.setItem(PAINTFOR_KEY, JSON.stringify(paintFor));
+      } catch (e) {}
+    }
+    browseIdx = skinIdx; browsePaint = paintIdx;
+    state = 'ready'; hangarPanel.hidden = true; startPanel.hidden = false;
+    reset();                                        // parks the plane again with the chosen plane's size and speed
+  }
+  $id('skinPrev').addEventListener('click', () => browse(-1));
+  $id('skinNext').addEventListener('click', () => browse(1));
+  $id('hangarBack').addEventListener('click', () => leaveHangar(false));
+  hangarSelectBtn.addEventListener('click', () => leaveHangar(true));
+  $id('toHangarTitle').addEventListener('click', enterHangar);
+  $id('toHangar').addEventListener('click', enterHangar);
+  $id('tabPlanes').addEventListener('click', () => setHangarTab('planes'));
+  $id('tabBoard').addEventListener('click', () => setHangarTab('board'));
+  $id('hangarBack2').addEventListener('click', () => leaveHangar(false));
+  updateHangar();
+
+  // What the account screens read and write (see leaderboard.js). Signing in brings the
+  // account's progress, high score and plane onto this phone; the higher number always wins.
+  window.TowersData = {
+    showBoard(cat) {                                 // from a TOP 10 badge on a profile: open the hangar on that board
+      if (state === 'ready' || state === 'over') enterHangar();
+      if (state !== 'hangar') return;
+      if (window.Leaderboard) Leaderboard.setCategory(cat);
+      setHangarTab('board');
+    },
+    stats: () => ({ runs: stats.runs, blocks: stats.blocks, landmarks: stats.landmarks, nearMisses: stats.nearMisses, bestCombo: stats.bestCombo, comboRuns: stats.comboRuns }),
+    skins: () => SKINS.map(s => Object.assign({ name: s.name, shape: s.shape, rate: s.rate, unlocked: isUnlocked(s) }, flightOf(s))),
+    best: () => best,
+    skin: () => SKINS[skinIdx].name,
+    paint: () => PAINTS[paintIdx].name,
+    vstats: () => JSON.parse(JSON.stringify(vstats)),
+    paints: (name) => { const v = SKINS.find(x => x.name === name) || SKINS[skinIdx]; return PAINTS.map(p => ({ name: p.name, color: p.color, unlocked: paintOpen(p, v) })); },
+    merge(remote) {
+      const r = remote || {};
+      let changed = false;
+      for (const k of ['runs', 'blocks', 'landmarks', 'nearMisses', 'bestCombo', 'comboRuns']) {
+        const v = r.stats && r.stats[k];
+        if (Number.isFinite(v) && v > stats[k]) { stats[k] = v; changed = true; }
+      }
+      if (changed) { try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch (e) {} }
+      let vchanged = false;                           // each vehicle's own record, same rule: the higher number wins
+      if (r.vehicles && typeof r.vehicles === 'object') for (const x of SKINS) {
+        const src = r.vehicles[x.name];
+        if (src) for (const k of VFIELDS) { const n = src[k]; if (Number.isFinite(n) && n > vstats[x.name][k]) { vstats[x.name][k] = n; vchanged = true; } }
+      }
+      if (vchanged) saveVstats();
+      if (Number.isFinite(r.best) && r.best > best) {
+        best = r.best;
+        try { localStorage.setItem(BEST_KEY, String(best)); } catch (e) {}
+        if (state === 'ready') runStartBest = best;   // so a higher HI from the account doesn't trigger a false NEW HIGH SCORE
+        bestScoreEl.textContent = pad(best);
+        showScore();
+      }
+      const i = SKINS.findIndex(s => s.name === r.skin), j = PAINTS.findIndex(p => p.name === r.paint);
+      let moved = false;
+      if (i >= 0 && isUnlocked(SKINS[i])) {
+        skinIdx = browseIdx = i; moved = true;
+        try { localStorage.setItem(SKIN_KEY, SKINS[i].name); } catch (e) {}
+      }
+      if (j >= 0 && paintOpen(PAINTS[j], SKINS[skinIdx])) {
+        paintIdx = j; moved = true; paintFor[SKINS[skinIdx].name] = PAINTS[j].name;
+        try { localStorage.setItem(PAINT_KEY, PAINTS[j].name); localStorage.setItem(PAINTFOR_KEY, JSON.stringify(paintFor)); } catch (e) {}
+      }
+      if (!paintOpen(PAINTS[paintIdx], SKINS[skinIdx])) { paintIdx = 0; moved = true; }
+      browsePaint = paintIdx;
+      if (moved && state === 'ready') reset();
+      updateHangar();
+    }
+  };
   window.addEventListener('resize', resize);
 
   resize();
