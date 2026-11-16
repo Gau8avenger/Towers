@@ -79,11 +79,16 @@
   .menu-btn.danger { color: #e8321a; border-color: #e8321a; }
   .menu-btn:disabled { opacity: 0.4; cursor: default; }
   .menu-btn:focus-visible, .skin-arrow:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
-  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: min(300px, 100%); margin: 0 auto; }
-  .menu-grid > * { width: 100%; min-width: 0; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: min(340px, 100%); margin: 0 auto; }
+  .menu-grid > * { width: 100%; min-width: 0; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 4px; padding-right: 4px; }
   .menu-grid > .wide { grid-column: 1 / -1; }
   .menu-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .menu-row .sound-toggle { margin: 0; min-width: 0; }
+  .back-row { display: flex; gap: 8px; justify-content: center; width: min(340px, 100%); margin: 0 auto; }
+  .back-row > * { flex: 0 0 auto; }
+  .back-row > .grow { flex: 1 1 0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #boardHint:empty { display: none; }
+  #vAuth > .menu-btn { width: min(340px, 100%); justify-self: center; }
   /* title and game over */
   #startPanel { top: 57%; gap: 14px; }
   .final { display: grid; gap: 6px; }
@@ -118,6 +123,10 @@
   .hangar-bottom .lb-list li { pointer-events: auto; }
   .hangar-bottom .lb-list li.you { color: #e0a100; }
   .hangar-bottom .lb-list li.lb-gap { display: block; text-align: center; color: var(--fg-soft); line-height: 1.1; pointer-events: none; }
+  /* LEADERBOARD tab: no hangar scene, the board fills the screen under the tabs */
+  .hangar-ui.board .hangar-bottom { flex: 1; min-height: 0; border-top: 0; display: flex; flex-direction: column; background: var(--bg); }
+  .hangar-ui.board #boardView { flex: 1; min-height: 0; grid-template-rows: auto minmax(0, 1fr) auto auto auto; align-content: start; }
+  .hangar-ui.board .lb-list { max-height: none; min-height: 0; }
   /* leaderboard on the GAME OVER screen */
   #overPanel { top: 55%; gap: 12px; }
   .lb { display: grid; gap: 10px; }
@@ -128,6 +137,12 @@
     user-select: text; -webkit-user-select: text; touch-action: manipulation;
   }
   .field input { text-align: center; }
+  .pw-wrap { display: grid; grid-template-columns: 1fr auto; }
+  .pw-wrap input { border-right: 0; }
+  .pw-wrap .pw-eye { font: inherit; font-size: 9px; letter-spacing: 0.06em; min-width: 64px; padding: 0 8px; border-radius: 0;
+    background: var(--bg); color: var(--fg); border: 2px solid var(--fg); cursor: pointer; touch-action: manipulation; }
+  .pw-wrap .pw-eye:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
+  .pw-wrap[hidden] { display: none !important; }
   .field textarea { resize: none; line-height: 1.6; text-align: left; }
   .field input::placeholder, .field textarea::placeholder { color: var(--fg-soft); }
   .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid #ff6a1f; outline-offset: 2px; }
@@ -212,7 +227,6 @@
 
   <div class="panel" id="startPanel">
     <h1>TOWERS</h1>
-    <p>Tap to fly. Smash the blocks for points. Dodge the rockets, and don't touch the clouds or the ground.</p>
     <div class="menu-grid">
       <button type="button" class="menu-btn wide" id="toHangarTitle">HANGAR</button>
       <button type="button" class="menu-btn" id="acctBtn">SIGN IN</button>
@@ -227,7 +241,7 @@
       <p class="hangar-who" id="hangarWho">FLYING AS GUEST</p>
       <div class="tabs" role="tablist">
         <button type="button" class="menu-btn tab" id="tabPlanes" role="tab" aria-selected="true">PLANES <span id="skinCount">1/4</span></button>
-        <button type="button" class="menu-btn tab" id="tabBoard" role="tab" aria-selected="false">TOP 10</button>
+        <button type="button" class="menu-btn tab" id="tabBoard" role="tab" aria-selected="false">LEADERBOARD</button>
       </div>
     </div>
     <div class="hangar-bottom">
@@ -249,23 +263,25 @@
         <div class="swatches" id="swatches" role="group" aria-label="Color"></div>
         <div class="skin-progress" id="skinProgress" hidden><i id="skinBar"></i></div>
         <p class="skin-req" id="skinReq"></p>
-        <div class="menu-row">
+        <div class="back-row">
           <button type="button" class="menu-btn" id="hangarBack">BACK</button>
-          <button type="button" class="menu-btn primary" id="hangarSelect">USE THIS PLANE</button>
+          <button type="button" class="menu-btn primary grow" id="hangarSelect" hidden>USE THIS PLANE</button>
         </div>
       </div>
       <div class="hangar-view" id="boardView" hidden>
-        <select class="board-cat" id="boardCat" aria-label="Choose which top 10 to see">
+        <select class="board-cat" id="boardCat" aria-label="Choose which leaderboard to see">
           <option value="score">BEST SCORE</option>
           <option value="blocks">MOST BLOCKS</option>
           <option value="landmarks">MOST LANDMARKS</option>
           <option value="near">MOST NEAR MISSES</option>
           <option value="runs">MOST RUNS</option>
         </select>
-        <ol class="lb-list" id="lbList" aria-label="Top 10: best score"></ol>
-        <p id="boardHint">TAP A NAME TO SEE THEIR PROFILE.</p>
-        <button type="button" class="menu-btn" id="boardCreate" hidden>CREATE ACCOUNT TO JOIN</button>
-        <div class="menu-row"><button type="button" class="menu-btn" id="hangarBack2">BACK</button></div>
+        <ol class="lb-list" id="lbList" aria-label="Leaderboard: best score"></ol>
+        <p id="boardHint"></p>
+        <div class="back-row">
+          <button type="button" class="menu-btn" id="hangarBack2">BACK</button>
+          <button type="button" class="menu-btn grow" id="boardCreate" hidden>SIGN IN</button>
+        </div>
       </div>
     </div>
   </div>
@@ -279,11 +295,11 @@
     </div>
     <p class="new-plane" id="newPlane" hidden></p>
     <div class="lb">
-      <button type="button" class="menu-btn" id="lbCreate" hidden>CREATE ACCOUNT TO JOIN</button>
       <p class="lb-who" id="lbWho" hidden></p>
       <p class="lb-status" id="lbStatus" hidden></p>
     </div>
-    <div class="menu-row">
+    <div class="menu-grid">
+      <button type="button" class="menu-btn wide" id="lbCreate" hidden>SIGN IN</button>
       <button type="button" class="menu-btn" id="toHangar">HANGAR</button>
       <button type="button" class="menu-btn sound-toggle" aria-pressed="true">SOUND: ON</button>
     </div>
@@ -296,36 +312,41 @@
       <p class="sheet-msg" id="sheetMsg" role="status" aria-live="polite"></p>
 
       <section class="sheet-view" id="vAuth" hidden>
-        <p>PUT YOUR SCORE ON THE TOP 10 AND KEEP YOUR PLANES ON ANY PHONE.</p>
+        <p>PUT YOUR SCORE ON THE LEADERBOARD AND KEEP YOUR PLANES ON ANY PHONE.</p>
         <button type="button" class="menu-btn primary" id="goCreate">CREATE ACCOUNT</button>
-        <button type="button" class="menu-btn" id="goSignIn">I HAVE A KEY</button>
+        <button type="button" class="menu-btn" id="goSignIn">SIGN IN</button>
       </section>
 
       <section class="sheet-view" id="vCreate" hidden>
-        <p>PICK A NAME. 3 TO 12 LETTERS OR NUMBERS.</p>
+        <p>PICK A NAME (3 TO 12 LETTERS OR NUMBERS) AND A PASSWORD (AT LEAST 6 CHARACTERS).</p>
         <div class="field">
           <input id="newName" type="text" maxlength="12" placeholder="YOUR NAME" aria-label="Choose a name"
-            autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
+            autocomplete="username" autocapitalize="off" spellcheck="false" enterkeyhint="next">
+          <input id="newPw" type="password" maxlength="64" placeholder="PASSWORD" aria-label="Choose a password"
+            autocomplete="new-password" enterkeyhint="go">
           <button type="button" class="menu-btn primary" id="doCreate">CREATE</button>
         </div>
-        <p>NEXT YOU GET A SECRET KEY. IT'S YOUR PASSWORD, SO SAVE IT.</p>
       </section>
 
       <section class="sheet-view" id="vSignIn" hidden>
-        <p>ENTER THE KEY YOU SAVED WHEN YOU MADE YOUR ACCOUNT.</p>
         <div class="field">
-          <input id="keyIn" type="text" maxlength="24" placeholder="YOUR KEY" aria-label="Account key"
-            autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go">
+          <input id="nameIn" type="text" maxlength="12" placeholder="YOUR NAME" aria-label="Your name"
+            autocomplete="username" autocapitalize="off" spellcheck="false" enterkeyhint="next">
+          <input id="keyIn" type="password" maxlength="64" placeholder="PASSWORD" aria-label="Your password"
+            autocomplete="current-password" enterkeyhint="go">
           <button type="button" class="menu-btn primary" id="doSignIn">SIGN IN</button>
         </div>
+        <p>MADE YOUR ACCOUNT BEFORE PASSWORDS? YOUR OLD KEY IS YOUR PASSWORD. FORGOT IT? MESSAGE THE TOWERS ADMIN TO RESET IT.</p>
       </section>
 
-      <section class="sheet-view" id="vKey" hidden>
-        <p id="keyNote"></p>
-        <p class="key-big" id="keyBig"></p>
-        <div class="menu-row">
-          <button type="button" class="menu-btn" id="copyKey">COPY KEY</button>
-          <button type="button" class="menu-btn" id="newKey">NEW KEY</button>
+      <section class="sheet-view" id="vPassword" hidden>
+        <p id="pwNote"></p>
+        <div class="field">
+          <input id="curPw" type="password" maxlength="64" placeholder="CURRENT PASSWORD" aria-label="Current password"
+            autocomplete="current-password" enterkeyhint="next">
+          <input id="setPw" type="password" maxlength="64" placeholder="NEW PASSWORD" aria-label="New password"
+            autocomplete="new-password" enterkeyhint="go">
+          <button type="button" class="menu-btn primary" id="savePw">SAVE PASSWORD</button>
         </div>
       </section>
 
@@ -335,19 +356,17 @@
           <div><dt>PLANE</dt><dd id="pSkin"></dd></div>
           <div><dt>COLOR</dt><dd id="pPaint"></dd></div>
           <div><dt>BEST</dt><dd id="pBest"></dd></div>
-          <div><dt>RANK</dt><dd id="pRank"></dd></div>
+          <div hidden><dt>RANK</dt><dd id="pRank"></dd></div>
           <div><dt>SINCE</dt><dd id="pSince"></dd></div>
         </dl>
         <p class="p-sub">STATS</p>
         <dl class="p-stats" id="pStatList"></dl>
-        <p class="p-legend" id="pLegend" hidden>TAP A TOP 10 BADGE TO SEE THAT BOARD.</p>
+        <p class="p-legend" id="pLegend" hidden>TAP A TOP 25 BADGE TO SEE THAT BOARD.</p>
         <p class="p-bio" id="pBio"></p>
         <div class="sheet-view" id="selfRow" hidden>
-          <div class="menu-row">
-            <button type="button" class="menu-btn" id="editBio">EDIT BIO</button>
-            <button type="button" class="menu-btn" id="showKey">MY KEY</button>
-          </div>
-          <div class="menu-row">
+          <div class="menu-grid">
+            <button type="button" class="menu-btn" id="editBio">EDIT PROFILE</button>
+            <button type="button" class="menu-btn" id="showKey">PASSWORD</button>
             <button type="button" class="menu-btn" id="signOut">SIGN OUT</button>
             <button type="button" class="menu-btn danger" id="delAcct">DELETE ACCOUNT</button>
           </div>
@@ -356,12 +375,17 @@
 
       <section class="sheet-view" id="vEdit" hidden>
         <div class="field">
+          <input id="renameIn" type="text" maxlength="12" placeholder="YOUR NAME" aria-label="Your name"
+            autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="next">
+        </div>
+        <p>YOU CAN CHANGE YOUR NAME ONCE A MONTH.</p>
+        <div class="field">
           <textarea id="bioIn" rows="4" maxlength="80" placeholder="A LINE ABOUT YOU" aria-label="Your bio"
             spellcheck="false"></textarea>
         </div>
         <p id="bioCount">0/80</p>
         <p>NO LINKS, HANDLES OR PHONE NUMBERS. KEEP IT FRIENDLY.</p>
-        <button type="button" class="menu-btn" id="saveBio">SAVE BIO</button>
+        <button type="button" class="menu-btn primary" id="saveBio">SAVE</button>
       </section>
 
       <div class="menu-row"><button type="button" class="menu-btn" id="sheetBack">BACK</button></div>
@@ -1936,6 +1960,7 @@
   }
 
   function drawHangar() {
+    if (hangarTab === 'board') { ctx.fillStyle = '#f7f7f7'; ctx.fillRect(0, 0, W, H); return; }   // leaderboard tab: no hangar
     fitHangarFloor();
     const flr = hangarFlr, base = flr + 14, mid = W / 2;
     ctx.save();
@@ -2309,8 +2334,8 @@
       skinProgressEl.hidden = false;
       skinBarEl.style.width = Math.round(100 * have / item.req.n) + '%';
     }
-    hangarSelectBtn.textContent = both ? (inUse ? 'DONE' : v.special ? 'FLY THE BLIMP' : 'USE THIS PLANE') : 'LOCKED';
-    hangarSelectBtn.disabled = !both;
+    hangarSelectBtn.textContent = v.special ? 'FLY THE BLIMP' : 'USE THIS PLANE';
+    hangarSelectBtn.hidden = !both || inUse;        // only when it does something BACK doesn't
     $id('skinPrev').disabled = browseIdx === 0;
     $id('skinNext').disabled = browseIdx === SKINS.length - 1;
   }
@@ -2326,6 +2351,7 @@
     $id('planesView').hidden = board; $id('boardView').hidden = !board;
     $id('tabPlanes').setAttribute('aria-selected', String(!board));
     $id('tabBoard').setAttribute('aria-selected', String(board));
+    hangarPanel.classList.toggle('board', board);     // the leaderboard tab hides the hangar scene
     if (board && window.Leaderboard) Leaderboard.refresh();
   }
   function enterHangar() {

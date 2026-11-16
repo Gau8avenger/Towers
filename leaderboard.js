@@ -58,7 +58,11 @@
       top: (cat) => call("GET", "/scores?cat=" + encodeURIComponent(cat || "score")).then((d) => d.scores || []),
       profile: (name) => call("GET", "/profile?name=" + encodeURIComponent(name)).then((d) => d.profile),
       signup: (body) => call("POST", "/signup", null, body),
-      me: (key) => call("GET", "/me", key).then((d) => d.profile),
+      me: (key) => call("GET", "/me", key).then((d) => Object.assign(d.profile, { mustSetPassword: !!d.mustSetPassword })),
+      login: (body) => call("POST", "/login", null, body),
+      setPassword: (key, body) => call("POST", "/password", key, body),
+      logout: (key) => call("POST", "/logout", key, {}),
+      rename: (key, username) => call("POST", "/rename", key, { username }).then((d) => d.profile),
       run: (key, body) => call("POST", "/scores", key, body),
       runs: (key, body) => call("POST", "/runs", key, body),
       saveProfile: (key, body) => call("POST", "/profile", key, body).then((d) => d.profile),
@@ -78,7 +82,8 @@
     near:      { label: "near misses", value: (p) => stat(p, "nearMisses") },
     runs:      { label: "runs",        value: (p) => stat(p, "runs") },
   };
-  let cat = "score";        // which top 10 is showing
+  const BOARD_SIZE = 25;    // how many places the leaderboard shows
+  let cat = "score";        // which leaderboard is showing
   let refreshSeq = 0;       // so a slow answer for an old pick can't overwrite a newer one
 
   const game = () => window.TowersData || { stats: () => ({}), best: () => 0, skin: () => "PROP", paint: () => "CLASSIC", vstats: () => ({}), merge() {} };
@@ -91,12 +96,13 @@
   let opener = null;
   let backAction = null;
   let armedTimer = null;
+  let pwFirst = false;      // the password screen is setting a first password, so it needs no current one
 
   const $ = (id) => document.getElementById(id);
   const knownName = () => (me && me.name) || store.get(NAME_STORE) || "";
   const isMe = (name) => !!name && !!knownName() && name.toLowerCase() === knownName().toLowerCase();
 
-  // ---------------- the Top 10 list (it lives on the TOP 10 tab in the hangar) ----------------
+  // ---------------- the leaderboard (it lives on the LEADERBOARD tab in the hangar) ----------------
   function note(list, text) {
     const li = document.createElement("li");
     li.className = "lb-empty";
@@ -129,9 +135,9 @@
     });
   }
 
-  // Outside the top 10? Your own place goes under the list, after a gap.
+  // Outside the top 25? Your own place goes under the list, after a gap.
   function addMine(list, scores) {
-    els.hint.textContent = "TAP A NAME TO SEE THEIR PROFILE.";
+    els.hint.textContent = "";
     if (!key || !me || !scores.length) return;
     const mine = CATS[cat].value(me);
     if (!(mine > 0)) { els.hint.textContent = cat === "score" ? "SCORE A POINT TO GET A RANK." : "PLAY MORE TO GET A RANK."; return; }
@@ -173,18 +179,18 @@
         try { me = await backend.me(key); updateButtons(); } catch (e) { /* offline or signed out: the next real action sorts that out */ }
       }
       if (seq !== refreshSeq) return;   // the player has picked something else since
-      els.list.setAttribute("aria-label", "Top 10: " + CATS[want].label);
-      renderList(els.list, scores, 10);
-      addMine(els.list, scores.slice(0, 10));   // only what's shown counts, however many the server sent
-      store.set("towers-board-" + want, JSON.stringify(scores.slice(0, 10)));
+      els.list.setAttribute("aria-label", "Leaderboard: " + CATS[want].label);
+      renderList(els.list, scores, BOARD_SIZE);
+      addMine(els.list, scores.slice(0, BOARD_SIZE));   // only what's shown counts, however many the server sent
+      store.set("towers-board-" + want, JSON.stringify(scores.slice(0, BOARD_SIZE)));
       els.hint.textContent = (els.hint.textContent + " " + waitingNote()).trim();
     } catch (e) {
       if (seq !== refreshSeq) return;
       let saved = null;
       try { saved = JSON.parse(store.get("towers-board-" + want) || "null"); } catch (x) { /* nothing saved */ }
       if (Array.isArray(saved) && saved.length) {   // offline, but you have seen this list before
-        els.list.setAttribute("aria-label", "Top 10: " + CATS[want].label + " (last list you saw)");
-        renderList(els.list, saved, 10);
+        els.list.setAttribute("aria-label", "Leaderboard: " + CATS[want].label + " (last list you saw)");
+        renderList(els.list, saved, BOARD_SIZE);
         els.hint.textContent = ("OFFLINE. THIS IS THE LAST LIST YOU SAW. " + waitingNote()).trim();
       } else note(els.list, "Leaderboard offline. Your HI still counts here.");
     }
@@ -232,7 +238,7 @@
   }
 
   // ---------------- the account sheet ----------------
-  const TITLES = { vAuth: "ACCOUNT", vCreate: "NEW ACCOUNT", vSignIn: "SIGN IN", vKey: "YOUR KEY", vProfile: "PROFILE", vEdit: "EDIT BIO" };
+  const TITLES = { vAuth: "ACCOUNT", vCreate: "NEW ACCOUNT", vSignIn: "SIGN IN", vPassword: "PASSWORD", vProfile: "PROFILE", vEdit: "EDIT PROFILE" };
 
   function msg(text, bad) {
     els.msg.textContent = text || "";
@@ -261,9 +267,10 @@
     viewSeq++;
     disarm();
     for (const v of Object.keys(TITLES)) els[v].hidden = v !== view;
+    for (const b of els.sheet.querySelectorAll(".pw-eye")) { const i = b.previousElementSibling; if (i.type === "text") b.click(); }
     els.title.textContent = TITLES[view];
     backAction = back || closeSheet;
-    els.back.textContent = view === "vEdit" ? "CANCEL" : view === "vKey" ? "DONE" : "BACK";
+    els.back.textContent = view === "vEdit" ? "CANCEL" : "BACK";
     els.sheet.scrollTop = 0;
   }
 
@@ -297,20 +304,25 @@
 
   function showSignIn() {
     msg("");
+    els.nameIn.value = knownName() || "";
     els.keyIn.value = "";
     show("vSignIn", showAuth);
-    els.keyIn.focus();
+    (els.nameIn.value ? els.keyIn : els.nameIn).focus();
   }
 
-  function showKey(text, firstTime, extra) {
+  // choose a first password (accounts from before passwords, or after an admin reset) or change it
+  function showPassword(firstTime) {
     openSheet();
-    els.keyBig.textContent = text;
-    els.keyNote.textContent = firstTime
-      ? "Account created. This key is your password. Write it down or save it somewhere safe. It can't be recovered if you lose it everywhere."
-      : "Use this key to sign in on another phone. Anyone who has it can use your account.";
-    els.newKey.hidden = firstTime;
-    msg(extra || "");
-    show("vKey", () => showProfile(me, true));
+    msg("");
+    pwFirst = !!firstTime;
+    els.curPw.value = "";
+    els.setPw.value = "";
+    els.curPw.closest(".pw-wrap").hidden = pwFirst;
+    els.pwNote.textContent = pwFirst
+      ? "YOU SIGNED IN WITH A TEMPORARY PASSWORD. PICK ONE YOU'LL REMEMBER. YOU'LL USE IT WITH YOUR NAME TO SIGN IN ON ANY PHONE."
+      : "ENTER YOUR CURRENT PASSWORD, THEN THE NEW ONE. MADE YOUR ACCOUNT BEFORE PASSWORDS? YOUR OLD KEY IS YOUR CURRENT PASSWORD.";
+    show("vPassword", () => (me ? showProfile(me, true) : closeSheet()));
+    (pwFirst ? els.setPw : els.curPw).focus();
   }
 
   function sinceText(sec) {
@@ -321,13 +333,13 @@
   // A gold TOP 10 button beside a stat; tapping it opens that stat's top 10.
   function setValue(dd, text, catId, rank) {
     dd.replaceChildren(document.createTextNode(text));
-    if (!catId || !rank || rank > 10) return false;
+    if (!catId || !rank || rank > BOARD_SIZE) return false;
     const b = document.createElement("button");
     b.type = "button";
     b.className = "badge";
     b.dataset.cat = catId;
-    b.textContent = "TOP 10 #" + rank;
-    b.setAttribute("aria-label", "Top 10 in " + CATS[catId].label + ", rank " + rank + ". Show that top 10.");
+    b.textContent = "TOP " + BOARD_SIZE + " #" + rank;
+    b.setAttribute("aria-label", "Leaderboard in " + CATS[catId].label + ", rank " + rank + ". Show that leaderboard.");
     dd.appendChild(b);
     return true;
   }
@@ -365,6 +377,7 @@
     els.pBio.classList.toggle("empty", !p.bio);
     els.selfRow.hidden = !self;
     show("vProfile", back);
+    if (self && p.mustSetPassword) msg("You're using a temporary password. Tap PASSWORD to pick your own.");
   }
 
   async function openProfile(name, back) {
@@ -394,27 +407,31 @@
   function signedOutByServer() {
     clearSession();
     showAuth();
-    msg("This device was signed out. Sign in with your key.", true);
+    msg("This device was signed out. Sign in again.", true);
   }
 
   async function createAccount() {
     const name = els.newName.value.trim();
     if (!NAME_PATTERN.test(name)) return msg("Name must be 3-12 letters, numbers, - or _.", true);
+    const password = els.newPw.value;
+    if (password.length < 6) return msg("Password must be at least 6 characters.", true);
     els.doCreate.disabled = true;
     msg("Creating…");
     try {
       const g = game();
       const res = await backend.signup({
         username: name,
+        password,
         importScore: g.best() > 0 ? g.best() : undefined,
         stats: g.stats(),
         vehicles: g.vstats(),
         skin: g.skin(),
         paint: g.paint(),
       });
-      setSession(res.key, res.profile);
+      setSession(cleanKey(res.key), res.profile);
       mergeIntoGame(res.profile, true);
-      showKey(res.key, true, res.note);
+      showProfile(res.profile, true);
+      msg(res.note || "Account created. Sign in with your name and password on any phone.");
     } catch (e) {
       msg(e.message, true);
     }
@@ -422,52 +439,64 @@
   }
 
   async function signIn() {
-    const typed = cleanKey(els.keyIn.value);
-    if (!typed) return msg("That doesn't look like a key. It has 16 letters and numbers.", true);
+    const name = els.nameIn.value.trim();
+    const password = els.keyIn.value;
+    if (!NAME_PATTERN.test(name) || !password) return msg("Enter your name and password.", true);
     els.doSignIn.disabled = true;
     msg("Signing in…");
     try {
-      const profile = await backend.me(typed);
-      setSession(typed, profile);
-      mergeIntoGame(profile, true);
-      showProfile(profile, true);
-      msg("Signed in. Your planes and high score came with you.");
+      const res = await backend.login({ username: name, password });
+      res.profile.mustSetPassword = !!res.mustSetPassword;
+      setSession(cleanKey(res.key), res.profile);
+      mergeIntoGame(res.profile, true);
+      if (res.mustSetPassword) showPassword(true);
+      else { showProfile(res.profile, true); msg("Signed in. Your planes and high score came with you."); }
     } catch (e) {
-      msg(e.status === 401 ? "Key not recognized. Check it and try again." : e.message, true);
+      msg(e.message, true);
     }
     els.doSignIn.disabled = false;
   }
 
+  async function savePassword() {
+    const password = els.setPw.value;
+    if (password.length < 6) return msg("Password must be at least 6 characters.", true);
+    if (!pwFirst && !els.curPw.value) return msg("Enter your current password.", true);
+    els.savePw.disabled = true;
+    msg("Saving…");
+    try {
+      await backend.setPassword(key, pwFirst ? { password } : { current: els.curPw.value, password });
+      if (me) me.mustSetPassword = false;
+      showProfile(me, true);
+      msg("Password saved. Sign in with your name and this password on any phone.");
+    } catch (e) {
+      if (e.status === 401 && pwFirst) signedOutByServer(); else msg(e.message, true);
+    }
+    els.savePw.disabled = false;
+  }
+
   async function saveBio() {
+    const newName = els.renameIn.value.trim();
+    const renaming = !!me && newName !== me.name;
+    if (renaming && !NAME_PATTERN.test(newName)) return msg("Name must be 3-12 letters, numbers, - or _.", true);
     els.saveBio.disabled = true;
     msg("Saving…");
     try {
-      me = await backend.saveProfile(key, { bio: els.bioIn.value, skin: game().skin(), paint: game().paint() });
+      if (renaming) {
+        const old = me.name;
+        me = await backend.rename(key, newName);
+        store.set(NAME_STORE, me.name);
+        writeBox(readBox().map((e) => (sameName(e.name, old) ? Object.assign(e, { name: me.name }) : e)));   // runs waiting to upload follow the new name
+        updateButtons();
+        refresh();
+        await new Promise((r) => setTimeout(r, 2100));   // the server wants a short gap between edits
+      }
+      if (els.bioIn.value !== (me.bio || "")) me = await backend.saveProfile(key, { bio: els.bioIn.value, skin: game().skin(), paint: game().paint() });
       showProfile(me, true);
       msg("Saved.");
     } catch (e) {
       if (e.status === 401) signedOutByServer(); else msg(e.message, true);
     }
     els.saveBio.disabled = false;
-  }
-
-  async function copyKey() {
-    try {
-      await navigator.clipboard.writeText(els.keyBig.textContent);
-      msg("Key copied.");
-    } catch (e) {
-      msg("Press and hold the key to copy it.");
-    }
-  }
-
-  async function newKey() {
-    try {
-      const k = await backend.rotate(key);
-      setSession(cleanKey(k), me);
-      showKey(cleanKey(k), false, "New key made. The old one no longer works.");
-    } catch (e) {
-      if (e.status === 401) signedOutByServer(); else msg(e.message, true);
-    }
   }
 
   async function deleteAccount() {
@@ -588,15 +617,34 @@
       list: $("lbList"), create: $("lbCreate"), who: $("lbWho"), status: $("lbStatus"), acctBtn: $("acctBtn"),
       boardCreate: $("boardCreate"), hint: $("boardHint"), hangarWho: $("hangarWho"), goCreate: $("goCreate"), goSignIn: $("goSignIn"),
       sheet: $("sheet"), title: $("sheetTitle"), msg: $("sheetMsg"), back: $("sheetBack"),
-      vAuth: $("vAuth"), vCreate: $("vCreate"), vSignIn: $("vSignIn"), vKey: $("vKey"), vProfile: $("vProfile"), vEdit: $("vEdit"),
-      newName: $("newName"), doCreate: $("doCreate"), keyIn: $("keyIn"), doSignIn: $("doSignIn"),
-      keyNote: $("keyNote"), keyBig: $("keyBig"), copyKey: $("copyKey"), newKey: $("newKey"),
+      vAuth: $("vAuth"), vCreate: $("vCreate"), vSignIn: $("vSignIn"), vPassword: $("vPassword"), vProfile: $("vProfile"), vEdit: $("vEdit"),
+      newName: $("newName"), newPw: $("newPw"), doCreate: $("doCreate"), nameIn: $("nameIn"), keyIn: $("keyIn"), doSignIn: $("doSignIn"),
+      pwNote: $("pwNote"), curPw: $("curPw"), setPw: $("setPw"), savePw: $("savePw"),
       cat: $("boardCat"), pStatList: $("pStatList"), pLegend: $("pLegend"),
       pName: $("pName"), pSkin: $("pSkin"), pPaint: $("pPaint"), pBest: $("pBest"), pRank: $("pRank"), pSince: $("pSince"), pBio: $("pBio"),
       selfRow: $("selfRow"), editBio: $("editBio"), showKey: $("showKey"), signOut: $("signOut"), delAcct: $("delAcct"),
-      bioIn: $("bioIn"), bioCount: $("bioCount"), saveBio: $("saveBio"),
+      bioIn: $("bioIn"), bioCount: $("bioCount"), saveBio: $("saveBio"), renameIn: $("renameIn"),
     };
-    els.armable = [els.newKey, els.delAcct];
+    els.armable = [els.delAcct];
+
+    // a SHOW / HIDE button beside every password box, so a typo can be seen before it locks someone out
+    for (const input of [els.newPw, els.keyIn, els.curPw, els.setPw]) {
+      const wrap = document.createElement("div");
+      wrap.className = "pw-wrap";
+      input.replaceWith(wrap);
+      const eye = document.createElement("button");
+      eye.type = "button";
+      eye.className = "pw-eye";
+      eye.textContent = "SHOW";
+      eye.setAttribute("aria-label", "Show password");
+      eye.addEventListener("click", () => {
+        const showing = input.type === "text";
+        input.type = showing ? "password" : "text";
+        eye.textContent = showing ? "SHOW" : "HIDE";
+        eye.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+      });
+      wrap.append(input, eye);
+    }
 
     els.acctBtn.addEventListener("click", () => (key && knownName() ? openProfile(knownName()) : showAuth()));
     els.create.addEventListener("click", showAuth);
@@ -606,11 +654,18 @@
     els.back.addEventListener("click", () => backAction());
     els.doCreate.addEventListener("click", createAccount);
     els.doSignIn.addEventListener("click", signIn);
-    els.newName.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); createAccount(); } });
-    els.keyIn.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); signIn(); } });
-    els.copyKey.addEventListener("click", copyKey);
+    const onEnter = (input, action) => input.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); action(); } });
+    onEnter(els.newName, () => els.newPw.focus());
+    onEnter(els.newPw, createAccount);
+    onEnter(els.nameIn, () => els.keyIn.focus());
+    onEnter(els.keyIn, signIn);
+    onEnter(els.curPw, () => els.setPw.focus());
+    onEnter(els.setPw, savePassword);
+    onEnter(els.renameIn, () => els.bioIn.focus());
+    els.savePw.addEventListener("click", savePassword);
     els.saveBio.addEventListener("click", saveBio);
     els.editBio.addEventListener("click", () => {
+      els.renameIn.value = me ? me.name : knownName() || "";
       els.bioIn.value = me ? me.bio : "";
       els.bioCount.textContent = els.bioIn.value.length + "/80";
       msg("");
@@ -618,9 +673,11 @@
       els.bioIn.focus();
     });
     els.bioIn.addEventListener("input", () => { els.bioCount.textContent = els.bioIn.value.length + "/80"; });
-    els.showKey.addEventListener("click", () => showKey(key, false));
-    els.signOut.addEventListener("click", () => { clearSession(); closeSheet(); setStatus("Signed out."); });
-    armed(els.newKey, "TAP AGAIN: OLD KEY STOPS", newKey);
+    els.showKey.addEventListener("click", () => showPassword(!!(me && me.mustSetPassword)));
+    els.signOut.addEventListener("click", () => {
+      if (key) backend.logout(key).catch(() => {});   // ends this device's sign-in on the server too; offline is fine
+      clearSession(); closeSheet(); setStatus("Signed out.");
+    });
     armed(els.delAcct, "TAP AGAIN TO DELETE", deleteAccount);
 
     // keep typing and taps in the sheet away from the game
@@ -650,7 +707,9 @@
     refresh();
     if (key) {
       backend.me(key).then(
-        (profile) => { me = profile; store.set(NAME_STORE, profile.name); mergeIntoGame(profile); updateButtons(); refresh(); },
+        (profile) => {
+          me = profile; store.set(NAME_STORE, profile.name); mergeIntoGame(profile); updateButtons(); refresh();
+        },
         (e) => { if (e.status === 401) clearSession(); } // offline: keep the key and try again next time
       );
     }
